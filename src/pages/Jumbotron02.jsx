@@ -6,7 +6,7 @@ const Jumbotron02 = () => {
   return (
     <>
       <div>
-        <div className="h-[35rem] bg-indigo flex flex-row items-center">
+        <div className="py-[5rem] bg-indigo flex flex-row items-center">
           <div className="md:basis-3/5">
             <div className="w-[50rem] m-[5rem]">
               <p className="ms-5 text-7xl text-white font-extrabold">
@@ -37,7 +37,7 @@ const Jumbotron02 = () => {
       </div>
 
       <div>
-        <div className="h-[35rem] bg-white flex flex-row items-center">
+        <div className="py-[5rem] bg-white flex flex-row items-center">
           <div className="w-20 md:basis-2/5">
             <div className="">
               <div className="">
@@ -66,7 +66,7 @@ const Jumbotron02 = () => {
         </div>
       </div>
 
-      <div className="h-[35rem] bg-indigo flex flex-row items-center">
+      <div className="py-[5rem] bg-indigo flex flex-row items-center flex-wrap">
         <div className="">
           <div className="w-[50rem] m-[5rem]">
             <p className="ms-5 text-7xl text-white font-extrabold">
@@ -84,9 +84,9 @@ const Jumbotron02 = () => {
           </div>
         </div>
 
-        <div className="flex gap-5 justify-center mx-[8rem]">
+        <div className="flex gap-5 justify-center px-[8rem]">
           <div className="w-[20rem] h-[25rem] bg-white rounded-xl">
-            <div className="flex h-[25rem] justify-center">
+            <div className="h-[25rem] justify-center">
               <div className="flex-col text-center my-4 py-auto">
                 <img className=" my-3 m-5 mx-auto" src={ktp} alt="" />
                 <p className="font-bold text-lg text-black m-5">KTP</p>
