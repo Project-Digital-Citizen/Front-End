@@ -4,13 +4,13 @@ const Jumbotron02 = () => {
   return (
     <>
       <div>
-        <div className="flex flex-col  bg-indigo md:flex-row-reverse h-screen">
-          <div className=" border-2 border-blue-700 md:basis-3/5">
-            <div className="border border-red-600 ">
-              <div className="border border-black ">
-                <div className="max-w-sm m-5 justify-center border border-red-700">
+        <div className="h-[35rem] bg-indigo flex flex-row-reverse items-center">
+          <div className="w-20 md:basis-2/5">
+            <div className="">
+              <div className="">
+                <div className="m-5 justify-center">
                   <img
-                    className="justify-end justify-items-end items-end"
+                    className=""
                     src={ilustrasi01}
                     alt=""
                   />
@@ -18,9 +18,9 @@ const Jumbotron02 = () => {
               </div>
             </div>
           </div>
-          <div className=" border-2 border-green-800 md:basis-2/5">
-            <div>
-              <p className="ms-5 text-7xl text-red-600 font-extrabold">
+          <div className="md:basis-3/5">
+            <div className="w-[50rem] m-[5rem]">
+              <p className="ms-5 text-7xl text-white font-extrabold">
                 Let`s Gooo
               </p>
               <p className="ms-7 text-white text-lg my-2">

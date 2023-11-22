@@ -70,7 +70,7 @@ const Navbar = () => {
         {/* drawer end */}
 
         {/* navbar start */}
-        <div className="navbar-start">
+        <div className="px-[3rem] navbar-start">
           <img src={logoDigzen} alt="" />
           <p className="text-lg font-bold p-1 text-indigo">Digital Citizen</p>
         </div>
@@ -80,22 +80,19 @@ const Navbar = () => {
         <div className="navbar-center hidden md:block">
           <ul className="menu-horizontal gap-2">
             <li>
-              <a className="p-2 hover:border-b-4 border-indigo">Beranda</a>
+              <a href="#" className="p-2 hover:border-b-4 border-indigo">Beranda</a>
             </li>
             <li>
-              <a className="p-2 hover:border-b-4 border-indigo">
+              <a href="#" className="p-2 hover:border-b-4 border-indigo">
                 Pengajuan Surat
               </a>
-            </li>
-            <li>
-              <a className="p-2 hover:border-b-4 border-indigo">Item 3</a>
             </li>
           </ul>
         </div>
         {/* navbar center end */}
 
         {/* navbar end */}
-        <div className="navbar-end">
+        <div className="px-[3rem] navbar-end">
           <div className="dropdown dropdown-end hidden md:block">
             <i className="p-3">Username</i>
             <label tabIndex={0} className="">
