@@ -3,7 +3,7 @@ import logoDigzen from "../assets/images/logoDigzen.png";
 const Navbar = () => {
   return (
     <>
-      <div className="flex h-[4rem] justify-between items-center border">
+      <div className="flex h-[4rem] justify-between items-center shadow-2xl">
         <div className="">
           <div className="md:hidden">
             <h2 className="w-[58px] md:hidden"></h2>

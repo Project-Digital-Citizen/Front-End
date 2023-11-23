@@ -1,14 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Jumbotron02 from "./pages/Jumbotron02";
 import Login from "./pages/Login";
-import Jumbotron from "./pages/Jumbotron";
+import Hero from "./pages/Hero";
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Jumbotron />} />
+        <Route path="/" element={<Hero />} />
         <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
