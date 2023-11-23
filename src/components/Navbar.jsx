@@ -31,10 +31,10 @@ const Navbar = () => {
               aria-label="close sidebar"
               className="drawer-overlay"
             ></label>
-            <ul className="menu menu-vertical gap-4 p-6 w-80 min-h-full bg-base-200 [&_li>*]:rounded-none">
+            <ul className="menu menu-vertical gap-4 p-6 w-80 min-h-full bg-base-200">
               {/* Sidebar content here */}
               <li>
-                <details open className="w-auto ">
+                <details className="w-auto ">
                   <summary className="p-2">
                     <div className="avatar placeholder">
                       <div className=" bg-neutral text-neutral-content rounded-full w-12">
@@ -45,24 +45,24 @@ const Navbar = () => {
                   </summary>
                   <ul>
                     <li>
-                      <a>Profile</a>
+                      <a className="p-2 hover:border border-indigo">Profile</a>
                     </li>
                     <li>
-                      <a>Submenu 2</a>
+                      <a className="p-2 hover:border border-indigo">Logout</a>
                     </li>
                   </ul>
                 </details>
               </li>
               <li>
-                <a className="p-2 hover:border-b-4 border-indigo">Beranda</a>
+                <a className="p-2 hover:border border-indigo">Beranda</a>
               </li>
               <li>
-                <a className="p-2 hover:border-b-4 border-indigo">
+                <a className="p-2 hover:border border-indigo">
                   Pengajuan Surat
                 </a>
               </li>
               <li>
-                <a className="p-2 hover:border-b-4 border-indigo">Item 3</a>
+                <a className="p-2 hover:border border-indigo">Item 3</a>
               </li>
             </ul>
           </div>
@@ -78,14 +78,32 @@ const Navbar = () => {
 
         {/* navbar center */}
         <div className="navbar-center hidden md:block">
-          <ul className="menu-horizontal gap-2">
+          <ul className="menu menu-horizontal">
             <li>
-              <a href="#" className="p-2 hover:border-b-4 border-indigo">Beranda</a>
+              <a>Beranda</a>
             </li>
             <li>
-              <a href="#" className="p-2 hover:border-b-4 border-indigo">
-                Pengajuan Surat
-              </a>
+              <details>
+                <summary>Pengajuan Surat</summary>
+                <ul>
+                  <li>
+                    <details>
+                      <summary>Input Pengajuan</summary>
+                      <ul>
+                        <li>
+                          <a>KTP</a>
+                        </li>
+                        <li>
+                          <a>Surat Domisili</a>
+                        </li>
+                      </ul>
+                    </details>
+                  </li>
+                  <li>
+                    <a>Status Pengajuan</a>
+                  </li>
+                </ul>
+              </details>
             </li>
           </ul>
         </div>

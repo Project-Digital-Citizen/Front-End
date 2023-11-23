@@ -1,4 +1,5 @@
 import "./App.css";
+import Footer from "./components/Footer";
 // import Jumbotron02 from "./components/Jumbotron02";
 // import Jumbotron03 from "./components/Jumbotron03";
 import Navbar from "./components/Navbar";
@@ -12,6 +13,7 @@ function App() {
       {/* <Jumbotron /> */}
       <Jumbotron02 />
       {/* <Jumbotron03 /> */}
+      <Footer />
     </>
   );
 }
