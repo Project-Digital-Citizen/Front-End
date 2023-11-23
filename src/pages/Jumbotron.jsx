@@ -1,13 +1,16 @@
 import ilustrasi01 from "../assets/images/ilustrasi01.png";
 import ktp from "../assets/images/ktp.png";
 import domisili from "../assets/images/domisili.png";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const Jumbotron = () => {
   return (
     <>
+      <Navbar />
       {/* hero 1 */}
       <div className="flex px-10 bg-indigo gap-40">
-        <div className="h-screen flex flex-col w-3/5 justify-center">
+        <div className="h-screen flex lg:flex-col w-3/5 justify-center">
           <p className="ms-5 text-7xl text-white font-extrabold">Let`s Gooo</p>
           <p className="ms-7 text-white text-lg my-2">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur
@@ -19,7 +22,7 @@ const Jumbotron = () => {
             </button>
           </div>
         </div>
-        <div className="h-screen flex flex-col w-3/5 justify-center">
+        <div className="h-screen flex lg:flex-col w-3/5 justify-center">
           <img src={ilustrasi01} alt="" />
         </div>
       </div>
@@ -97,6 +100,7 @@ const Jumbotron = () => {
         </div>
       </div>
       {/* end */}
+      <Footer />
     </>
   );
 };

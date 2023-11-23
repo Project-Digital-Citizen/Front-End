@@ -1,21 +1,18 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Footer from "./components/Footer";
-// import Jumbotron02 from "./components/Jumbotron02";
-// import Jumbotron03 from "./components/Jumbotron03";
-import Navbar from "./components/Navbar";
-// import Jumbotron from "./pages/Jumbotron";
 import Jumbotron02 from "./pages/Jumbotron02";
+import Login from "./pages/Login";
+import Jumbotron from "./pages/Jumbotron";
 
-function App() {
+const App = () => {
   return (
-    <>
-      <Navbar />
-      {/* <Jumbotron /> */}
-      <Jumbotron02 />
-      {/* <Jumbotron03 /> */}
-      <Footer />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Jumbotron />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
