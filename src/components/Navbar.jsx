@@ -5,7 +5,79 @@ const Navbar = () => {
     <>
       <div className="flex h-[4rem] justify-between items-center border">
         <div className="">
-          <div className="drawer px-0 md:hidden">
+          <div className="md:hidden">
+            <h2 className="w-[58px] md:hidden"></h2>
+          </div>
+          {/*  */}
+          <div className="hidden md:flex pl-9">
+            <img src={logoDigzen} alt="" />
+            <p className="text-lg font-bold p-1 text-indigo">Digital Citizen</p>
+          </div>
+        </div>
+        <div className="flex md:hidden">
+          <img src={logoDigzen} alt="" />
+          <p className="text-lg font-bold p-1 text-indigo">Digital Citizen</p>
+        </div>
+        <div className="hidden md:block">
+          <ul className="menu menu-horizontal">
+            <li>
+              <a>Beranda</a>
+            </li>
+            <li>
+              <details>
+                <summary>Pengajuan Surat</summary>
+                <ul>
+                  <li>
+                    <details>
+                      <summary>Input Pengajuan</summary>
+                      <ul>
+                        <li>
+                          <a>KTP</a>
+                        </li>
+                        <li>
+                          <a>Surat Domisili</a>
+                        </li>
+                      </ul>
+                    </details>
+                  </li>
+                  <li>
+                    <a>Status Pengajuan</a>
+                  </li>
+                </ul>
+              </details>
+            </li>
+          </ul>
+        </div>
+        {/*  */}
+        <div className="dropdown dropdown-end hidden md:block pr-9">
+          <i className="px-3">Username</i>
+          <label tabIndex={0} className="">
+            <div className="avatar placeholder btn btn-circle m-1">
+              <div className=" bg-neutral text-neutral-content rounded-full w-12">
+                <span>MX</span>
+              </div>
+            </div>
+          </label>
+          <ul
+            tabIndex={0}
+            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <a className="justify-between">
+                Profile
+                <span className="badge">New</span>
+              </a>
+            </li>
+            <li>
+              <a>Settings</a>
+            </li>
+            <li>
+              <a>Logout</a>
+            </li>
+          </ul>
+        </div>{" "}
+        <div className="md:hidden">
+          <div className="drawer drawer-end md:hidden">
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content ">
               {/* Page content here */}
@@ -72,74 +144,6 @@ const Navbar = () => {
               </ul>
             </div>
           </div>
-          <div className="hidden md:flex pl-9">
-            <img src={logoDigzen} alt="" />
-            <p className="text-lg font-bold p-1 text-indigo">Digital Citizen</p>
-          </div>
-        </div>
-        <div className="flex md:hidden">
-          <img src={logoDigzen} alt="" />
-          <p className="text-lg font-bold p-1 text-indigo">Digital Citizen</p>
-        </div>
-        <div className="hidden md:block">
-          <ul className="menu menu-horizontal">
-            <li>
-              <a>Beranda</a>
-            </li>
-            <li>
-              <details>
-                <summary>Pengajuan Surat</summary>
-                <ul>
-                  <li>
-                    <details>
-                      <summary>Input Pengajuan</summary>
-                      <ul>
-                        <li>
-                          <a>KTP</a>
-                        </li>
-                        <li>
-                          <a>Surat Domisili</a>
-                        </li>
-                      </ul>
-                    </details>
-                  </li>
-                  <li>
-                    <a>Status Pengajuan</a>
-                  </li>
-                </ul>
-              </details>
-            </li>
-          </ul>
-        </div>
-        <div className="md:hidden">
-          <h2 className="w-[58px] md:hidden"></h2>
-        </div>
-        <div className="dropdown dropdown-end hidden md:block pr-9">
-          <i className="px-3">Username</i>
-          <label tabIndex={0} className="">
-            <div className="avatar placeholder btn btn-circle m-1">
-              <div className=" bg-neutral text-neutral-content rounded-full w-12">
-                <span>MX</span>
-              </div>
-            </div>
-          </label>
-          <ul
-            tabIndex={0}
-            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <a className="justify-between">
-                Profile
-                <span className="badge">New</span>
-              </a>
-            </li>
-            <li>
-              <a>Settings</a>
-            </li>
-            <li>
-              <a>Logout</a>
-            </li>
-          </ul>
         </div>
       </div>
 
