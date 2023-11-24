@@ -45,7 +45,9 @@ const Navbar = () => {
                     </details>
                   </li>
                   <li>
-                    <a>Status Pengajuan</a>
+                    <a onClick={() => navigate("/statuspengajuan")}>
+                      Status Pengajuan
+                    </a>
                   </li>
                 </ul>
               </details>
