@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        'indigo': '#83A2FF'
+        'indigo': '#83A2FF',
+        'background': '#F5F5FA'
       }
     },
   },

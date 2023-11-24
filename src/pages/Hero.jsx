@@ -77,7 +77,7 @@ const Hero = () => {
         ></path>
       </svg>
       {/*  */}
-      <div className="bg-indigo ">
+      <div className="bg-indigo pb-3">
         <div className="px-6 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0 lg:h-[30rem]">
           <div className="text-white py-5 md:p-12 flex-1 md:my-auto">
             <div className="flex my-10 w-[20rem] h-[25rem] bg-white rounded-xl border mx-auto md:hidden">

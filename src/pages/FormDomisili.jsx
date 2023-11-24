@@ -1,7 +1,7 @@
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
-const FormKTP = () => {
+const FormDomisili = () => {
   return (
     <>
       <Navbar />
@@ -14,7 +14,7 @@ const FormKTP = () => {
             <li>
               <a>Form Pengajuan</a>
             </li>
-            <li>KTP</li>
+            <li>Domisili</li>
           </ul>
         </div>
         <div className="justify-center p-5">
@@ -127,4 +127,4 @@ const FormKTP = () => {
   );
 };
 
-export default FormKTP;
+export default FormDomisili;

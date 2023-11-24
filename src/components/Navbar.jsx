@@ -5,7 +5,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   return (
     <>
-      <div className="flex h-[4rem] justify-between items-center shadow-2xl">
+      <div className="flex h-[4rem] justify-between bg-white items-center shadow-lg">
         <div className="">
           <div className="md:hidden">
             <h2 className="w-[58px] md:hidden"></h2>
@@ -152,6 +152,11 @@ const Navbar = () => {
                         </li>
                       </ul>
                     </details>
+                  </li>
+                  <li>
+                    <a onClick={() => navigate("/statuspengajuan")}>
+                      Status Pengajuan
+                    </a>
                   </li>
                 </ul>
               </ul>
