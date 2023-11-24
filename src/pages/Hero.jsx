@@ -116,7 +116,7 @@ const Hero = () => {
               deserunt voluptatum cum.
             </p>
           </div>
-          <div className="hidden md:flex gap-4 w-auto h-auto p-5 mx-auto my-auto lg:mr-6">
+          <div className="hidden md:flex gap-4 w-auto h-auto p-5 mx-auto my-auto lg:mr-6 ">
             <div className="flex w-[20rem] h-[25rem] bg-white rounded-xl border mx-auto">
               <div className="space-y-6 mx-auto my-auto">
                 <img src={ktp} alt="KTP" className="shadow-lg mx-auto" />

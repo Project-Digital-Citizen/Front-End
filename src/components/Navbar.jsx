@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import logoDigzen from "../assets/images/logoDigzen.png";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   return (
     <>
       <div className="flex h-[4rem] justify-between items-center shadow-2xl">
@@ -21,7 +23,7 @@ const Navbar = () => {
         <div className="hidden md:block">
           <ul className="menu menu-horizontal">
             <li>
-              <a>Beranda</a>
+              <a onClick={() => navigate("/")}>Beranda</a>
             </li>
             <li>
               <details>
@@ -32,10 +34,12 @@ const Navbar = () => {
                       <summary>Input Pengajuan</summary>
                       <ul>
                         <li>
-                          <a>KTP</a>
+                          <a onClick={() => navigate("/formktp")}>KTP</a>
                         </li>
                         <li>
-                          <a>Surat Domisili</a>
+                          <a onClick={() => navigate("/formdomisili")}>
+                            Surat Domisili
+                          </a>
                         </li>
                       </ul>
                     </details>
@@ -106,7 +110,7 @@ const Navbar = () => {
                 aria-label="close sidebar"
                 className="drawer-overlay"
               ></label>
-              <ul className="menu menu-vertical gap-4 p-6 w-80 min-h-full bg-base-200">
+              <ul className="menu menu-vertical gap-4 p-6 w-58 min-h-full bg-base-200">
                 {/* Sidebar content here */}
                 <li>
                   <details className="w-auto ">
@@ -130,17 +134,26 @@ const Navbar = () => {
                     </ul>
                   </details>
                 </li>
-                <li>
-                  <a className="p-2 hover:border border-indigo">Beranda</a>
-                </li>
-                <li>
-                  <a className="p-2 hover:border border-indigo">
-                    Pengajuan Surat
-                  </a>
-                </li>
-                <li>
-                  <a className="p-2 hover:border border-indigo">Item 3</a>
-                </li>
+                <ul className="menu bg-base-200 w-56 rounded-box">
+                  <li>
+                    <a onClick={() => navigate("/")}>Beranda</a>
+                  </li>
+                  <li>
+                    <details>
+                      <summary>Input Pengajuan</summary>
+                      <ul>
+                        <li>
+                          <a onClick={() => navigate("/formktp")}>KTP</a>
+                        </li>
+                        <li>
+                          <a onClick={() => navigate("/formdomisili")}>
+                            Surat Domisili
+                          </a>
+                        </li>
+                      </ul>
+                    </details>
+                  </li>
+                </ul>
               </ul>
             </div>
           </div>
