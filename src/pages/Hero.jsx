@@ -15,7 +15,7 @@ const Hero = () => {
       <Navbar />
       <div className="bg-indigo ">
         <div className="px-6 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0 lg:h-[27rem]">
-          <div className="text-white py-5 md:p-12 flex-1 md:my-auto">
+          <div className="text-white py-5 md:p-12 flex-1 md:my-auto lg:ml-[8rem]">
             <img
               src={ilus}
               alt="Laptop"
@@ -32,7 +32,7 @@ const Hero = () => {
               More
             </a>
           </div>
-          <div className="hidden lg:flex w-[500px] h-auto p-5 mx-auto my-auto">
+          <div className="hidden lg:flex w-[500px] h-auto p-5 my-auto lg:mr-[10rem]">
             <img src={ilus} alt="Laptop" className="object-cover " />
           </div>
         </div>
