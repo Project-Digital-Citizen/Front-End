@@ -6,7 +6,7 @@ const Register = () => {
   return (
     <>
       {/* <div className=" border-2 border-black "> */}
-      <div className="bg-background flex items-center justify-center py-10">
+      <div className="bg-background flex items-center h-screen justify-center py-10">
         <div className="bg-white w-5/6 rounded shadow-md y-10">
           {/* Isi kotak center di sini */}
           <h1 className="text-indigo text-2xl font-black text-center p-4 px-10 pt-6">
@@ -69,7 +69,7 @@ const Register = () => {
 
               <div className="pt-4 pb-6">
                 <button className="btn btn-block bg-indigo text-white ">
-                  Submit
+                  Register
                 </button>
                 <span className="text-xs -mt-[3px] ml-[2px] text-black">
                   sudah memiliki akun?
