@@ -82,10 +82,10 @@ const Navbar = () => {
             </li>
           </ul>
         </div>{" "}
-        <div className="md:hidden">
-          <div className="drawer drawer-end md:hidden">
+        <div className=" md:hidden">
+          <div className=" drawer drawer-end md:hidden">
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content ">
+            <div className=" drawer-content ">
               {/* Page content here */}
               <label
                 htmlFor="my-drawer"
@@ -95,7 +95,7 @@ const Navbar = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  className="inline-block w-6 h-6 stroke-current"
+                  className=" inline-block w-6 h-6 stroke-current"
                 >
                   <path
                     strokeLinecap="round"
@@ -106,13 +106,13 @@ const Navbar = () => {
                 </svg>
               </label>
             </div>
-            <div className="drawer-side">
+            <div className=" drawer-side">
               <label
                 htmlFor="my-drawer"
                 aria-label="close sidebar"
-                className="drawer-overlay"
+                className="z-0 drawer-overlay"
               ></label>
-              <ul className="menu menu-vertical gap-4 p-6 w-58 min-h-full bg-base-200">
+              <ul className=" menu menu-vertical gap-4 p-6 w-58 min-h-full bg-base-200">
                 {/* Sidebar content here */}
                 <li>
                   <details className="w-auto ">

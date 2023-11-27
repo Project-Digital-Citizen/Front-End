@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import ktp from "../assets/images/ktp.png";
@@ -6,25 +8,29 @@ import domisili from "../assets/images/domisili.png";
 import ilus from "../assets/images/ilustrasi01.png";
 
 const Hero = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <Navbar />
       <div className="bg-indigo ">
-        <div className="px-6 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0 lg:h-[25rem]">
-          <div className="text-white py-5 md:p-12 flex-1 md:my-auto lg:mb-[34px]">
+        <div className="px-6 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0 lg:h-screen">
+          <div className="text-white py-5 md:p-12 flex-1 md:my-auto">
             <img
               src={ilus}
               alt="Laptop"
               className="sm:mt-6 h-full w-full object-cover object-center lg:hidden"
             />
             <h1 className="text-5xl font-bold mb-3">Let's Gooo</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus,
-              soluta. Asperiores omnis labore reiciendis possimus ab temporibus
-              deserunt voluptatum cum.
-            </p>
+            <p>Proses pengurusan surat menjadi lebih efisien dan efektif</p>
+            <a
+              href="#more"
+              className="btn btn-sm btn-ghost font-normal border-white px-4 mt-2 hover:bg-white hover:text-indigo"
+            >
+              More
+            </a>
           </div>
-          <div className="hidden lg:flex w-[500px] h-auto p-5 mx-auto my-auto lg:mb-1">
+          <div className="hidden lg:flex w-[500px] h-auto p-5 mx-auto my-auto">
             <img src={ilus} alt="Laptop" className="object-cover " />
           </div>
         </div>
@@ -38,32 +44,36 @@ const Hero = () => {
         ></path>
       </svg>
       {/*  */}
-      <div className="bg-white">
-        <div className="px-6 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0">
+      <div className="bg-white" id="more">
+        <div className="px-6 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0 lg:h-screen">
           <div className="text-black py-5 md:p-12 flex-1 md:my-auto lg:hidden ">
             <img
               src={ilus}
               alt="Laptop"
-              className="sm:mt-6 h-full w-full object-cover object-center "
+              className="sm:mt-6 h-full w-full object-cover object-center"
             />
-            <div className="lg:hidden">
-              <h1 className="text-5xl font-bold mb-3">Let's Gooo</h1>
+            <div className="pt-3 lg:hidden">
+              <h1 className="text-5xl font-bold mb-3">Digital Citizen</h1>
               <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Ducimus, soluta. Asperiores omnis labore reiciendis possimus ab
-                temporibus deserunt voluptatum cum.
+                Digital citizen merupakan website yang dirancang untuk
+                memudahkan masyarakat dalam melakukan pengajuan surat seperti
+                KTP dan surat domisili. Website ini diharapkan dapat mempermudah
+                akses masyarakat terhadap layanan serta membawa perubahan
+                positif dalam kehidupan masyarakat
               </p>
             </div>
           </div>
-          <div className="hidden lg:flex w-[800px] h-auto p-5 mx-auto">
+          <div className="hidden lg:flex lg:w-[1500px] h-auto p-5 mx-auto my-auto">
             <img src={ilus} alt="Laptop" className="object-cover " />
           </div>
           <div className="hidden lg:flex flex-col h-auto p-5 mx-auto my-auto mr-6 ">
-            <h1 className="text-5xl font-bold mb-3">Let's Gooo</h1>
+            <h1 className="text-5xl font-bold mb-3">Digital Citizen</h1>
             <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus,
-              soluta. Asperiores omnis labore reiciendis possimus ab temporibus
-              deserunt voluptatum cum.
+              Digital citizen merupakan website yang dirancang untuk memudahkan
+              masyarakat dalam melakukan pengajuan surat seperti KTP dan surat
+              domisili. Website ini diharapkan dapat mempermudah akses
+              masyarakat terhadap layanan serta membawa perubahan positif dalam
+              kehidupan masyarakat
             </p>
           </div>
         </div>
@@ -78,16 +88,27 @@ const Hero = () => {
       </svg>
       {/*  */}
       <div className="bg-indigo pb-3">
-        <div className="px-6 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0 lg:h-[30rem]">
+        <div className="px-6 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0 lg:h-screen">
           <div className="text-white py-5 md:p-12 flex-1 md:my-auto">
+            <h1 className="text-5xl font-bold mb-3 text-center">
+              Pengajuan Surat
+            </h1>
             <div className="flex my-10 w-[20rem] h-[25rem] bg-white rounded-xl border mx-auto md:hidden">
               <div className="space-y-6 mx-auto my-auto">
                 <img src={ktp} alt="KTP" className="shadow-lg mx-auto" />
                 <p className="text-center text-xl font-black text-black">KTP</p>
                 <p className="text-center px-2 text-md font-medium text-black">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Laboriosam pariatur suscipit ut, expedita aspernatur autem.
+                  Kartu Tanda Penduduk merupakan kartu identitas diri secara
+                  resmi yang diterbitkan oleh Kementrian Dalam Negeri
                 </p>
+                <div className="flex">
+                  <button
+                    className="btn btn-sm text-white bg-indigo  border-indigo mx-auto hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo"
+                    onClick={() => navigate("/formktp")}
+                  >
+                    Buat
+                  </button>
+                </div>
               </div>
             </div>
             {/*  */}
@@ -102,19 +123,24 @@ const Hero = () => {
                   Surat Domisili
                 </p>
                 <p className="text-center px-2 text-md font-medium text-black">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Laboriosam pariatur suscipit ut, expedita aspernatur autem.
+                  Surat domisili merupakan dokumen untuk membuktikan bahwa
+                  seseorang betul tinggal pada suatu wilayah tertentu
                 </p>
+                <div className="flex">
+                  <button
+                    className="btn btn-sm text-white bg-indigo  border-indigo mx-auto hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo"
+                    onClick={() => navigate("/formdomisili")}
+                  >
+                    Buat
+                  </button>
+                </div>
               </div>
             </div>
 
             {/*  */}
-            <h1 className="text-5xl font-bold mb-3">Let's Gooo</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus,
-              soluta. Asperiores omnis labore reiciendis possimus ab temporibus
-              deserunt voluptatum cum.
-            </p>
+            <h1 className="hidden md:text-5xl font-bold mb-3">
+              Pengajuan Surat
+            </h1>
           </div>
           <div className="hidden md:flex gap-4 w-auto h-auto p-5 mx-auto my-auto lg:mr-6 ">
             <div className="flex w-[20rem] h-[25rem] bg-white rounded-xl border mx-auto">
@@ -122,9 +148,17 @@ const Hero = () => {
                 <img src={ktp} alt="KTP" className="shadow-lg mx-auto" />
                 <p className="text-center text-xl font-black text-black">KTP</p>
                 <p className="text-center px-2 text-md font-medium text-black">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Laboriosam pariatur suscipit ut, expedita aspernatur autem.
+                  Kartu Tanda Penduduk merupakan kartu identitas diri secara
+                  resmi yang diterbitkan oleh Kementrian Dalam Negeri
                 </p>
+                <div className="flex">
+                  <button
+                    className="btn btn-sm text-white bg-indigo  border-indigo mx-auto hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo"
+                    onClick={() => navigate("/formktp")}
+                  >
+                    Buat
+                  </button>
+                </div>
               </div>
             </div>
             {/*  */}
@@ -139,9 +173,17 @@ const Hero = () => {
                   Surat Domisili
                 </p>
                 <p className="text-center px-2 text-md font-medium text-black">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Laboriosam pariatur suscipit ut, expedita aspernatur autem.
+                  Surat domisili merupakan dokumen untuk membuktikan bahwa
+                  seseorang betul tinggal pada suatu wilayah tertentu
                 </p>
+                <div className="flex">
+                  <button
+                    className="btn btn-sm text-white bg-indigo  border-indigo mx-auto hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo"
+                    onClick={() => navigate("/formdomisili")}
+                  >
+                    Buat
+                  </button>
+                </div>
               </div>
             </div>
           </div>

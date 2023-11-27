@@ -24,7 +24,7 @@ const StatusPengajuan = () => {
           <div className="w-11/12 rounded-xl shadow-2xl bg-white mx-auto ">
             <div className="flex justify-center py-5 md:justify-start md:ml-10 ">
               <div className="my-auto">
-                <img src={icondocs} alt="" className="h-[50px] " />
+                <img src={icondocs} alt="" className="h-[50px]" />
               </div>
               <div className="flex flex-col text-indigo  font-black my-auto">
                 <h1 className="text-2xl ">Status Pengajuan</h1>
@@ -34,7 +34,7 @@ const StatusPengajuan = () => {
               </div>
             </div>
             <hr className="bg-indigo text-black p-[1px] mx-10 " />
-            <div className="p-7 max-w-md ">
+            <div className="p-7 max-w-md">
               {/*  */}
               <ul className="timeline timeline-vertical">
                 <li>

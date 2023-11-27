@@ -26,35 +26,22 @@ const FormKTP = () => {
             <div className="p-4">
               <ul className="list-disc ml-10 mr-5">
                 <li className="my-2">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Distinctio asperiores quia praesentium molestiae corporis
-                  iusto natus repellat nisi aliquid repudiandae.
+                  Lengkapi data diri sesuai dengan form yang telah disediakan.
                 </li>
                 <li className="my-2">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Perferendis quo, veritatis alias voluptatibus tempora
-                  provident recusandae explicabo beatae! Ab maiores
-                  necessitatibus recusandae totam ad voluptatibus temporibus ea
-                  quibusdam dolor provident quidem sint, tempora officiis
-                  eligendi voluptatum, quod corporis molestias repellendus
-                  exercitationem tenetur modi doloribus? Esse, recusandae
-                  inventore quisquam iure corrupti, nobis perspiciatis aliquam
-                  necessitatibus odio repellat pariatur voluptatum doloremque
-                  nihil, repellendus veniam accusamus reprehenderit eligendi
-                  autem natus. Dolore quas necessitatibus, assumenda earum,
-                  dignissimos soluta eligendi repellat recusandae sunt veritatis
-                  dolor deleniti iure error dicta sapiente. Suscipit, nostrum
-                  est rerum architecto, qui nemo temporibus ducimus pariatur
-                  repellendus minus exercitationem dignissimos perspiciatis!
+                  Dalam pengisian dokumen isikan sesuai dengan data resmi yang
+                  telah anda miliki.
                 </li>
                 <li className="my-2">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Cumque, laudantium suscipit? Iusto iure recusandae tempora,
-                  labore, error, ipsa minima veniam earum asperiores eaque
-                  perspiciatis hic temporibus officia nobis nesciunt ducimus!
-                  Saepe, eius aspernatur. At voluptates eius ipsam reprehenderit
-                  beatae sapiente dignissimos vitae ea qui fugiat error, hic
-                  veritatis cumque provident.
+                  Upload dokumen yang diperlukan seperti, surat keterangan RT,
+                  surat keterangan RW dan Kartu Keluarga.
+                </li>
+                <li className="my-2">
+                  Upload foto dengan ketentuan sebagai berikut:
+                </li>
+                <li className="my-2 ml-12">Foto terlihat muka dengan jelas.</li>
+                <li className="my-2 ml-12">
+                  Foto terlihat dari muka sampai pundak.
                 </li>
               </ul>
             </div>
@@ -73,46 +60,193 @@ const FormKTP = () => {
               <form action="">
                 <div className="form-control w-full md:flex md:flex-row justify-between pt-4">
                   <label className="label">
-                    <span className="label-text">Name</span>
+                    <span className="label-text font-black">NIK</span>
                   </label>
                   <input
                     type="text"
-                    placeholder="Type here"
-                    className="input input-bordered input-md w-full max-w-screen md:max-w-lg lg:max-w-2xl xl:max-w-4xl"
+                    placeholder="NIK"
+                    className="input input-bordered input-md w-full max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                   />
                 </div>
                 <div className="form-control w-full md:flex md:flex-row justify-between pt-4">
                   <label className="label">
-                    <span className="label-text">Name</span>
+                    <span className="label-text font-black">Nama</span>
                   </label>
                   <input
                     type="text"
-                    placeholder="Type here"
-                    className="input input-bordered input-md w-full max-w-screen md:max-w-lg lg:max-w-2xl xl:max-w-4xl"
+                    placeholder="Nama"
+                    className="input input-bordered input-md w-full max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                   />
                 </div>
                 <div className="form-control w-full md:flex md:flex-row justify-between pt-4">
                   <label className="label">
-                    <span className="label-text">Name</span>
+                    <span className="label-text font-black">
+                      Tempat, Tanggal Lahir
+                    </span>
                   </label>
                   <input
                     type="text"
-                    placeholder="Type here"
-                    className="input input-bordered input-md w-full max-w-screen md:max-w-lg lg:max-w-2xl xl:max-w-4xl"
+                    placeholder="Tempat,DD-MM-YYYY"
+                    className="input input-bordered input-md w-full max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                   />
                 </div>
                 <div className="form-control w-full md:flex md:flex-row justify-between pt-4">
                   <label className="label">
-                    <span className="label-text">File</span>
+                    <span className="label-text font-black">Jenis Kelamin</span>
+                  </label>
+                  <select className="select select-bordered select-md w-full max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl">
+                    <option disabled selected>
+                      Jenis Kelamin
+                    </option>
+                    <option>Laki-Laki</option>
+                    <option>Perempuan</option>
+                  </select>
+                  {/* <input
+                    type="text"
+                    placeholder="Jenis kelamin"
+                    className="input input-bordered input-md w-full max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                  /> */}
+                </div>
+                <div className="form-control w-full md:flex md:flex-row justify-between pt-4">
+                  <label className="label">
+                    <span className="label-text font-black">Alamat</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Alamat"
+                    className="input input-bordered input-md w-full max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                  />
+                </div>
+                <div className="form-control w-full md:flex md:flex-row justify-between pt-4">
+                  <label className="label">
+                    <span className="label-text font-black lg:ml-12">
+                      RT/RW
+                    </span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="RT/RW"
+                    className="input input-bordered input-md w-full max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                  />
+                </div>
+                <div className="form-control w-full md:flex md:flex-row justify-between pt-4">
+                  <label className="label">
+                    <span className="label-text font-black lg:ml-12">
+                      Kel/Desa
+                    </span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Kel/Desa"
+                    className="input input-bordered input-md w-full max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                  />
+                </div>
+                <div className="form-control w-full md:flex md:flex-row justify-between pt-4">
+                  <label className="label">
+                    <span className="label-text font-black lg:ml-12">
+                      Kecamatan
+                    </span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Kecamatan"
+                    className="input input-bordered input-md w-full max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                  />
+                </div>
+                <div className="form-control w-full md:flex md:flex-row justify-between pt-4">
+                  <label className="label">
+                    <span className="label-text font-black">Agama</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Agama"
+                    className="input input-bordered input-md w-full max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                  />
+                </div>
+                <div className="form-control w-full md:flex md:flex-row justify-between pt-4">
+                  <label className="label">
+                    <span className="label-text font-black">
+                      Status Perkawinan
+                    </span>
+                  </label>
+                  <select className="select select-bordered select-md w-full max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl">
+                    <option disabled selected>
+                      Status Perkawinan
+                    </option>
+                    <option>Belum Menikah</option>
+                    <option>Sudah Menikah</option>
+                  </select>
+                </div>
+                <div className="form-control w-full md:flex md:flex-row justify-between pt-4">
+                  <label className="label">
+                    <span className="label-text font-black">Pekerjaan</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Pekerjaan"
+                    className="input input-bordered input-md w-full max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                  />
+                </div>
+                <div className="form-control w-full md:flex md:flex-row justify-between pt-4">
+                  <label className="label">
+                    <span className="label-text font-black">
+                      Kewarganegaraan
+                    </span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Kewarganegaraan"
+                    className="input input-bordered input-md w-full max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                  />
+                </div>
+                <div className="form-control w-full md:flex md:flex-row justify-between pt-4">
+                  <label className="label">
+                    <span className="label-text font-black">
+                      Surat Pengantar RT
+                    </span>
                   </label>
                   <input
                     type="file"
-                    placeholder="Type here"
-                    className="file-input file-input-bordered file-input-md w-full max-w-screen md:max-w-lg lg:max-w-2xl xl:max-w-4xl"
+                    placeholder="PDF Pengantar RT"
+                    className="file-input file-input-bordered file-input-md w-full max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                  />
+                </div>
+                <div className="form-control w-full md:flex md:flex-row justify-between pt-4">
+                  <label className="label">
+                    <span className="label-text font-black">
+                      Surat Pengantar RW
+                    </span>
+                  </label>
+                  <input
+                    type="file"
+                    placeholder="PDF Pengantar RW"
+                    className="file-input file-input-bordered file-input-md w-full max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                  />
+                </div>
+                <div className="form-control w-full md:flex md:flex-row justify-between pt-4">
+                  <label className="label">
+                    <span className="label-text font-black">
+                      Kartu Keluarga
+                    </span>
+                  </label>
+                  <input
+                    type="file"
+                    placeholder="PDF Kartu Keluarga"
+                    className="file-input file-input-bordered file-input-md w-full max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                  />
+                </div>
+                <div className="form-control w-full md:flex md:flex-row justify-between pt-4">
+                  <label className="label">
+                    <span className="label-text font-black">Photo</span>
+                  </label>
+                  <input
+                    type="file"
+                    placeholder="PNG"
+                    className="file-input file-input-bordered file-input-md w-full max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                   />
                 </div>
                 <div className="pt-4 md:flex flex-row-reverse pb-6">
-                  <button className="btn btn-block bg-indigo text-white md:w-1/6">
+                  <button className="btn btn-block bg-indigo text-white hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo md:w-1/6">
                     Submit
                   </button>
                 </div>
