@@ -8,18 +8,20 @@ const Profile = () => {
       <div className="bg-background flex items-center h-screen justify-center py-10">
         <div className="bg-white w-5/6 rounded shadow-md y-10 md:w-[70%] lg:w-[50%] xl:w-[35%]">
           {/* Isi kotak center di sini */}
-          <div className="flex border-2 border-black">
-            <div className="avatar placeholder my-auto p-5">
+          <div
+            type="file"
+            className="flex-col border-2 border-black justify-center"
+          >
+            <div className="flex avatar placeholder my-auto border-2 border-black justify-center">
               <div className="bg-neutral text-neutral-content rounded-full w-24">
                 <span className="text-3xl">User</span>
               </div>
             </div>
-            <div className="border-2 border-black">
-              <h1 className="text-black text-2xl font-black ">
-                Welcome to Digital <span className="text-indigo">Citizen</span>
+            <div className="border-2 border-black flex flex-col">
+              <h1 className="text-black text-2xl font-black text-center">
+                Welcome to Digital
               </h1>
-              <span>NIK : 92845623945</span>
-              <a href=""></a>
+              <span className="text-center">NIK : 92845623945</span>
             </div>
           </div>
 
