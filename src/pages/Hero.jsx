@@ -14,7 +14,7 @@ const Hero = () => {
     <>
       <Navbar />
       <div className="bg-indigo ">
-        <div className="px-6 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0 lg:h-screen">
+        <div className="px-6 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0 lg:h-[27rem]">
           <div className="text-white py-5 md:p-12 flex-1 md:my-auto">
             <img
               src={ilus}
@@ -45,7 +45,7 @@ const Hero = () => {
       </svg>
       {/*  */}
       <div className="bg-white" id="more">
-        <div className="px-6 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0 lg:h-screen">
+        <div className="px-6 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0 lg:h-[20rem]">
           <div className="text-black py-5 md:p-12 flex-1 md:my-auto lg:hidden ">
             <img
               src={ilus}
@@ -88,7 +88,7 @@ const Hero = () => {
       </svg>
       {/*  */}
       <div className="bg-indigo pb-3">
-        <div className="px-6 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0 lg:h-screen">
+        <div className="px-6 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0 lg:h-[27rem]">
           <div className="text-white py-5 md:p-12 flex-1 md:my-auto">
             <h1 className="text-5xl font-bold mb-3 text-center">
               Pengajuan Surat
