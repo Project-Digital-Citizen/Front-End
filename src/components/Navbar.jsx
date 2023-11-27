@@ -69,7 +69,10 @@ const Navbar = () => {
             className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a className="justify-between">
+              <a
+                className="justify-between"
+                onClick={() => navigate("/profile")}
+              >
                 Profile
                 <span className="badge">New</span>
               </a>
@@ -78,7 +81,7 @@ const Navbar = () => {
               <a>Settings</a>
             </li>
             <li>
-              <a>Logout</a>
+              <a onClick={() => navigate("/login")}>Logout</a>
             </li>
           </ul>
         </div>{" "}
