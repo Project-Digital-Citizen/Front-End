@@ -9,7 +9,7 @@ const FormDomisili = () => {
       <Navbar />
       <div className="bg-[#F5F5FA]">
         <div
-          className="flex w-[60px] mt-2 ml-16 cursor-pointer"
+          className="flex w-[60px] pt-[2rem] ml-16 cursor-pointer"
           onClick={() => navigate("/")}
         >
           <span className="font-bold text-lg material-symbols-outlined ">

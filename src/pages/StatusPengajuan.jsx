@@ -10,10 +10,10 @@ const StatusPengajuan = () => {
   return (
     <>
       <Navbar />
-      <div className="bg-[#F5F5FA]">
+      <div className="bg-[#F5F5FA] h-screen">
         {/*  */}
         <div
-          className="flex w-[60px] mt-2 ml-16 cursor-pointer"
+          className="flex w-[60px] pt-[2rem] ml-16 cursor-pointer"
           onClick={() => navigate("/")}
         >
           <span className="font-bold text-lg material-symbols-outlined ">
@@ -22,8 +22,8 @@ const StatusPengajuan = () => {
           <p className="my-auto">back</p>
         </div>
         {/*  */}
-        <div className="justify-center p-5 pb-16">
-          <div className="w-11/12 rounded-xl shadow-2xl bg-white mx-auto ">
+        <div className="flex justify-center p-5 pb-16 h-screen items-center">
+          <div className="w-11/12 rounded-xl shadow-2xl bg-white mx-auto lg:w-96">
             <div className="flex justify-center py-5 md:justify-start md:ml-10 ">
               <div className="my-auto">
                 <img src={icondocs} alt="" className="h-[50px]" />
@@ -71,7 +71,7 @@ const StatusPengajuan = () => {
           </div>
         </div>
       </div>
-      <Footer />
+        <Footer/>
     </>
   );
 };
