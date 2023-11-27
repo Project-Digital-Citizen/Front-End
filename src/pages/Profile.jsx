@@ -9,14 +9,18 @@ const Profile = () => {
         <div className="bg-white w-5/6 rounded shadow-md y-10 md:w-[70%] lg:w-[50%] xl:w-[35%]">
           {/* Isi kotak center di sini */}
           <div className="flex border-2 border-black">
-            <div className="avatar placeholder my-auto">
+            <div className="avatar placeholder my-auto p-5">
               <div className="bg-neutral text-neutral-content rounded-full w-24">
                 <span className="text-3xl">User</span>
               </div>
             </div>
-            <h1 className="text-black text-2xl font-black text-center p-4 px-10 pt-6">
-              Welcome to Digital <span className="text-indigo">Citizen</span>
-            </h1>
+            <div className="border-2 border-black">
+              <h1 className="text-black text-2xl font-black ">
+                Welcome to Digital <span className="text-indigo">Citizen</span>
+              </h1>
+              <span>NIK : 92845623945</span>
+              <a href=""></a>
+            </div>
           </div>
 
           <hr className="bg-indigo text-black p-[1px] mx-10 " />

@@ -8,11 +8,11 @@ const FormKTP = () => {
     <>
       <Navbar />
       <div className="bg-[#F5F5FA]">
-        <div className="flex w-[60px] mt-2 ml-16 cursor-pointer">
-          <span
-            className="font-bold text-lg material-symbols-outlined "
-            onClick={() => navigate("/")}
-          >
+        <div
+          className="flex w-[60px] mt-2 ml-16 cursor-pointer"
+          onClick={() => navigate("/")}
+        >
+          <span className="font-bold text-lg material-symbols-outlined ">
             arrow_back
           </span>
           <p className="my-auto">back</p>
