@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import logoDigzen from "../assets/images/logoDigzen.png";
+import logoDigzen from "../assets/images/logoDigzen1.png";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -12,12 +12,12 @@ const Navbar = () => {
           </div>
           {/*  */}
           <div className="hidden md:flex pl-9">
-            <img src={logoDigzen} alt="" />
+            <img src={logoDigzen} alt="" className="h-9" />
             <p className="text-lg font-bold p-1 text-indigo">Digital Citizen</p>
           </div>
         </div>
         <div className="flex md:hidden">
-          <img src={logoDigzen} alt="" />
+          <img src={logoDigzen} alt="" className="h-9" />
           <p className="text-lg font-bold p-1 text-indigo">Digital Citizen</p>
         </div>
         <div className="hidden md:block">

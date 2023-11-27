@@ -1,21 +1,21 @@
+import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
 const FormDomisili = () => {
+  const navigate = useNavigate();
   return (
     <>
       <Navbar />
       <div className="bg-[#F5F5FA]">
-        <div className="max-w-screen text-sm font-black breadcrumbs pt-7 mx-3 ml-8 md:max-w-lg md:ml-[60px]">
-          <ul>
-            <li>
-              <a>Pengajuan Surat</a>
-            </li>
-            <li>
-              <a>Form Pengajuan</a>
-            </li>
-            <li>Domisili</li>
-          </ul>
+        <div className="flex w-[60px] mt-2 ml-16 cursor-pointer">
+          <span
+            className="font-bold text-lg material-symbols-outlined "
+            onClick={() => navigate("/")}
+          >
+            arrow_back
+          </span>
+          <p className="my-auto">back</p>
         </div>
         <div className="justify-center p-5">
           <div className="w-11/12 rounded-xl shadow-2xl bg-white mx-auto ">

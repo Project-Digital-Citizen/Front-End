@@ -22,7 +22,9 @@ const Hero = () => {
               className="sm:mt-6 h-full w-full object-cover object-center lg:hidden"
             />
             <h1 className="text-5xl font-bold mb-3">Let's Gooo</h1>
-            <p>Proses pengurusan surat menjadi lebih efisien dan efektif</p>
+            <p className="text-justify">
+              Proses pengurusan surat menjadi lebih efisien dan efektif
+            </p>
             <a
               href="#more"
               className="btn btn-sm btn-ghost font-normal border-white px-4 mt-2 hover:bg-white hover:text-indigo"
@@ -54,7 +56,7 @@ const Hero = () => {
             />
             <div className="pt-3 lg:hidden">
               <h1 className="text-5xl font-bold mb-3">Digital Citizen</h1>
-              <p>
+              <p className="text-justify">
                 Digital citizen merupakan website yang dirancang untuk
                 memudahkan masyarakat dalam melakukan pengajuan surat seperti
                 KTP dan surat domisili. Website ini diharapkan dapat mempermudah
@@ -68,7 +70,7 @@ const Hero = () => {
           </div>
           <div className="hidden lg:flex flex-col h-auto p-5 mx-auto my-auto mr-6 ">
             <h1 className="text-5xl font-bold mb-3">Digital Citizen</h1>
-            <p>
+            <p className="text-justify">
               Digital citizen merupakan website yang dirancang untuk memudahkan
               masyarakat dalam melakukan pengajuan surat seperti KTP dan surat
               domisili. Website ini diharapkan dapat mempermudah akses
