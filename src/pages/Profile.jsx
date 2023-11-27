@@ -1,11 +1,13 @@
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import person from "../assets/images/person.png";
+import mailIMG from "../assets/images/element mail.png"
 
 const Profile = () => {
   return (
     <>
       <Navbar />
+      <img src={mailIMG} alt="" className="absolute -bottom-10"/>
       <div className="bg-background flex items-center h-screen justify-center py-10">
         <div className="bg-white w-5/6 rounded shadow-md y-10 md:w-[70%] lg:w-[50%] xl:w-[35%]">
           {/* Isi kotak center di sini */}
