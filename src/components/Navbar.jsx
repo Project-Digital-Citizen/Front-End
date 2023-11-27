@@ -11,12 +11,12 @@ const Navbar = () => {
             <h2 className="w-[58px] md:hidden"></h2>
           </div>
           {/*  */}
-          <div className="hidden md:flex pl-9">
+          <div className="hidden md:flex pl-9 cursor-pointer" onClick={() => navigate("/")}>
             <img src={logoDigzen} alt="" className="h-9" />
             <p className="text-lg font-bold p-1 text-indigo">Digital Citizen</p>
           </div>
         </div>
-        <div className="flex md:hidden">
+        <div className="md:flex md:hidden cursor-pointer" onClick={() => navigate("/")}>
           <img src={logoDigzen} alt="" className="h-9" />
           <p className="text-lg font-bold p-1 text-indigo">Digital Citizen</p>
         </div>
