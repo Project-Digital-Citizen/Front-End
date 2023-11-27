@@ -5,7 +5,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   return (
     <>
-      <div className="flex h-[4rem] justify-between bg-white items-center shadow-lg">
+      <div className="flex h-[4rem] justify-between bg-white items-center shadow-lg z-50 sticky top-0">
         <div className="">
           <div className="md:hidden">
             <h2 className="w-[58px] md:hidden"></h2>
@@ -109,11 +109,11 @@ const Navbar = () => {
                 </svg>
               </label>
             </div>
-            <div className=" drawer-side">
+            <div className="z-50 drawer-side">
               <label
                 htmlFor="my-drawer"
                 aria-label="close sidebar"
-                className="z-0 drawer-overlay"
+                className="drawer-overlay"
               ></label>
               <ul className=" menu menu-vertical gap-4 p-6 w-58 min-h-full bg-base-200">
                 {/* Sidebar content here */}
