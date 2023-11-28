@@ -135,7 +135,10 @@ const Navbar = () => {
                     </summary>
                     <ul>
                       <li>
-                        <a className="p-2 hover:border border-indigo">
+                        <a
+                          className="p-2 hover:border border-indigo"
+                          onClick={() => navigate("/profile")}
+                        >
                           Profile
                         </a>
                       </li>

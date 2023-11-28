@@ -8,19 +8,16 @@ const Profile = () => {
     <>
       <Navbar />
       <img src={mailIMG} alt="" className="absolute -bottom-10 z-0" />
-      <div className=" bg-background flex items-center h-screen justify-center py-10 ">
+      <div className=" bg-background flex h-screen justify-center py-10 ">
         <div className="bg-white w-5/6 rounded shadow-md y-10 md:w-[70%] lg:w-[50%] xl:w-[35%] relative">
           {/* Isi kotak center di sini */}
-          <div className="flex-colk justify-center">
-            <div className="flex avatar my-auto justify-center py-6">
-              <label
-                htmlFor="pp"
-                className="bg-neutral text-neutral-content  rounded-full w-24 h-24"
-              >
+          <div className="">
+            <div className="flex my-auto justify-center py-6">
+              <label htmlFor="pp" className="w-32 p-2">
                 <img
                   src={person}
                   alt=""
-                  className="rounded-full border-3 border-black"
+                  className="border-4 border-black rounded-full"
                 />
               </label>
               <input type="file" id="pp" className="hidden" />
@@ -63,7 +60,7 @@ const Profile = () => {
                 />
               </div>
               <div className="flex flex-row-reverse pt-4 pb-6 gap-3">
-                <button className="btn btn-sm bg-indigo text-white ">
+                <button className="btn btn-md bg-indigo text-white ">
                   Save
                 </button>
               </div>

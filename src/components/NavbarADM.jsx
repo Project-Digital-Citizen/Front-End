@@ -7,16 +7,16 @@ const NavbarADM = () => {
     <>
       <div className="flex h-[4rem] justify-between bg-white items-center shadow-lg z-50 sticky top-0">
         <div className="">
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <h2 className="w-[58px] md:hidden"></h2>
           </div>
           {/*  */}
           <div
-            className="-ml-6 gap-2 md:flex pl-9 w-auto md:ml-0 cursor-pointer"
+            className="-ml-6 gap-2 lg:flex pl-9 w-auto md:ml-0 cursor-pointer"
             onClick={() => navigate("/")}
           >
             <img src={logoDigzen} alt="" className="h-9" />
-            <div className="hidden md:flex md:w-[100px] items-center">
+            <div className="hidden lg:flex md:w-[100px] items-center">
               <input
                 type="text"
                 placeholder="Search"
@@ -29,7 +29,7 @@ const NavbarADM = () => {
           </div>
         </div>
         <div
-          className="flex cursor-pointer md:hidden "
+          className="flex cursor-pointer lg:hidden "
           onClick={() => navigate("/")}
         >
           <div className="flex items-center">
@@ -43,7 +43,7 @@ const NavbarADM = () => {
             </button>
           </div>
         </div>
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <ul className="menu menu-horizontal">
             <li>
               <a onClick={() => navigate("/")}>Beranda</a>
@@ -62,7 +62,7 @@ const NavbarADM = () => {
           </ul>
         </div>
         {/*  */}
-        <div className="dropdown dropdown-end hidden md:block pr-9">
+        <div className="dropdown dropdown-end hidden lg:block pr-9">
           <i className="px-3">Admin</i>
           <label tabIndex={0} className="">
             <div className="avatar placeholder btn btn-circle m-1">
@@ -88,8 +88,8 @@ const NavbarADM = () => {
             </li>
           </ul>
         </div>{" "}
-        <div className=" md:hidden">
-          <div className=" drawer drawer-end md:hidden">
+        <div className=" lg:hidden">
+          <div className=" drawer drawer-end lg:hidden">
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />
             <div className=" drawer-content ">
               {/* Page content here */}
@@ -132,7 +132,10 @@ const NavbarADM = () => {
                     </summary>
                     <ul>
                       <li>
-                        <a className="p-2 hover:border border-indigo">
+                        <a
+                          className="p-2 hover:border border-indigo"
+                          onClick={() => navigate("/profile")}
+                        >
                           Profile
                         </a>
                       </li>
