@@ -8,12 +8,14 @@ import Register from "./pages/Register";
 import PageNotFound from "./pages/PageNotFound";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
+import BerandaADM from "./pages/Admin/BerandaADM";
 
 const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Hero />} />
+        <Route path="/berandaadm" element={<BerandaADM />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
