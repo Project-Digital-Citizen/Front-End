@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer";
 import NavbarADM from "../../components/NavbarADM";
 
 const Mailinglist = () => {
+  const navigate = useNavigate();
   return (
     <>
       <NavbarADM />
@@ -31,7 +33,7 @@ const Mailinglist = () => {
                   <td>Cy Ganderton</td>
                   <td>KTP</td>
                   <td>
-                    <span className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo btn-xs">
+                    <span className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo btn-xs" onClick={()=> navigate('/verifikasiktp')}>
                       Verify
                     </span>
                   </td>

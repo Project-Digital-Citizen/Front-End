@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import BerandaADM from "./pages/Admin/BerandaADM";
 import Mailinglist from "./pages/Admin/Mailinglist";
+import VerifikasiKTP from "./pages/Admin/VerifikasiKTP";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/" element={<Hero />} />
         <Route path="/berandaadm" element={<BerandaADM />} />
         <Route path="/mailinglist" element={<Mailinglist />} />
+        <Route path="/verifikasiktp" element={<VerifikasiKTP />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
