@@ -8,7 +8,7 @@ const Profile = () => {
     <>
       <Navbar />
       <img src={mailIMG} alt="" className="absolute z-0 -bottom-10" />
-      <div className="flex items-center justify-center h-screen py-10  bg-background">
+      <div className="flex items-center justify-center py-10 bg-background">
         <div className="bg-white w-5/6 rounded shadow-md y-10 md:w-[70%] lg:w-[50%] xl:w-[35%] relative">
           {/* Isi kotak center di sini */}
           <div className="">
@@ -35,19 +35,19 @@ const Profile = () => {
             <form action="">
               <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
                 <span className="font-black label-text">Email</span>
-                <span className="w-full  max-w-screen md:w-3/5">
+                <span className="w-full max-w-screen md:w-3/5">
                   gmail@gmail.com
                 </span>
               </div>
               <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
                 <span className="font-black label-text">Phone Number</span>
-                <span className="w-full  max-w-screen md:w-3/5">
+                <span className="w-full max-w-screen md:w-3/5">
                   08123124134
                 </span>
               </div>
               <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
                 <span className="font-black label-text">Jenis Kelamin</span>
-                <span className="w-full  max-w-screen md:w-3/5">Perempuan</span>
+                <span className="w-full max-w-screen md:w-3/5">Perempuan</span>
               </div>
               <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
                 <label className="label">

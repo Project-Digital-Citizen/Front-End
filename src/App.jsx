@@ -9,6 +9,7 @@ import PageNotFound from "./pages/PageNotFound";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import BerandaADM from "./pages/Admin/BerandaADM";
+import Mailinglist from "./pages/Admin/Mailinglist";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Hero />} />
         <Route path="/berandaadm" element={<BerandaADM />} />
+        <Route path="/mailinglist" element={<Mailinglist />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />

@@ -11,11 +11,13 @@ const NavbarADM = () => {
             <h2 className="w-[58px] md:hidden"></h2>
           </div>
           {/*  */}
-          <div
-            className="-ml-6 gap-2 lg:flex pl-9 w-auto md:ml-0 cursor-pointer"
-            onClick={() => navigate("/")}
-          >
-            <img src={logoDigzen} alt="" className="h-9" />
+          <div className="w-auto gap-2 -ml-6 cursor-pointer lg:flex pl-9 md:ml-0">
+            <img
+              src={logoDigzen}
+              alt=""
+              className="h-9"
+              onClick={() => navigate("/berandaadm")}
+            />
             <div className="hidden lg:flex md:w-[100px] items-center">
               <input
                 type="text"
@@ -28,17 +30,14 @@ const NavbarADM = () => {
             </div>
           </div>
         </div>
-        <div
-          className="flex cursor-pointer lg:hidden "
-          onClick={() => navigate("/")}
-        >
+        <div className="flex cursor-pointer lg:hidden ">
           <div className="flex items-center">
             <input
               type="text"
               placeholder="Search"
               className="border w-[180px] p-[2px] pl-3 rounded-l"
             />
-            <button className="flex bg-blue-500 text-white p-[3px] rounded-r">
+            <button className="flex bg-indigo text-white p-[3px] rounded-r">
               <span className="material-symbols-outlined">search</span>
             </button>
           </div>
@@ -46,10 +45,10 @@ const NavbarADM = () => {
         <div className="hidden lg:block">
           <ul className="menu menu-horizontal">
             <li>
-              <a onClick={() => navigate("/")}>Beranda</a>
+              <a onClick={() => navigate("/berandaadm")}>Beranda</a>
             </li>
             <li>
-              <a onClick={() => navigate("/")}>
+              <a onClick={() => navigate("/mailinglist")}>
                 Mailing List{" "}
                 <div className="badge badge-sm badge-accent badge-outline">
                   +1
@@ -62,11 +61,11 @@ const NavbarADM = () => {
           </ul>
         </div>
         {/*  */}
-        <div className="dropdown dropdown-end hidden lg:block pr-9">
+        <div className="hidden dropdown dropdown-end lg:block pr-9">
           <i className="px-3">Admin</i>
           <label tabIndex={0} className="">
-            <div className="avatar placeholder btn btn-circle m-1">
-              <div className=" bg-neutral text-neutral-content rounded-full w-12">
+            <div className="m-1 avatar placeholder btn btn-circle">
+              <div className="w-12 rounded-full bg-neutral text-neutral-content">
                 <span>AD</span>
               </div>
             </div>
@@ -91,7 +90,7 @@ const NavbarADM = () => {
         <div className=" lg:hidden">
           <div className=" drawer drawer-end lg:hidden">
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-            <div className=" drawer-content ">
+            <div className=" drawer-content">
               {/* Page content here */}
               <label
                 htmlFor="my-drawer"
@@ -101,7 +100,7 @@ const NavbarADM = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  className=" inline-block w-6 h-6 stroke-current"
+                  className="inline-block w-6 h-6 stroke-current "
                 >
                   <path
                     strokeLinecap="round"
@@ -118,13 +117,13 @@ const NavbarADM = () => {
                 aria-label="close sidebar"
                 className="drawer-overlay"
               ></label>
-              <ul className=" menu menu-vertical gap-4 p-6 w-58 min-h-full bg-base-200">
+              <ul className="min-h-full gap-4 p-6 menu menu-vertical w-58 bg-base-200">
                 {/* Sidebar content here */}
                 <li>
                   <details className="w-auto ">
                     <summary className="p-2">
                       <div className="avatar placeholder">
-                        <div className=" bg-neutral text-neutral-content rounded-full w-12">
+                        <div className="w-12 rounded-full bg-neutral text-neutral-content">
                           <span>AD</span>
                         </div>
                       </div>
@@ -145,12 +144,12 @@ const NavbarADM = () => {
                     </ul>
                   </details>
                 </li>
-                <ul className="menu bg-base-200 w-56 rounded-box">
+                <ul className="w-56 menu bg-base-200 rounded-box">
                   <li>
-                    <a onClick={() => navigate("/")}>Beranda</a>
+                    <a onClick={() => navigate("/berandaadm")}>Beranda</a>
                   </li>
                   <li>
-                    <a onClick={() => navigate("/")}>
+                    <a onClick={() => navigate("/mailinglist")}>
                       Mailing List{" "}
                       <div className="badge badge-sm badge-accent badge-outline">
                         +1
