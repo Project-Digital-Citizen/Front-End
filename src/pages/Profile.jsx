@@ -7,12 +7,12 @@ const Profile = () => {
   return (
     <>
       <Navbar />
-      <img src={mailIMG} alt="" className="absolute -bottom-10 z-0" />
-      <div className=" bg-background flex h-screen justify-center py-10 ">
+      <img src={mailIMG} alt="" className="absolute z-0 -bottom-10" />
+      <div className="flex items-center justify-center h-screen py-10  bg-background">
         <div className="bg-white w-5/6 rounded shadow-md y-10 md:w-[70%] lg:w-[50%] xl:w-[35%] relative">
           {/* Isi kotak center di sini */}
           <div className="">
-            <div className="flex my-auto justify-center py-6">
+            <div className="flex justify-center py-6 my-auto">
               <label htmlFor="pp" className="w-32 p-2">
                 <img
                   src={person}
@@ -23,7 +23,7 @@ const Profile = () => {
               <input type="file" id="pp" className="hidden" />
             </div>
             <div className="flex flex-col pb-2">
-              <h1 className="text-black text-2xl font-black text-center">
+              <h1 className="text-2xl font-black text-center text-black">
                 Endie Parpahan
               </h1>
               <span className="text-center">NIK : 92845623945</span>
@@ -33,34 +33,34 @@ const Profile = () => {
           <hr className="bg-indigo text-black p-[1px] mx-10 " />
           <div className="px-10">
             <form action="">
-              <div className="form-control w-full md:flex md:flex-row justify-between  pt-4 md:items-center">
-                <span className="label-text font-black">Email</span>
-                <span className=" w-full max-w-screen md:w-3/5">
+              <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
+                <span className="font-black label-text">Email</span>
+                <span className="w-full  max-w-screen md:w-3/5">
                   gmail@gmail.com
                 </span>
               </div>
-              <div className="form-control w-full md:flex md:flex-row justify-between  pt-4 md:items-center">
-                <span className="label-text font-black">Phone Number</span>
-                <span className=" w-full max-w-screen md:w-3/5">
+              <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
+                <span className="font-black label-text">Phone Number</span>
+                <span className="w-full  max-w-screen md:w-3/5">
                   08123124134
                 </span>
               </div>
-              <div className="form-control w-full md:flex md:flex-row justify-between pt-4 md:items-center">
-                <span className="label-text font-black">Jenis Kelamin</span>
-                <span className=" w-full max-w-screen md:w-3/5">Perempuan</span>
+              <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
+                <span className="font-black label-text">Jenis Kelamin</span>
+                <span className="w-full  max-w-screen md:w-3/5">Perempuan</span>
               </div>
-              <div className="form-control w-full md:flex md:flex-row justify-between pt-4">
+              <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
                 <label className="label">
-                  <span className="label-text font-black -ml-1">Password</span>
+                  <span className="-ml-1 font-black label-text">Password</span>
                 </label>
                 <input
                   type="password"
                   placeholder="*********"
-                  className="input input-bordered input-sm w-full max-w-screen md:w-3/5"
+                  className="w-full input input-bordered input-sm max-w-screen md:w-3/5"
                 />
               </div>
-              <div className="flex flex-row-reverse pt-4 pb-6 gap-3">
-                <button className="btn btn-md bg-indigo text-white ">
+              <div className="flex flex-row-reverse gap-3 pt-4 pb-6">
+                <button className="text-white btn btn-md bg-indigo ">
                   Save
                 </button>
               </div>
