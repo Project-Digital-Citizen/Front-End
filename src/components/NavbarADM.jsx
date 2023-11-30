@@ -56,7 +56,7 @@ const NavbarADM = () => {
               </a>
             </li>
             <li>
-              <a onClick={() => navigate("/")}>Account</a>
+              <a onClick={() => navigate("/account")}>Account</a>
             </li>
           </ul>
         </div>
@@ -157,7 +157,7 @@ const NavbarADM = () => {
                     </a>
                   </li>
                   <li>
-                    <a onClick={() => navigate("/")}>Account</a>
+                    <a onClick={() => navigate("/account")}>Account</a>
                   </li>
                 </ul>
               </ul>

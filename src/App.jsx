@@ -11,6 +11,8 @@ import Profile from "./pages/Profile";
 import BerandaADM from "./pages/Admin/BerandaADM";
 import Mailinglist from "./pages/Admin/Mailinglist";
 import VerifikasiKTP from "./pages/Admin/VerifikasiKTP";
+import VerifikasiDomisili from "./pages/Admin/VerifikasiDomisili";
+import Account from "./pages/Admin/Account";
 
 const App = () => {
   return (
@@ -20,6 +22,8 @@ const App = () => {
         <Route path="/berandaadm" element={<BerandaADM />} />
         <Route path="/mailinglist" element={<Mailinglist />} />
         <Route path="/verifikasiktp" element={<VerifikasiKTP />} />
+        <Route path="/verifikasidomisili" element={<VerifikasiDomisili />} />
+        <Route path="/account" element={<Account />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
