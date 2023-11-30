@@ -58,8 +58,8 @@ const Hero = () => {
         alt=""
         className="absolute right-0 object-cover object-left w-32 h-52 top-[30rem]"
       />
-        <div className="px-6 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0 lg:h-[20rem] mx-[2rem]">
-          <div className="flex py-5 text-black md:p-12 md:my-auto lg:hidden">
+        <div className="px-6 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0 lg:h-[20rem] lg:mx-[5rem]">
+          <div className="flex flex-wrap py-5 text-black md:p-12 md:my-auto lg:hidden">
             <img
               src={ilus}
               alt="Laptop"
