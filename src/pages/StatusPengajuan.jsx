@@ -3,12 +3,18 @@ import Navbar from "../components/Navbar";
 import TimelineSVG from "../components/SVG/Timelinesvg";
 import icondocs from "../assets/images/icondocs.png";
 import { useNavigate } from "react-router-dom";
+import ele from "../assets/images/ele.png";
 
 const StatusPengajuan = () => {
   const navigate = useNavigate();
 
   return (
     <>
+      <img
+        src={ele}
+        alt=""
+        className="absolute top-0 right-0 z-0 object-cover object-left w-32 h-52"
+      />
       <Navbar />
       <div className="bg-[#F5F5FA] h-screen">
         {/*  */}
@@ -16,19 +22,19 @@ const StatusPengajuan = () => {
           className="flex w-[60px] pt-[2rem] ml-16 cursor-pointer"
           onClick={() => navigate("/")}
         >
-          <span className="font-bold text-lg material-symbols-outlined ">
+          <span className="text-lg font-bold material-symbols-outlined ">
             arrow_back
           </span>
           <p className="my-auto">back</p>
         </div>
         {/*  */}
-        <div className="flex justify-center p-5 pb-16 h-screen items-center">
-          <div className="w-11/12 rounded-xl shadow-2xl bg-white mx-auto lg:w-96">
+        <div className="flex items-center justify-center h-screen p-5 pb-16">
+          <div className="z-10 w-11/12 mx-auto bg-white shadow-2xl rounded-xl lg:w-96">
             <div className="flex justify-center py-5 md:justify-start md:ml-10 ">
               <div className="my-auto">
                 <img src={icondocs} alt="" className="h-[50px]" />
               </div>
-              <div className="flex flex-col text-indigo  font-black my-auto">
+              <div className="flex flex-col my-auto font-black text-indigo">
                 <h1 className="text-2xl ">Status Pengajuan</h1>
                 <span className="text-xs -mt-[3px] ml-[2px] text-black">
                   29347856394875
@@ -36,7 +42,7 @@ const StatusPengajuan = () => {
               </div>
             </div>
             <hr className="bg-indigo text-black p-[1px] mx-10 " />
-            <div className="p-7 max-w-md">
+            <div className="max-w-md p-7">
               {/*  */}
               <ul className="timeline timeline-vertical">
                 <li>
@@ -71,7 +77,12 @@ const StatusPengajuan = () => {
           </div>
         </div>
       </div>
-        <Footer/>
+      <Footer />
+      <img
+        src={ele}
+        alt=""
+        className="absolute left-0 z-0 object-cover object-right w-32 h-52 -bottom-28"
+      />
     </>
   );
 };

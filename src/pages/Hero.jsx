@@ -6,6 +6,7 @@ import ktp from "../assets/images/ktp.png";
 import domisili from "../assets/images/domisili.png";
 
 import ilus from "../assets/images/ilustrasi01.png";
+import ele from "../assets/images/ele.png";
 
 const Hero = () => {
   const navigate = useNavigate();
@@ -13,21 +14,31 @@ const Hero = () => {
   return (
     <>
       <Navbar />
+      <img
+        src={ele}
+        alt=""
+        className="absolute top-0 right-0 z-0 object-cover object-left w-32 h-52"
+      />
+      <img
+        src={ele}
+        alt=""
+        className="absolute left-0 z-0 object-cover object-right w-32 h-52 -bottom-28"
+      />
       <div className="bg-indigo ">
         <div className="px-6 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0 lg:h-[27rem]">
           <div className="text-white py-5 md:p-12 flex-1 md:my-auto lg:ml-[8rem]">
             <img
               src={ilus}
               alt="Laptop"
-              className="sm:mt-6 h-full w-full object-cover object-center lg:hidden"
+              className="object-cover object-center w-full h-full sm:mt-6 lg:hidden"
             />
-            <h1 className="text-5xl font-bold mb-3">Let's Gooo</h1>
+            <h1 className="mb-3 text-5xl font-bold">Let's Gooo</h1>
             <p className="text-justify">
               Proses pengurusan surat menjadi lebih efisien dan efektif
             </p>
             <a
               href="#more"
-              className="btn btn-sm btn-ghost font-normal border-white px-4 mt-2 hover:bg-white hover:text-indigo"
+              className="px-4 mt-2 font-normal border-white btn btn-sm btn-ghost hover:bg-white hover:text-indigo"
             >
               More
             </a>
@@ -46,16 +57,16 @@ const Hero = () => {
         ></path>
       </svg>
       {/*  */}
-      <div className="bg-white" id="more">
+      <div className="bg-background" id="more">
         <div className="px-6 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0 lg:h-[20rem]">
-          <div className="text-black py-5 md:p-12 flex-1 md:my-auto lg:hidden ">
+          <div className="flex-1 py-5 text-black md:p-12 md:my-auto lg:hidden ">
             <img
               src={ilus}
               alt="Laptop"
-              className="sm:mt-6 h-full w-full object-cover object-center"
+              className="object-cover object-center w-full h-full sm:mt-6"
             />
             <div className="pt-3 lg:hidden">
-              <h1 className="text-5xl font-bold mb-3">Digital Citizen</h1>
+              <h1 className="mb-3 text-5xl font-bold">Digital Citizen</h1>
               <p className="text-justify">
                 Digital citizen merupakan website yang dirancang untuk
                 memudahkan masyarakat dalam melakukan pengajuan surat seperti
@@ -68,8 +79,8 @@ const Hero = () => {
           <div className="hidden lg:flex lg:w-[1500px] h-auto p-5 mx-auto my-auto">
             <img src={ilus} alt="Laptop" className="object-cover " />
           </div>
-          <div className="hidden lg:flex flex-col h-auto p-5 mx-auto my-auto mr-6 ">
-            <h1 className="text-5xl font-bold mb-3">Digital Citizen</h1>
+          <div className="flex-col hidden h-auto p-5 mx-auto my-auto mr-6 lg:flex ">
+            <h1 className="mb-3 text-5xl font-bold">Digital Citizen</h1>
             <p className="text-justify">
               Digital citizen merupakan website yang dirancang untuk memudahkan
               masyarakat dalam melakukan pengajuan surat seperti KTP dan surat
@@ -89,23 +100,23 @@ const Hero = () => {
         ></path>
       </svg>
       {/*  */}
-      <div className="bg-indigo pb-3">
+      <div className="pb-3 bg-indigo">
         <div className="px-6 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0 lg:h-[27rem]">
-          <div className="text-white py-5 md:p-12 flex-1 md:my-auto">
-            <h1 className="text-5xl font-bold mb-3 text-center">
+          <div className="flex-1 py-5 text-white md:p-12 md:my-auto">
+            <h1 className="mb-3 text-5xl font-bold text-center">
               Pengajuan Surat
             </h1>
             <div className="flex my-10 w-[20rem] h-[25rem] bg-white rounded-xl border mx-auto md:hidden">
-              <div className="space-y-6 mx-auto my-auto">
-                <img src={ktp} alt="KTP" className="shadow-lg mx-auto" />
-                <p className="text-center text-xl font-black text-black">KTP</p>
-                <p className="text-center px-2 text-md font-medium text-black">
+              <div className="mx-auto my-auto space-y-6">
+                <img src={ktp} alt="KTP" className="mx-auto shadow-lg" />
+                <p className="text-xl font-black text-center text-black">KTP</p>
+                <p className="px-2 font-medium text-center text-black text-md">
                   Kartu Tanda Penduduk merupakan kartu identitas diri secara
                   resmi yang diterbitkan oleh Kementrian Dalam Negeri
                 </p>
                 <div className="flex">
                   <button
-                    className="btn btn-sm text-white bg-indigo  border-indigo mx-auto hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo"
+                    className="mx-auto text-white btn btn-sm bg-indigo border-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo"
                     onClick={() => navigate("/formktp")}
                   >
                     Buat
@@ -115,22 +126,22 @@ const Hero = () => {
             </div>
             {/*  */}
             <div className="flex my-10 w-[20rem] h-[25rem] bg-white rounded-xl border mx-auto md:hidden">
-              <div className="space-y-6 mx-auto my-auto">
+              <div className="mx-auto my-auto space-y-6">
                 <img
                   src={domisili}
                   alt="Surat Domisili"
-                  className="shadow-lg mx-auto"
+                  className="mx-auto shadow-lg"
                 />
-                <p className="text-center text-xl font-black text-black">
+                <p className="text-xl font-black text-center text-black">
                   Surat Domisili
                 </p>
-                <p className="text-center px-2 text-md font-medium text-black">
+                <p className="px-2 font-medium text-center text-black text-md">
                   Surat domisili merupakan dokumen untuk membuktikan bahwa
                   seseorang betul tinggal pada suatu wilayah tertentu
                 </p>
                 <div className="flex">
                   <button
-                    className="btn btn-sm text-white bg-indigo  border-indigo mx-auto hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo"
+                    className="mx-auto text-white btn btn-sm bg-indigo border-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo"
                     onClick={() => navigate("/formdomisili")}
                   >
                     Buat
@@ -140,22 +151,22 @@ const Hero = () => {
             </div>
 
             {/*  */}
-            <h1 className="hidden md:text-5xl font-bold mb-3">
+            <h1 className="hidden mb-3 font-bold md:text-5xl">
               Pengajuan Surat
             </h1>
           </div>
-          <div className="hidden md:flex gap-4 w-auto h-auto p-5 mx-auto my-auto lg:mr-6 ">
+          <div className="hidden w-auto h-auto gap-4 p-5 mx-auto my-auto md:flex lg:mr-6 ">
             <div className="flex w-[20rem] h-[25rem] bg-white rounded-xl border mx-auto">
-              <div className="space-y-6 mx-auto my-auto">
-                <img src={ktp} alt="KTP" className="shadow-lg mx-auto" />
-                <p className="text-center text-xl font-black text-black">KTP</p>
-                <p className="text-center px-2 text-md font-medium text-black">
+              <div className="mx-auto my-auto space-y-6">
+                <img src={ktp} alt="KTP" className="mx-auto shadow-lg" />
+                <p className="text-xl font-black text-center text-black">KTP</p>
+                <p className="px-2 font-medium text-center text-black text-md">
                   Kartu Tanda Penduduk merupakan kartu identitas diri secara
                   resmi yang diterbitkan oleh Kementrian Dalam Negeri
                 </p>
                 <div className="flex">
                   <button
-                    className="btn btn-sm text-white bg-indigo  border-indigo mx-auto hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo"
+                    className="mx-auto text-white btn btn-sm bg-indigo border-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo"
                     onClick={() => navigate("/formktp")}
                   >
                     Buat
@@ -165,22 +176,22 @@ const Hero = () => {
             </div>
             {/*  */}
             <div className="flex w-[20rem] h-[25rem] bg-white rounded-xl border mx-auto">
-              <div className="space-y-6 mx-auto my-auto">
+              <div className="mx-auto my-auto space-y-6">
                 <img
                   src={domisili}
                   alt="Surat Domisili"
-                  className="shadow-lg mx-auto"
+                  className="mx-auto shadow-lg"
                 />
-                <p className="text-center text-xl font-black text-black">
+                <p className="text-xl font-black text-center text-black">
                   Surat Domisili
                 </p>
-                <p className="text-center px-2 text-md font-medium text-black">
+                <p className="px-2 font-medium text-center text-black text-md">
                   Surat domisili merupakan dokumen untuk membuktikan bahwa
                   seseorang betul tinggal pada suatu wilayah tertentu
                 </p>
                 <div className="flex">
                   <button
-                    className="btn btn-sm text-white bg-indigo  border-indigo mx-auto hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo"
+                    className="mx-auto text-white btn btn-sm bg-indigo border-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo"
                     onClick={() => navigate("/formdomisili")}
                   >
                     Buat

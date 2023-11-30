@@ -33,7 +33,10 @@ const Mailinglist = () => {
                   <td>Cy Ganderton</td>
                   <td>KTP</td>
                   <td>
-                    <span className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo btn-xs" onClick={()=> navigate('/verifikasiktp')}>
+                    <span
+                      className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo btn-xs"
+                      onClick={() => navigate("/verifikasiktp")}
+                    >
                       Verify
                     </span>
                   </td>
@@ -44,7 +47,10 @@ const Mailinglist = () => {
                   <td>Hart Hagerty</td>
                   <td>Domisili</td>
                   <td>
-                    <span className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo btn-xs">
+                    <span
+                      className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo btn-xs"
+                      onClick={() => navigate("/verifikasidomisili")}
+                    >
                       Verify
                     </span>
                   </td>

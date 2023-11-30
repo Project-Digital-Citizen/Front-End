@@ -19,7 +19,7 @@ const VerifikasiKTP = () => {
           <hr className="bg-indigo text-black p-[1px] mx-10 " />
 
           <div className="m-2 bg-white rounded ">
-            <div className="flex justify-center pb-3 md:pb-0 md:-ml-12">
+            <div className="flex justify-center pb-3 md:pb-0">
               {/*  */}
               <div
                 className="w-32 y-2 md:w-40"

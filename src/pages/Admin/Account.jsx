@@ -3,7 +3,7 @@ import NavbarADM from "../../components/NavbarADM";
 import Footer from "../../components/Footer";
 
 const Account = () => {
-  const navigate = useNavigate;
+  const navigate = useNavigate();
   return (
     <>
       <NavbarADM />
@@ -31,19 +31,19 @@ const Account = () => {
                   <td className="md:justify-center md:flex">
                     <span
                       className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo btn-xs"
-                      onClick={() => navigate("/verifikasiktp")}
+                      onClick={() => navigate("")}
                     >
                       Info
                     </span>
                     <span
                       className="text-white bg-green-600 btn hover:bg-white hover:text-green-600 hover:border-2 hover:border-green-600 btn-xs"
-                      onClick={() => navigate("/verifikasiktp")}
+                      onClick={() => navigate("/accountedit")}
                     >
                       Edit
                     </span>
                     <span
                       className="text-white bg-red-600 btn hover:bg-white hover:text-red-600 hover:border-2 hover:border-red-600 btn-xs"
-                      onClick={() => navigate("/verifikasiktp")}
+                      onClick={() => navigate("")}
                     >
                       Delete
                     </span>
@@ -56,19 +56,19 @@ const Account = () => {
                   <td className="md:flex md:justify-center">
                     <span
                       className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo btn-xs"
-                      onClick={() => navigate("/verifikasiktp")}
+                      onClick={() => navigate("")}
                     >
                       Info
                     </span>
                     <span
                       className="text-white bg-green-600 btn hover:bg-white hover:text-green-600 hover:border-2 hover:border-green-600 btn-xs"
-                      onClick={() => navigate("/verifikasiktp")}
+                      onClick={() => navigate("/accountedit")}
                     >
                       Edit
                     </span>
                     <span
                       className="text-white bg-red-600 btn hover:bg-white hover:text-red-600 hover:border-2 hover:border-red-600 btn-xs"
-                      onClick={() => navigate("/verifikasiktp")}
+                      onClick={() => navigate("")}
                     >
                       Delete
                     </span>
@@ -81,19 +81,19 @@ const Account = () => {
                   <td className="md:flex md:justify-center">
                     <span
                       className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo btn-xs"
-                      onClick={() => navigate("/verifikasiktp")}
+                      onClick={() => navigate("/")}
                     >
                       Info
                     </span>
                     <span
                       className="text-white bg-green-600 btn hover:bg-white hover:text-green-600 hover:border-2 hover:border-green-600 btn-xs"
-                      onClick={() => navigate("/verifikasiktp")}
+                      onClick={() => navigate("/accountedit")}
                     >
                       Edit
                     </span>
                     <span
                       className="text-white bg-red-600 btn hover:bg-white hover:text-red-600 hover:border-2 hover:border-red-600 btn-xs"
-                      onClick={() => navigate("/verifikasiktp")}
+                      onClick={() => navigate("")}
                     >
                       Delete
                     </span>

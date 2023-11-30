@@ -1,30 +1,36 @@
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import ele from "../assets/images/ele.png";
 
 const FormDomisili = () => {
   const navigate = useNavigate();
   return (
     <>
       <Navbar />
+      <img
+        src={ele}
+        alt=""
+        className="absolute top-0 right-0 z-0 object-cover object-left w-32 h-52"
+      />
       <div className="bg-[#F5F5FA]">
         <div
           className="flex w-[60px] pt-[2rem] ml-16 cursor-pointer"
           onClick={() => navigate("/")}
         >
-          <span className="font-bold text-lg material-symbols-outlined ">
+          <span className="text-lg font-bold material-symbols-outlined ">
             arrow_back
           </span>
           <p className="my-auto">back</p>
         </div>
-        <div className="justify-center p-5">
-          <div className="w-11/12 rounded-xl shadow-2xl bg-white mx-auto ">
-            <h1 className="text-indigo text-2xl font-black p-4 px-10 pt-6">
+        <div className="relative justify-center p-5">
+          <div className="w-11/12 mx-auto bg-white shadow-2xl rounded-xl ">
+            <h1 className="p-4 px-10 pt-6 text-2xl font-black text-indigo">
               Pedoman
             </h1>
             <hr className="bg-indigo text-black p-[1px] mx-10 " />
             <div className="p-4">
-              <ul className="list-disc ml-10 mr-5">
+              <ul className="ml-10 mr-5 list-disc">
                 <li className="my-2">
                   Lengkapi data diri sesuai dengan form yang telah disediakan.
                 </li>
@@ -42,8 +48,8 @@ const FormDomisili = () => {
         </div>
         {/*  */}
         <div className="justify-center p-5 pb-16">
-          <div className="w-11/12 rounded-xl shadow-2xl bg-white mx-auto ">
-            <h1 className="text-indigo text-2xl font-black p-4 px-10 pt-6">
+          <div className="relative z-10 w-11/12 mx-auto bg-white shadow-2xl rounded-xl">
+            <h1 className="p-4 px-10 pt-6 text-2xl font-black text-indigo">
               {" "}
               Form Pengajuan
             </h1>
@@ -51,43 +57,43 @@ const FormDomisili = () => {
             <div className="px-10">
               {/*  */}
               <form action="">
-                <div className="form-control w-full md:flex md:flex-row justify-between pt-4">
+                <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
                   <label className="label">
-                    <span className="label-text font-black">NIK</span>
+                    <span className="font-black label-text">NIK</span>
                   </label>
                   <input
                     type="text"
                     placeholder="NIK"
-                    className="input input-bordered input-md w-full max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                    className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                   />
                 </div>
-                <div className="form-control w-full md:flex md:flex-row justify-between pt-4">
+                <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
                   <label className="label">
-                    <span className="label-text font-black">Nama</span>
+                    <span className="font-black label-text">Nama</span>
                   </label>
                   <input
                     type="text"
                     placeholder="Nama"
-                    className="input input-bordered input-md w-full max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                    className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                   />
                 </div>
-                <div className="form-control w-full md:flex md:flex-row justify-between pt-4">
+                <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
                   <label className="label">
-                    <span className="label-text font-black">
+                    <span className="font-black label-text">
                       Tempat, Tanggal Lahir
                     </span>
                   </label>
                   <input
                     type="text"
                     placeholder="Tempat,DD-MM-YYYY"
-                    className="input input-bordered input-md w-full max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                    className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                   />
                 </div>
-                <div className="form-control w-full md:flex md:flex-row justify-between pt-4">
+                <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
                   <label className="label">
-                    <span className="label-text font-black">Jenis Kelamin</span>
+                    <span className="font-black label-text">Jenis Kelamin</span>
                   </label>
-                  <select className="select select-bordered select-md w-full max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl">
+                  <select className="w-full select select-bordered select-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl">
                     <option disabled selected>
                       Jenis Kelamin
                     </option>
@@ -97,52 +103,52 @@ const FormDomisili = () => {
                   {/* <input
                     type="text"
                     placeholder="Jenis kelamin"
-                    className="input input-bordered input-md w-full max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                    className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                   /> */}
                 </div>
-                <div className="form-control w-full md:flex md:flex-row justify-between pt-4">
+                <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
                   <label className="label">
-                    <span className="label-text font-black">Agama</span>
+                    <span className="font-black label-text">Agama</span>
                   </label>
                   <input
                     type="text"
                     placeholder="Agama"
-                    className="input input-bordered input-md w-full max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                    className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                   />
                 </div>
-                <div className="form-control w-full md:flex md:flex-row justify-between pt-4">
+                <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
                   <label className="label">
-                    <span className="label-text font-black">Alamat Asal</span>
+                    <span className="font-black label-text">Alamat Asal</span>
                   </label>
                   <input
                     type="text"
                     placeholder="Alamat Asal"
-                    className="input input-bordered input-md w-full max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                    className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                   />
                 </div>
-                <div className="form-control w-full md:flex md:flex-row justify-between pt-4">
+                <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
                   <label className="label">
-                    <span className="label-text font-black">
+                    <span className="font-black label-text">
                       Alamat Domisili
                     </span>
                   </label>
                   <input
                     type="text"
                     placeholder="Alamat Domisili"
-                    className="input input-bordered input-md w-full max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                    className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                   />
                 </div>
-                <div className="form-control w-full md:flex md:flex-row justify-between pt-4">
+                <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
                   <label className="label">
-                    <span className="label-text font-black">Keterangan</span>
+                    <span className="font-black label-text">Keterangan</span>
                   </label>
                   <textarea
                     placeholder="Keterangan"
-                    className="textarea textarea-bordered textarea-md w-full max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                    className="w-full textarea textarea-bordered textarea-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                   />
                 </div>
-                <div className="pt-4 md:flex flex-row-reverse pb-6">
-                  <button className="btn btn-block bg-indigo text-white md:w-1/6">
+                <div className="flex-row-reverse pt-4 pb-6 md:flex">
+                  <button className="text-white btn btn-block bg-indigo md:w-1/6">
                     Submit
                   </button>
                 </div>
@@ -153,6 +159,11 @@ const FormDomisili = () => {
         </div>
       </div>
       <Footer />
+      <img
+        src={ele}
+        alt=""
+        className="absolute left-0 z-0 object-cover object-right w-32 h-52 -bottom-28"
+      />
     </>
   );
 };
