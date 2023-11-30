@@ -8,7 +8,7 @@ const Profile = () => {
     <>
       <Navbar />
       <img src={mailIMG} alt="" className="absolute z-0 -bottom-10" />
-      <div className="flex items-center justify-center py-10 bg-background">
+      <div className="flex items-center justify-center h-screen py-10 mb-5 bg-background">
         <div className="bg-white w-5/6 rounded shadow-md y-10 md:w-[70%] lg:w-[50%] xl:w-[35%] relative">
           {/* Isi kotak center di sini */}
           <div className="">
