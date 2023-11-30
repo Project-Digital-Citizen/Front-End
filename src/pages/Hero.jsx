@@ -14,16 +14,6 @@ const Hero = () => {
   return (
     <>
       <Navbar />
-      <img
-        src={ele}
-        alt=""
-        className="absolute top-0 right-0 z-0 object-cover object-left w-32 h-52"
-      />
-      <img
-        src={ele}
-        alt=""
-        className="absolute left-0 z-0 object-cover object-right w-32 h-52 -bottom-28"
-      />
       <div className="bg-indigo ">
         <div className="px-6 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0 lg:h-[27rem]">
           <div className="text-white py-5 md:p-12 flex-1 md:my-auto lg:ml-[8rem]">
@@ -58,8 +48,18 @@ const Hero = () => {
       </svg>
       {/*  */}
       <div className="bg-background" id="more">
+      {/* <img
+        src={ele}
+        alt=""
+        className="absolute top-0 right-0 z-0 object-cover object-left w-32 h-52"
+      /> */}
+      <img
+        src={ele}
+        alt=""
+        className="absolute right-0 object-cover object-left w-32 h-52 top-[30rem]"
+      />
         <div className="px-6 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0 lg:h-[20rem]">
-          <div className="flex-1 py-5 text-black md:p-12 md:my-auto lg:hidden ">
+          <div className="flex py-5 text-black md:p-12 md:my-auto lg:hidden ">
             <img
               src={ilus}
               alt="Laptop"
