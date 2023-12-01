@@ -14,6 +14,7 @@ import VerifikasiKTP from "./pages/Admin/VerifikasiKTP";
 import VerifikasiDomisili from "./pages/Admin/VerifikasiDomisili";
 import Account from "./pages/Admin/Account";
 import AccountEdit from "./pages/Admin/AccountEdit";
+import OTP from "./pages/OTP";
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
         <Route path="/formktp" element={<FormKTP />} />
         <Route path="/formdomisili" element={<FormDomisili />} />
         <Route path="/statuspengajuan" element={<StatusPengajuan />} />
+        <Route path="/otp" element={<OTP />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Router>
