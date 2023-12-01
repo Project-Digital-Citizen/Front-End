@@ -16,9 +16,9 @@ const Register = () => {
 
   const handleRegClick = async (e) => {
     e.preventDefault();
-    const { name, email, phone, NIK, pw } = formData;
+    const { email, nomor, nama, password, NIK } = formData;
     try {
-      if (name && email && phone && NIK && pw) {
+      if (nama && email && nomor && NIK && password) {
         const response = await AuthDigZen.registerUser(formData);
         console.log(response);
       } else {
@@ -61,7 +61,7 @@ const Register = () => {
                   <span className="font-black label-text">Full Name</span>
                 </label>
                 <input
-                  onBlur={(e) => handleFormValueBlur(e, "name")}
+                  onBlur={(e) => handleFormValueBlur(e, "nama")}
                   id="name"
                   type="text"
                   placeholder="Full Name"
@@ -85,7 +85,7 @@ const Register = () => {
                   <span className="font-black label-text">Phone Number</span>
                 </label>
                 <input
-                  onBlur={(e) => handleFormValueBlur(e, "phone")}
+                  onBlur={(e) => handleFormValueBlur(e, "nomor")}
                   id="phone"
                   type="number"
                   placeholder="08999999"
@@ -110,7 +110,7 @@ const Register = () => {
                   <span className="font-black label-text">Password</span>
                 </label>
                 <input
-                  onBlur={(e) => handleFormValueBlur(e, "pw")}
+                  onBlur={(e) => handleFormValueBlur(e, "password")}
                   id="pw"
                   type="Password"
                   placeholder="********"
