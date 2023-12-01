@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import ele from "../assets/images/ele.png";
+import CONFIG from "../config";
+
 
 const Register = () => {
   const navigate = useNavigate();
