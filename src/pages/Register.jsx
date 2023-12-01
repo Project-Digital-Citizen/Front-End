@@ -19,7 +19,8 @@ const Register = () => {
     const { name, email, phone, NIK, pw } = formData;
     try {
       if (name && email && phone && NIK && pw) {
-        await AuthDigZen.registerUser(formData);
+        const response = await AuthDigZen.registerUser(formData);
+        console.log(response);
       } else {
         throw new CustomError("validationError",
           "Form tidak lengkap mohon lengkapi form terlebih dahulu"
