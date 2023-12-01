@@ -44,7 +44,7 @@ const Login = () => {
                 <a className="link ">Lupa Password</a>
               </div>
               <div className="pt-4 pb-6">
-                <button className="text-white btn btn-block bg-indigo ">
+                <button className="text-white btn btn-block bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo">
                   Log In
                 </button>
                 <span className="text-xs -mt-[3px] ml-[2px] text-black">

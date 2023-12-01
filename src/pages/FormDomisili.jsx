@@ -148,7 +148,7 @@ const FormDomisili = () => {
                   />
                 </div>
                 <div className="flex-row-reverse pt-4 pb-6 md:flex">
-                  <button className="text-white btn btn-block bg-indigo md:w-1/6">
+                  <button className="text-white btn btn-block bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo md:w-1/6">
                     Submit
                   </button>
                 </div>

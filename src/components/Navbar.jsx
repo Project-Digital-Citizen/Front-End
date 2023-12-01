@@ -12,11 +12,11 @@ const Navbar = () => {
           </div>
           {/*  */}
           <div
-            className="hidden md:flex pl-9 cursor-pointer"
+            className="hidden cursor-pointer md:flex pl-9"
             onClick={() => navigate("/")}
           >
             <img src={logoDigzen} alt="" className="h-9" />
-            <p className="text-lg font-bold p-1 text-indigo">Digital Citizen</p>
+            <p className="p-1 text-lg font-bold text-indigo">Digital Citizen</p>
           </div>
         </div>
         <div
@@ -24,7 +24,7 @@ const Navbar = () => {
           onClick={() => navigate("/")}
         >
           <img src={logoDigzen} alt="" className="h-9" />
-          <p className="text-lg font-bold p-1 text-indigo">Digital Citizen</p>
+          <p className="p-1 text-lg font-bold text-indigo">Digital Citizen</p>
         </div>
         <div className="hidden md:block">
           <ul className="menu menu-horizontal">
@@ -61,11 +61,11 @@ const Navbar = () => {
           </ul>
         </div>
         {/*  */}
-        <div className="dropdown dropdown-end hidden md:block pr-9">
+        <div className="hidden dropdown dropdown-end md:block pr-9">
           <i className="px-3">Username</i>
           <label tabIndex={0} className="">
-            <div className="avatar placeholder btn btn-circle m-1">
-              <div className=" bg-neutral text-neutral-content rounded-full w-12">
+            <div className="m-1 avatar placeholder btn btn-circle">
+              <div className="w-12 rounded-full  bg-neutral text-neutral-content">
                 <span>MX</span>
               </div>
             </div>
@@ -94,7 +94,7 @@ const Navbar = () => {
         <div className=" md:hidden">
           <div className=" drawer drawer-end md:hidden">
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-            <div className=" drawer-content ">
+            <div className=" drawer-content">
               {/* Page content here */}
               <label
                 htmlFor="my-drawer"
@@ -104,7 +104,7 @@ const Navbar = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  className=" inline-block w-6 h-6 stroke-current"
+                  className="inline-block w-6 h-6 stroke-current "
                 >
                   <path
                     strokeLinecap="round"
@@ -121,13 +121,13 @@ const Navbar = () => {
                 aria-label="close sidebar"
                 className="drawer-overlay"
               ></label>
-              <ul className=" menu menu-vertical gap-4 p-6 w-58 min-h-full bg-base-200">
+              <ul className="min-h-full gap-4 p-6  menu menu-vertical w-58 bg-base-200">
                 {/* Sidebar content here */}
                 <li>
                   <details className="w-auto ">
                     <summary className="p-2">
                       <div className="avatar placeholder">
-                        <div className=" bg-neutral text-neutral-content rounded-full w-12">
+                        <div className="w-12 rounded-full  bg-neutral text-neutral-content">
                           <span>MX</span>
                         </div>
                       </div>
@@ -143,12 +143,17 @@ const Navbar = () => {
                         </a>
                       </li>
                       <li>
-                        <a className="p-2 hover:border border-indigo">Logout</a>
+                        <a
+                          className="p-2 hover:border border-indigo"
+                          onClick={() => navigate("/login")}
+                        >
+                          Logout
+                        </a>
                       </li>
                     </ul>
                   </details>
                 </li>
-                <ul className="menu bg-base-200 w-56 rounded-box">
+                <ul className="w-56 menu bg-base-200 rounded-box">
                   <li>
                     <a onClick={() => navigate("/")}>Beranda</a>
                   </li>

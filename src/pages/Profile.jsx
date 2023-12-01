@@ -69,7 +69,7 @@ const Profile = () => {
                 />
               </div>
               <div className="flex flex-row-reverse gap-3 pt-4 pb-6">
-                <button className="text-white btn btn-md bg-indigo ">
+                <button className="text-white btn btn-md bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo">
                   Save
                 </button>
               </div>

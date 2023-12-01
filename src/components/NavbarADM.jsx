@@ -139,7 +139,12 @@ const NavbarADM = () => {
                         </a>
                       </li>
                       <li>
-                        <a className="p-2 hover:border border-indigo">Logout</a>
+                        <a
+                          className="p-2 hover:border border-indigo"
+                          onClick={() => navigate("/login")}
+                        >
+                          Logout
+                        </a>
                       </li>
                     </ul>
                   </details>
