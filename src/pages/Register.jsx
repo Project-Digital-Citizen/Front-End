@@ -1,13 +1,45 @@
 import { useNavigate } from "react-router-dom";
 import ele from "../assets/images/ele.png";
-import CONFIG from "../config";
-
+import AuthDigZen from "../data/api-digzen";
+import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import CustomError from "../util/customError";
 
 const Register = () => {
+  const [formData, setFormData] = useState({ name: "name" });
+  const handleFormValueBlur = (e, name) => {
+    const formDataCopy = { ...formData };
+    formDataCopy[name] = e.target.value;
+    setFormData(formDataCopy);
+  };
+
+  const handleRegClick = async (e) => {
+    e.preventDefault();
+    const { name, email, phone, NIK, pw } = formData;
+    try {
+      if (name && email && phone && NIK && pw) {
+        await AuthDigZen.registerUser(formData);
+      } else {
+        throw new CustomError("validationError",
+          "Form tidak lengkap mohon lengkapi form terlebih dahulu"
+        );
+      }
+    } catch (err) {
+      console.log(err.message);
+      if (err.name == "validationError") {
+        toast.error(err.message);
+      } else {
+        toast.error(err);
+      }
+    }
+  };
+
   const navigate = useNavigate();
 
   return (
     <>
+      <ToastContainer />
       <img
         src={ele}
         alt=""
@@ -22,32 +54,38 @@ const Register = () => {
           </h1>
           <hr className="bg-indigo text-black p-[1px] mx-10 " />
           <div className="px-10">
-            <form action="">
+            <form name="formReg" id="formReg">
               <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
-                <label className="label">
+                <label htmlFor="name" className="label">
                   <span className="font-black label-text">Full Name</span>
                 </label>
                 <input
-                  type="name"
+                  onBlur={(e) => handleFormValueBlur(e, "name")}
+                  id="name"
+                  type="text"
                   placeholder="Full Name"
                   className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                 />
               </div>
               <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
-                <label className="label">
+                <label htmlFor="email" className="label">
                   <span className="font-black label-text">Email</span>
                 </label>
                 <input
+                  onBlur={(e) => handleFormValueBlur(e, "email")}
+                  id="email"
                   type="email"
                   placeholder="contoh@gmail.com"
                   className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                 />
               </div>
               <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
-                <label className="label">
+                <label htmlFor="phone" className="label">
                   <span className="font-black label-text">Phone Number</span>
                 </label>
                 <input
+                  onBlur={(e) => handleFormValueBlur(e, "phone")}
+                  id="phone"
                   type="number"
                   placeholder="08999999"
                   className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
@@ -55,20 +93,24 @@ const Register = () => {
               </div>
 
               <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
-                <label className="label">
+                <label htmlFor="NIK" className="label">
                   <span className="font-black label-text">NIK</span>
                 </label>
                 <input
+                  onBlur={(e) => handleFormValueBlur(e, "NIK")}
+                  id="NIK"
                   type="text"
                   placeholder="NIK"
                   className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                 />
               </div>
               <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
-                <label className="label">
+                <label htmlFor="pw" className="label">
                   <span className="font-black label-text">Password</span>
                 </label>
                 <input
+                  onBlur={(e) => handleFormValueBlur(e, "pw")}
+                  id="pw"
                   type="Password"
                   placeholder="********"
                   className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
@@ -76,7 +118,11 @@ const Register = () => {
               </div>
 
               <div className="pt-4 pb-6">
-                <button className="text-white btn btn-block bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo">
+                <button
+                  onClick={handleRegClick}
+                  id="tombolReg"
+                  className="text-white btn btn-block bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo"
+                >
                   Register
                 </button>
                 <span className="text-xs -mt-[3px] ml-[2px] text-black">
