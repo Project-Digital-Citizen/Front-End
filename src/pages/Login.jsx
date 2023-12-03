@@ -1,11 +1,58 @@
 import { useNavigate } from "react-router-dom";
 import ele from "../assets/images/ele.png";
+import { logAPI } from "../data/api-digzen";
+import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import CustomError from "../util/customError";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({});
+  const [isDisabled, setIsDisabled] = useState(false)
+  const handleFormValueBlur = (e, name) => {
+    const formDataCopy = { ...formData };
+    formDataCopy[name] = e.target.value;
+    setFormData(formDataCopy);
+  };
+
+  const handleLogClick = async (e) => {
+    e.preventDefault();
+    setIsDisabled(true)
+    const { email, password } = formData;
+    try {
+      if (email && password) {
+        const response = await logAPI.post("", JSON.stringify(formData))
+
+        if (response.status == 200) {
+          Swal.fire({
+            title: "Sukses", 
+            icon: "success",
+            text: response.data.message
+          }).then(() => {
+            navigate("/")
+          })
+        }
+      } else {
+        throw new CustomError("validationError",
+          "Form tidak lengkap mohon lengkapi form terlebih dahulu"
+        );
+      }
+    } catch (err) {
+      console.log(err);
+      if (err.name == "validationError") {
+        toast.error(err.message);
+      } else {
+        toast.error(err?.response?.data?.message);
+      }
+    } finally {
+      setIsDisabled(false)
+    }
+  };
 
   return (
     <>
+      <ToastContainer />
       <img
         src={ele}
         alt=""
@@ -25,6 +72,7 @@ const Login = () => {
                   <span className="font-black label-text">Email</span>
                 </label>
                 <input
+                  onBlur={(e) => handleFormValueBlur(e, "email")}
                   type="email"
                   placeholder="contoh@gmail.com"
                   className="w-full input input-bordered input-md max-w-screen md:max-w-xs"
@@ -35,6 +83,7 @@ const Login = () => {
                   <span className="font-black label-text">Password</span>
                 </label>
                 <input
+                  onBlur={(e) => handleFormValueBlur(e, "password")}
                   type="password"
                   placeholder="*********"
                   className="w-full input input-bordered input-md max-w-screen md:max-w-xs"
@@ -44,7 +93,7 @@ const Login = () => {
                 <a className="link ">Lupa Password</a>
               </div>
               <div className="pt-4 pb-6">
-                <button className="text-white btn btn-block bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo">
+                <button onClick={handleLogClick} disabled={isDisabled} className="text-white btn btn-block bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo">
                   Log In
                 </button>
                 <span className="text-xs -mt-[3px] ml-[2px] text-black">

@@ -30,7 +30,7 @@ const Register = () => {
             icon: "success",
             text: response.data.message
           }).then(() => {
-            
+            navigate("/otp", {state: {email}})
           })
         }
       } else {
