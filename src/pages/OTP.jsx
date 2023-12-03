@@ -143,6 +143,7 @@ const OTP = () => {
                     }
                     onClick={handleResendClick}
                   >
+                    {" "}
                     Resend Code!
                   </span>
                   <span className={resendDisabled ? "" : "hidden"}>
