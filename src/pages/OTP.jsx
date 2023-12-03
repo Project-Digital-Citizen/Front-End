@@ -12,26 +12,33 @@ const OTP = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({});
   const [isDisabled, setIsDisabled] = useState(false);
+  const [timer, setTimer] = useState(localStorage.getItem("lastTimerValue")); // 5 minutes in seconds
+  // const [hideResend, setHideResend] = useState('none');
+  const [resendDisabled, setResendDisabled] = useState(
+    localStorage.getItem("lastTimerValue") > 0 ? true : false
+  );
+
   const handleFormValueBlur = (e, name) => {
     const formDataCopy = { ...formData };
     formDataCopy[name] = e.target.value;
     setFormData(formDataCopy);
   };
-
   const handleResendClick = async (e) => {
     e.preventDefault();
-    if (email) {
-      const response = await resendOTP.post("", JSON.stringify({email}));
+    if (email && !resendDisabled) {
+      const response = await resendOTP.post("", JSON.stringify({ email }));
 
-      if (response.status == 200) {
+      if (response.status === 200) {
+        setTimer(300); // Reset timer to 5 minutes
+        setResendDisabled(true); // Disable resend button
         Swal.fire({
-          title: "Cek Email",
+          title: "Check Email",
           icon: "success",
           text: response.data.message,
-        })
+        });
       }
     }
-  }
+  };
 
   const handleVerifClick = async (e) => {
     e.preventDefault();
@@ -39,9 +46,9 @@ const OTP = () => {
     const { otp } = formData;
     try {
       if (email && otp) {
-        const response = await otpAPI.post("", JSON.stringify({email, otp}));
+        const response = await otpAPI.post("", JSON.stringify({ email, otp }));
 
-        if (response.status == 200) {
+        if (response.status === 200) {
           Swal.fire({
             title: "Sukses",
             icon: "success",
@@ -58,7 +65,7 @@ const OTP = () => {
       }
     } catch (err) {
       console.log(err);
-      if (err.name == "validationError") {
+      if (err.name === "validationError") {
         toast.error(err.message);
       } else {
         toast.error(err?.response?.data?.message);
@@ -69,10 +76,29 @@ const OTP = () => {
   };
 
   useEffect(() => {
-    if(!email){
+    if (!email) {
       navigate("/login");
     }
-  });
+  }, [email]);
+
+  useEffect(() => {
+    let timerId;
+
+    if (timer > 0) {
+      timerId = setInterval(() => {
+        setTimer((prevTimer) => Math.max(0, prevTimer - 1));
+      }, 1000);
+    } else {
+      setResendDisabled(false); // Enable resend button when the timer reaches 0
+    }
+
+    return () => clearInterval(timerId);
+  }, [timer]);
+
+  useEffect(() => {
+    // Save the timer value to localStorage
+    localStorage.setItem("lastTimerValue", timer);
+  }, [timer]);
 
   return (
     <>
@@ -101,9 +127,31 @@ const OTP = () => {
               </div>
 
               <div className="pt-4 pb-6">
-                <a href="" className="text-blue-600 visited:text-purple-600" onClick={handleResendClick}>Resend Code</a>
+                <p>
+                  <span className={resendDisabled ? "hidden" : ""}>
+                    Didn't recieve your code?
+                  </span>
+                  <span className={resendDisabled ? "" : "hidden"}>
+                    You can re-send your OTP in:
+                  </span>
+
+                  <span
+                    className={
+                      !resendDisabled
+                        ? "text-blue-600 visited:text-purple-600 cursor-pointer"
+                        : "hidden"
+                    }
+                    onClick={handleResendClick}
+                  >
+                    Resend Code!
+                  </span>
+                  <span className={resendDisabled ? "" : "hidden"}>
+                    {" "}
+                    {formatTime(timer)}
+                  </span>
+                </p>
                 <button
-                  onClick= {handleVerifClick}
+                  onClick={handleVerifClick}
                   disabled={isDisabled}
                   className="text-white btn btn-block bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo"
                 >
@@ -122,4 +170,15 @@ const OTP = () => {
     </>
   );
 };
+
 export default OTP;
+
+// Helper function to format time
+const formatTime = (seconds) => {
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  const formattedTime = `${String(minutes).padStart(2, "0")}:${String(
+    remainingSeconds
+  ).padStart(2, "0")}`;
+  return formattedTime;
+};
