@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import ele from "../assets/images/ele.png";
-import { otpAPI } from "../data/api-digzen";
+import { otpAPI, resendOTP } from "../data/api-digzen";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -18,8 +18,22 @@ const OTP = () => {
     setFormData(formDataCopy);
   };
 
+  const handleResendClick = async (e) => {
+    e.preventDefault();
+    if (email) {
+      const response = await resendOTP.post("", JSON.stringify({email}));
+
+      if (response.status == 200) {
+        Swal.fire({
+          title: "Cek Email",
+          icon: "success",
+          text: response.data.message,
+        })
+      }
+    }
+  }
+
   const handleVerifClick = async (e) => {
-    console.log(email);
     e.preventDefault();
     setIsDisabled(true);
     const { otp } = formData;
@@ -87,6 +101,7 @@ const OTP = () => {
               </div>
 
               <div className="pt-4 pb-6">
+                <a href="" className="text-blue-600 visited:text-purple-600" onClick={handleResendClick}>Resend Code</a>
                 <button
                   onClick= {handleVerifClick}
                   disabled={isDisabled}

@@ -4,7 +4,8 @@ const CONFIG = {
     API_ENDPOINT: "https://api.digzen.site/",
     REG_ENDPOINT: "https://api.digzen.site/auth/register",
     LOG_ENDPOINT: "https://api.digzen.site/auth/login",
-    OTP_ENDPOINT: "https://api.digzen.site/auth/verify-otp"
+    OTP_ENDPOINT: "https://api.digzen.site/auth/verify-otp",
+    reOTP_ENDPOINT: "https://api.digzen.site/email/resend-otp"
 };
 
 export default CONFIG;

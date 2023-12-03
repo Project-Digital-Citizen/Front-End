@@ -21,26 +21,11 @@ const otpAPI = axios.create({
     }
 })
 
-// class AuthDigZen {
-//     static async registerUser(param){
-//         const response = await fetch(CONFIG.REG_ENDPOINT, {
-//             method: 'POST',
-//             headers: { 'Content-Type': 'application/json' },
-//             body: JSON.stringify(param),
-//         })
-        
-//         return response;
-//     }
-//     static async loginUser(param){
-//         const response = await fetch(CONFIG.LOG_ENDPOINT, {
-//             method: 'POST',
-//             headers: { 'Content-Type': 'application/json' },
-//             body: JSON.stringify(param)
-//         })
+const resendOTP = axios.create({
+    baseURL: CONFIG.reOTP_ENDPOINT,
+    headers: {
+        "Content-Type": "application/json",
+    }
+})
 
-//         return response;
-//     }
-// }
-
-// export default AuthDigZen;
-export { regAPI, logAPI, otpAPI }
+export { regAPI, logAPI, otpAPI, resendOTP }
