@@ -117,11 +117,29 @@ const OTP = () => {
           <hr className="bg-indigo text-black p-[1px] mx-10 " />
           <div className="px-10">
             <form action="">
-              <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
+              <div className="justify-between w-full pt-4 form-control flex gap-1 flex-row">
                 <input
                   onBlur={(e) => handleFormValueBlur(e, "otp")}
                   type="number"
-                  placeholder="OTP"
+                  placeholder=""
+                  className="w-full mx-auto input input-bordered input-md max-w-screen md:max-w-xs"
+                />
+                <input
+                  onBlur={(e) => handleFormValueBlur(e, "otp")}
+                  type="number"
+                  placeholder=""
+                  className="w-full mx-auto input input-bordered input-md max-w-screen md:max-w-xs"
+                />
+                <input
+                  onBlur={(e) => handleFormValueBlur(e, "otp")}
+                  type="number"
+                  placeholder=""
+                  className="w-full mx-auto input input-bordered input-md max-w-screen md:max-w-xs"
+                />
+                <input
+                  onBlur={(e) => handleFormValueBlur(e, "otp")}
+                  type="number"
+                  placeholder=""
                   className="w-full mx-auto input input-bordered input-md max-w-screen md:max-w-xs"
                 />
               </div>

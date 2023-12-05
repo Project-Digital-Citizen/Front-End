@@ -2,8 +2,13 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import person from "../assets/images/user.png";
 import mailIMG from "../assets/images/ele.png";
+import { useState } from "react";
 
 const Profile = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
   return (
     <>
       <Navbar />
@@ -58,7 +63,7 @@ const Profile = () => {
                 <span className="font-black label-text">Jenis Kelamin</span>
                 <span className="w-full max-w-screen md:w-3/5">Perempuan</span>
               </div>
-              <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
+              {/* <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
                 <label className="label">
                   <span className="-ml-1 font-black label-text">Password</span>
                 </label>
@@ -67,6 +72,34 @@ const Profile = () => {
                   placeholder="*********"
                   className="w-full input input-bordered input-sm max-w-screen md:w-3/5"
                 />
+              </div> */}
+              <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
+                <label htmlFor="pw" className="label">
+                  <span className="font-black label-text">Password</span>
+                </label>
+                <div className="relative w-full max-w-screen md:w-3/5">
+                  <input
+                    id="pw"
+                    type={showPassword ? "text" : "password"}
+                    placeholder="********"
+                    className="w-full input input-bordered input-sm max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                  />
+                  <button
+                    type="button"
+                    onClick={handleTogglePassword}
+                    className="absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer"
+                  >
+                    {showPassword ? (
+                      <span role="img" aria-label="Hide Password">
+                        &#128065;
+                      </span>
+                    ) : (
+                      <span role="img" aria-label="Show Password">
+                        &#128064;
+                      </span>
+                    )}
+                  </button>
+                </div>
               </div>
               <div className="flex flex-row-reverse gap-3 pt-4 pb-6">
                 <button className="text-white btn btn-md bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo">

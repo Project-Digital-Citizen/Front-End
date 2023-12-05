@@ -9,32 +9,38 @@ import Swal from "sweetalert2";
 const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({});
-  const [isDisabled, setIsDisabled] = useState(false)
+  const [isDisabled, setIsDisabled] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const handleFormValueBlur = (e, name) => {
     const formDataCopy = { ...formData };
     formDataCopy[name] = e.target.value;
     setFormData(formDataCopy);
   };
 
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   const handleLogClick = async (e) => {
     e.preventDefault();
-    setIsDisabled(true)
+    setIsDisabled(true);
     const { email, password } = formData;
     try {
       if (email && password) {
-        const response = await logAPI.post("", JSON.stringify(formData))
+        const response = await logAPI.post("", JSON.stringify(formData));
 
         if (response.status == 200) {
           Swal.fire({
-            title: "Sukses", 
+            title: "Sukses",
             icon: "success",
-            text: response.data.message
+            text: response.data.message,
           }).then(() => {
-            navigate("/")
-          })
+            navigate("/");
+          });
         }
       } else {
-        throw new CustomError("validationError",
+        throw new CustomError(
+          "validationError",
           "Form tidak lengkap mohon lengkapi form terlebih dahulu"
         );
       }
@@ -46,7 +52,7 @@ const Login = () => {
         toast.error(err?.response?.data?.message);
       }
     } finally {
-      setIsDisabled(false)
+      setIsDisabled(false);
     }
   };
 
@@ -79,21 +85,43 @@ const Login = () => {
                 />
               </div>
               <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
-                <label className="label">
+                <label htmlFor="pw" className="label">
                   <span className="font-black label-text">Password</span>
                 </label>
-                <input
-                  onBlur={(e) => handleFormValueBlur(e, "password")}
-                  type="password"
-                  placeholder="*********"
-                  className="w-full input input-bordered input-md max-w-screen md:max-w-xs"
-                />
+                <div className="relative w-full max-w-screen md:max-w-xs">
+                  <input
+                    onBlur={(e) => handleFormValueBlur(e, "password")}
+                    id="pw"
+                    type={showPassword ? "text" : "password"}
+                    placeholder="********"
+                    className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                  />
+                  <button
+                    type="button"
+                    onClick={handleTogglePassword}
+                    className="absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer"
+                  >
+                    {showPassword ? (
+                      <span role="img" aria-label="Hide Password">
+                        &#128065;
+                      </span>
+                    ) : (
+                      <span role="img" aria-label="Show Password">
+                        &#128064;
+                      </span>
+                    )}
+                  </button>
+                </div>
               </div>
               <div className="flex flex-row-reverse pt-2">
                 <a className="link ">Lupa Password</a>
               </div>
               <div className="pt-4 pb-6">
-                <button onClick={handleLogClick} disabled={isDisabled} className="text-white btn btn-block bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo">
+                <button
+                  onClick={handleLogClick}
+                  disabled={isDisabled}
+                  className="text-white btn btn-block bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo"
+                >
                   Log In
                 </button>
                 <span className="text-xs -mt-[3px] ml-[2px] text-black">

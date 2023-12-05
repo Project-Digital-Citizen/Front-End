@@ -171,7 +171,7 @@ const VerifikasiKTP = () => {
                   <button className="text-white btn btn-block bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo md:w-1/6">
                     Accept
                   </button>
-                  <button className="text-white bg-red-600 btn btn-error hover:bg-white hover:text-red-600 hover:border-2 hover:border-red-600 md:w-1/6">
+                  <button className="text-white btn btn-block bg-red-600 btn-error hover:bg-white hover:text-red-600 hover:border-2 hover:border-red-600 md:w-1/6">
                     Reject
                   </button>
                 </div>

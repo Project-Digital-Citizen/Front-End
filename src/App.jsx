@@ -15,6 +15,7 @@ import VerifikasiDomisili from "./pages/Admin/VerifikasiDomisili";
 import Account from "./pages/Admin/Account";
 import AccountEdit from "./pages/Admin/AccountEdit";
 import OTP from "./pages/OTP";
+import LupaPW from "./pages/LupaPW";
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
         <Route path="/formdomisili" element={<FormDomisili />} />
         <Route path="/statuspengajuan" element={<StatusPengajuan />} />
         <Route path="/otp" element={<OTP />} />
+        <Route path="/lupapw" element={<LupaPW />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Router>
