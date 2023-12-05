@@ -43,10 +43,13 @@ const OTP = () => {
   const handleVerifClick = async (e) => {
     e.preventDefault();
     setIsDisabled(true);
-    const { otp } = formData;
+    const { otp1, otp2, otp3, otp4 } = formData;
     try {
-      if (email && otp) {
-        const response = await otpAPI.post("", JSON.stringify({ email, otp }));
+      if (email && otp1 && otp2 && otp3 && otp4) {
+        const response = await otpAPI.post(
+          "",
+          JSON.stringify({ email, otp: `${otp1 + otp2 + otp3 + otp4}` })
+        );
 
         if (response.status === 200) {
           Swal.fire({
@@ -119,25 +122,25 @@ const OTP = () => {
             <form action="">
               <div className="justify-between w-full pt-4 form-control flex gap-1 flex-row">
                 <input
-                  onBlur={(e) => handleFormValueBlur(e, "otp")}
+                  onBlur={(e) => handleFormValueBlur(e, "otp1")}
                   type="number"
                   placeholder=""
                   className="w-full mx-auto input input-bordered input-md max-w-screen md:max-w-xs"
                 />
                 <input
-                  onBlur={(e) => handleFormValueBlur(e, "otp")}
+                  onBlur={(e) => handleFormValueBlur(e, "otp2")}
                   type="number"
                   placeholder=""
                   className="w-full mx-auto input input-bordered input-md max-w-screen md:max-w-xs"
                 />
                 <input
-                  onBlur={(e) => handleFormValueBlur(e, "otp")}
+                  onBlur={(e) => handleFormValueBlur(e, "otp3")}
                   type="number"
                   placeholder=""
                   className="w-full mx-auto input input-bordered input-md max-w-screen md:max-w-xs"
                 />
                 <input
-                  onBlur={(e) => handleFormValueBlur(e, "otp")}
+                  onBlur={(e) => handleFormValueBlur(e, "otp4")}
                   type="number"
                   placeholder=""
                   className="w-full mx-auto input input-bordered input-md max-w-screen md:max-w-xs"
