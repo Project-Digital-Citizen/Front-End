@@ -209,6 +209,18 @@ const FormKTP = () => {
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
                   <label className="label">
                     <span className="font-black label-text">
+                      Golongan Darah
+                    </span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="A/B/O/AB..."
+                    className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                  />
+                </div>
+                <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
+                  <label className="label">
+                    <span className="font-black label-text">
                       Surat Pengantar RT
                     </span>
                   </label>
