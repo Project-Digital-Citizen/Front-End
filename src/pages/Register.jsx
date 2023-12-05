@@ -22,7 +22,8 @@ const Register = () => {
         const response = await AuthDigZen.registerUser(formData);
         console.log(response);
       } else {
-        throw new CustomError("validationError",
+        throw new CustomError(
+          "validationError",
           "Form tidak lengkap mohon lengkapi form terlebih dahulu"
         );
       }
@@ -76,7 +77,7 @@ const Register = () => {
                   onBlur={(e) => handleFormValueBlur(e, "email")}
                   id="email"
                   type="email"
-                  placeholder="contoh@gmail.com"
+                  placeholder="xxxxx@xxxx.xxxx"
                   className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                 />
               </div>
@@ -88,7 +89,7 @@ const Register = () => {
                   onBlur={(e) => handleFormValueBlur(e, "nomor")}
                   id="phone"
                   type="number"
-                  placeholder="08999999"
+                  placeholder="08xxxxx"
                   className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                 />
               </div>
@@ -100,7 +101,7 @@ const Register = () => {
                 <input
                   onBlur={(e) => handleFormValueBlur(e, "NIK")}
                   id="NIK"
-                  type="text"
+                  type="number"
                   placeholder="NIK"
                   className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                 />

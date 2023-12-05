@@ -70,7 +70,7 @@ const FormKTP = () => {
                     <span className="font-black label-text">NIK</span>
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     placeholder="NIK"
                     className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                   />
