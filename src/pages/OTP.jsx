@@ -1,11 +1,108 @@
 import { useNavigate } from "react-router-dom";
 import ele from "../assets/images/ele.png";
+import { otpAPI, resendOTP } from "../data/api-digzen";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import CustomError from "../util/customError";
+import Swal from "sweetalert2";
 
 const OTP = () => {
+  const email = useLocation()?.state?.email;
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({});
+  const [isDisabled, setIsDisabled] = useState(false);
+  const [timer, setTimer] = useState(localStorage.getItem("lastTimerValue")); // 5 minutes in seconds
+  // const [hideResend, setHideResend] = useState('none');
+  const [resendDisabled, setResendDisabled] = useState(
+    localStorage.getItem("lastTimerValue") > 0 ? true : false
+  );
+
+  const handleFormValueBlur = (e, name) => {
+    const formDataCopy = { ...formData };
+    formDataCopy[name] = e.target.value;
+    setFormData(formDataCopy);
+  };
+  const handleResendClick = async (e) => {
+    e.preventDefault();
+    if (email && !resendDisabled) {
+      const response = await resendOTP.post("", JSON.stringify({ email }));
+
+      if (response.status === 200) {
+        setTimer(300); // Reset timer to 5 minutes
+        setResendDisabled(true); // Disable resend button
+        Swal.fire({
+          title: "Check Email",
+          icon: "success",
+          text: response.data.message,
+        });
+      }
+    }
+  };
+
+  const handleVerifClick = async (e) => {
+    e.preventDefault();
+    setIsDisabled(true);
+    const { otp } = formData;
+    try {
+      if (email && otp) {
+        const response = await otpAPI.post("", JSON.stringify({ email, otp }));
+
+        if (response.status === 200) {
+          Swal.fire({
+            title: "Sukses",
+            icon: "success",
+            text: response.data.message,
+          }).then(() => {
+            navigate("/");
+          });
+        }
+      } else {
+        throw new CustomError(
+          "validationError",
+          "Form tidak lengkap mohon lengkapi form terlebih dahulu"
+        );
+      }
+    } catch (err) {
+      console.log(err);
+      if (err.name === "validationError") {
+        toast.error(err.message);
+      } else {
+        toast.error(err?.response?.data?.message);
+      }
+    } finally {
+      setIsDisabled(false);
+    }
+  };
+
+  useEffect(() => {
+    if (!email) {
+      navigate("/login");
+    }
+  }, [email]);
+
+  useEffect(() => {
+    let timerId;
+
+    if (timer > 0) {
+      timerId = setInterval(() => {
+        setTimer((prevTimer) => Math.max(0, prevTimer - 1));
+      }, 1000);
+    } else {
+      setResendDisabled(false); // Enable resend button when the timer reaches 0
+    }
+
+    return () => clearInterval(timerId);
+  }, [timer]);
+
+  useEffect(() => {
+    // Save the timer value to localStorage
+    localStorage.setItem("lastTimerValue", timer);
+  }, [timer]);
 
   return (
     <>
+      <ToastContainer />
       <img
         src={ele}
         alt=""
@@ -22,6 +119,7 @@ const OTP = () => {
             <form action="">
               <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
                 <input
+                  onBlur={(e) => handleFormValueBlur(e, "otp")}
                   type="number"
                   placeholder="OTP"
                   className="w-full mx-auto input input-bordered input-md max-w-screen md:max-w-xs"
@@ -29,7 +127,35 @@ const OTP = () => {
               </div>
 
               <div className="pt-4 pb-6">
-                <button className="text-white btn btn-block bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo">
+                <p>
+                  <span className={resendDisabled ? "hidden" : ""}>
+                    Didn't recieve your code?
+                  </span>
+                  <span className={resendDisabled ? "" : "hidden"}>
+                    You can re-send your OTP in:
+                  </span>
+
+                  <span
+                    className={
+                      !resendDisabled
+                        ? "text-blue-600 visited:text-purple-600 cursor-pointer"
+                        : "hidden"
+                    }
+                    onClick={handleResendClick}
+                  >
+                    {" "}
+                    Resend Code!
+                  </span>
+                  <span className={resendDisabled ? "" : "hidden"}>
+                    {" "}
+                    {formatTime(timer)}
+                  </span>
+                </p>
+                <button
+                  onClick={handleVerifClick}
+                  disabled={isDisabled}
+                  className="text-white btn btn-block bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo"
+                >
                   OTP
                 </button>
               </div>
@@ -45,4 +171,15 @@ const OTP = () => {
     </>
   );
 };
+
 export default OTP;
+
+// Helper function to format time
+const formatTime = (seconds) => {
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  const formattedTime = `${String(minutes).padStart(2, "0")}:${String(
+    remainingSeconds
+  ).padStart(2, "0")}`;
+  return formattedTime;
+};

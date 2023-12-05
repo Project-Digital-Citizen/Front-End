@@ -81,7 +81,7 @@ const StatusPengajuan = () => {
       <img
         src={ele}
         alt=""
-        className="absolute left-0 z-0 object-cover object-right w-32 h-52 -bottom-28"
+        className="absolute left-0 z-0 object-cover object-right w-32 h-52 -bottom-[3rem]"
       />
     </>
   );

@@ -1,13 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import ele from "../assets/images/ele.png";
-import AuthDigZen from "../data/api-digzen";
+import { regAPI } from "../data/api-digzen";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 import CustomError from "../util/customError";
+import Swal from "sweetalert2";
 
 const Register = () => {
-  const [formData, setFormData] = useState({ name: "name" });
+  const [formData, setFormData] = useState({});
+  const [isDisabled, setIsDisabled] = useState(false)
   const handleFormValueBlur = (e, name) => {
     const formDataCopy = { ...formData };
     formDataCopy[name] = e.target.value;
@@ -16,11 +18,21 @@ const Register = () => {
 
   const handleRegClick = async (e) => {
     e.preventDefault();
+    setIsDisabled(true)
     const { email, nomor, nama, password, NIK } = formData;
     try {
       if (nama && email && nomor && NIK && password) {
-        const response = await AuthDigZen.registerUser(formData);
-        console.log(response);
+        const response = await regAPI.post("", JSON.stringify(formData))
+
+        if (response.status == 201) {
+          Swal.fire({
+            title: "Sukses", 
+            icon: "success",
+            text: response.data.message
+          }).then(() => {
+            navigate("/otp", {state: {email}})
+          })
+        }
       } else {
         throw new CustomError(
           "validationError",
@@ -28,12 +40,14 @@ const Register = () => {
         );
       }
     } catch (err) {
-      console.log(err.message);
+      console.log(err);
       if (err.name == "validationError") {
         toast.error(err.message);
       } else {
-        toast.error(err);
+        toast.error(err?.response?.data?.message);
       }
+    } finally {
+      setIsDisabled(false)
     }
   };
 
@@ -123,6 +137,7 @@ const Register = () => {
                 <button
                   onClick={handleRegClick}
                   id="tombolReg"
+                  disabled={isDisabled}
                   className="text-white btn btn-block bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo"
                 >
                   Register
