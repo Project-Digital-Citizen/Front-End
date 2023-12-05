@@ -48,7 +48,10 @@ const OTP = () => {
       if (email && otp1 && otp2 && otp3 && otp4) {
         const response = await otpAPI.post(
           "",
-          JSON.stringify({ email, otp: `${otp1 + otp2 + otp3 + otp4}` })
+          JSON.stringify({
+            email,
+            otp: `${String(otp1) + String(otp2) + String(otp3) + String(otp4)}`,
+          })
         );
 
         if (response.status === 200) {
