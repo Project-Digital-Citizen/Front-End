@@ -101,7 +101,7 @@ const Hero = () => {
       </svg>
       {/*  */}
       <div className="pb-3 bg-indigo">
-        <div className="px-6 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0 lg:h-[27rem]">
+        <div className="max-w-md px-6 mx-auto sm:max-w-xl md:max-w-5xl ">
           <div className="flex-1 py-5 text-white md:p-12 md:my-auto">
             <h1 className="mb-3 text-5xl font-bold text-center">
               Pengajuan Surat
@@ -151,9 +151,6 @@ const Hero = () => {
             </div>
 
             {/*  */}
-            <h1 className="hidden mb-3 font-bold md:text-5xl">
-              Pengajuan Surat
-            </h1>
           </div>
           <div className="hidden w-auto h-auto gap-4 p-5 mx-auto my-auto md:flex lg:mr-6 ">
             <div className="flex w-[20rem] h-[25rem] bg-white rounded-xl border mx-auto">

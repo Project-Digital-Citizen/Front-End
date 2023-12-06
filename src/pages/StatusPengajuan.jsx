@@ -29,7 +29,7 @@ const StatusPengajuan = () => {
         </div>
         {/*  */}
         <div className="flex items-center justify-center h-screen p-5 pb-16">
-          <div className="z-10 w-11/12 mx-auto bg-white shadow-2xl rounded-xl lg:w-96">
+          <div className="z-10 w-11/12 mx-auto bg-white shadow-2xl rounded-xl md:w-96">
             <div className="flex justify-center py-5 md:justify-start md:ml-10 ">
               <div className="my-auto">
                 <img src={icondocs} alt="" className="h-[50px]" />
