@@ -60,7 +60,7 @@ const OTP = () => {
             icon: "success",
             text: response.data.message,
           }).then(() => {
-            navigate("/");
+            navigate("/login");
           });
         }
       } else {

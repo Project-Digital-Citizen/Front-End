@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import ele from "../assets/images/ele.png";
-import { logAPI } from "../data/api-digzen";
-import { useState } from "react";
+import { logAPI, getUser } from "../data/api-digzen";
+import { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
+import { jwtDecode } from "jwt-decode";
 import { ToastContainer, toast } from "react-toastify";
 import CustomError from "../util/customError";
 import Swal from "sweetalert2";
@@ -11,6 +13,8 @@ const Login = () => {
   const [formData, setFormData] = useState({});
   const [isDisabled, setIsDisabled] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [cookies, setCookie] = useCookies(["userLog"]);
+  const [role, setRole] = useState(null);
   const handleFormValueBlur = (e, name) => {
     const formDataCopy = { ...formData };
     formDataCopy[name] = e.target.value;
@@ -21,6 +25,16 @@ const Login = () => {
     setShowPassword(!showPassword);
   };
 
+  useEffect(() => {
+    async () => {
+      console.log(cookies.userLog);
+      if (cookies.userLog) {
+        const response = await getUser.get("", cookies.userLog.userId);
+        setRole(response.user.role);
+      }
+    };
+  }, [cookies.userLog]);
+
   const handleLogClick = async (e) => {
     e.preventDefault();
     setIsDisabled(true);
@@ -30,12 +44,17 @@ const Login = () => {
         const response = await logAPI.post("", JSON.stringify(formData));
 
         if (response.status == 200) {
+          const dec = jwtDecode(response.data.token);
+          setCookie("userLog", dec);
           Swal.fire({
             title: "Sukses",
             icon: "success",
-            text: response.data.message,
           }).then(() => {
-            navigate("/");
+            if (role == "admin") {
+              navigate("/berandaadm");
+            } else {
+              navigate("/");
+            }
           });
         }
       } else {
