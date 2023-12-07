@@ -36,7 +36,9 @@ const Navbar = () => {
             <li>
               <a
                 onClick={() => {
-                  cookies.remove();
+                  cookies.remove("userLog");
+                  cookies.remove("userData");
+                  navigate("/login");
                 }}
               >
                 Logout

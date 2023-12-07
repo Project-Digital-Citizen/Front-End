@@ -3,7 +3,7 @@ import ele from "../assets/images/ele.png";
 import { regAPI } from "../data/api-digzen";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-
+import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
 import CustomError from "../util/customError";
 import Swal from "sweetalert2";
 
@@ -146,11 +146,11 @@ const Register = () => {
                   >
                     {showPassword ? (
                       <span role="img" aria-label="Hide Password">
-                        &#128065;
+                        <FaRegEyeSlash />
                       </span>
                     ) : (
                       <span role="img" aria-label="Show Password">
-                        &#128064;
+                        <FaRegEye />
                       </span>
                     )}
                   </button>

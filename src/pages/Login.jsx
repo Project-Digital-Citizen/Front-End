@@ -6,6 +6,8 @@ import { useCookies } from "react-cookie";
 import { jwtDecode } from "jwt-decode";
 import { ToastContainer, toast } from "react-toastify";
 import CustomError from "../util/customError";
+import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
+import { IoMdArrowRoundBack } from "react-icons/io";
 import Swal from "sweetalert2";
 
 const Login = () => {
@@ -79,7 +81,13 @@ const Login = () => {
       <div className="flex items-center justify-center h-screen py-10 bg-background">
         <div className="relative z-10 bg-white w-5/6 rounded shadow-md y-10 md:w-[70%] lg:w-[50%] xl:w-[35%]">
           {/* Isi kotak center di sini */}
-          <h1 className="p-4 px-10 pt-6 text-2xl font-black text-center text-black">
+          <button
+            className="btn btn-sm ml-[2.4rem] mt-[1.5rem]"
+            onClick={() => navigate("/")}
+          >
+            <IoMdArrowRoundBack />
+          </button>
+          <h1 className="pb-[1rem] px-10 text-2xl font-black text-center text-black">
             Welcome to Digital <span className="text-indigo">Citizen</span>
           </h1>
           <hr className="bg-indigo text-black p-[1px] mx-10 " />
@@ -115,11 +123,11 @@ const Login = () => {
                   >
                     {showPassword ? (
                       <span role="img" aria-label="Hide Password">
-                        &#128065;
+                        <FaRegEyeSlash />
                       </span>
                     ) : (
                       <span role="img" aria-label="Show Password">
-                        &#128064;
+                        <FaRegEye />
                       </span>
                     )}
                   </button>
