@@ -9,12 +9,13 @@ import CustomError from "../util/customError";
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import Swal from "sweetalert2";
+import TextField from "@mui/material/TextField";
 
 const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({});
   const [isDisabled, setIsDisabled] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState("password");
   // eslint-disable-next-line no-unused-vars
   const [_, setCookie] = useCookies(["userLog"]);
   const handleFormValueBlur = (e, name) => {
@@ -24,7 +25,9 @@ const Login = () => {
   };
 
   const handleTogglePassword = () => {
-    setShowPassword(!showPassword);
+    setShowPassword((prevShowPassword) =>
+      prevShowPassword === "password" ? "text" : "password"
+    );
   };
 
   const handleLogClick = async (e) => {
@@ -44,6 +47,8 @@ const Login = () => {
           Swal.fire({
             title: "Sukses",
             icon: "success",
+            showConfirmButton: false,
+            timer: 1000,
           }).then(() => {
             if (role == "admin") {
               navigate("/berandaadm");
@@ -82,46 +87,47 @@ const Login = () => {
         <div className="relative z-10 bg-white w-5/6 rounded shadow-md y-10 md:w-[70%] lg:w-[50%] xl:w-[35%]">
           {/* Isi kotak center di sini */}
           <button
-            className="btn btn-sm ml-[2.4rem] mt-[1.5rem]"
+            className="btn hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo bg-indigo btn-sm ml-[2.4rem] mt-[1.5rem] text-white"
             onClick={() => navigate("/")}
           >
             <IoMdArrowRoundBack />
           </button>
-          <h1 className="pb-[1rem] px-10 text-2xl font-black text-center text-black">
-            Welcome to Digital <span className="text-indigo">Citizen</span>
+          <h1 className="px-10 pb-[1rem] text-2xl font-medium text-center text-black">
+            {" "}
+            Welcome to{" "}
+            <span className="font-black">
+              {" "}
+              Digital <span className="text-indigo">Citizen</span>{" "}
+            </span>{" "}
           </h1>
           <hr className="bg-indigo text-black p-[1px] mx-10 " />
           <div className="px-10">
             <form action="">
               <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
-                <label className="label">
-                  <span className="font-black label-text">Email</span>
-                </label>
-                <input
+                <TextField
+                  id="outlined-basic"
+                  label="Email"
+                  variant="outlined"
+                  className="w-full"
                   onBlur={(e) => handleFormValueBlur(e, "email")}
-                  type="email"
-                  placeholder="contoh@gmail.com"
-                  className="w-full input input-bordered input-md max-w-screen md:max-w-xs"
                 />
               </div>
               <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
-                <label htmlFor="pw" className="label">
-                  <span className="font-black label-text">Password</span>
-                </label>
-                <div className="relative w-full max-w-screen md:max-w-xs">
-                  <input
-                    onBlur={(e) => handleFormValueBlur(e, "password")}
-                    id="pw"
-                    type={showPassword ? "text" : "password"}
-                    placeholder="********"
-                    className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
-                  />
+                <TextField
+                  id="outlined-basic"
+                  label="Password"
+                  type={showPassword}
+                  variant="outlined"
+                  className="w-full"
+                  onBlur={(e) => handleFormValueBlur(e, "password")}
+                />
+                <div className="relative">
                   <button
                     type="button"
                     onClick={handleTogglePassword}
                     className="absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer"
                   >
-                    {showPassword ? (
+                    {showPassword == "text" ? (
                       <span role="img" aria-label="Hide Password">
                         <FaRegEyeSlash />
                       </span>
