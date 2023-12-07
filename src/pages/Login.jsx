@@ -121,11 +121,11 @@ const Login = () => {
                   className="w-full"
                   onBlur={(e) => handleFormValueBlur(e, "password")}
                 />
-                <div className="relative">
+                <div className="relative ">
                   <button
                     type="button"
                     onClick={handleTogglePassword}
-                    className="absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer"
+                    className="absolute transform -translate-y-1/2 cursor-pointer bottom-3 md:top-1/2 right-4"
                   >
                     {showPassword == "text" ? (
                       <span role="img" aria-label="Hide Password">
