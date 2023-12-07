@@ -114,7 +114,7 @@ const Register = () => {
               <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
                 <TextField
                   id="outlined-basic"
-                  label="NIX"
+                  label="NIK"
                   type="number"
                   placeholder="xxxxxxxxxx"
                   variant="outlined"
