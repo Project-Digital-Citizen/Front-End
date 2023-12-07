@@ -6,6 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
 import CustomError from "../util/customError";
 import Swal from "sweetalert2";
+import TextField from "@mui/material/TextField";
 
 const Register = () => {
   const [formData, setFormData] = useState({});
@@ -19,7 +20,9 @@ const Register = () => {
   };
 
   const handleTogglePassword = () => {
-    setShowPassword(!showPassword);
+    setShowPassword((prevShowPassword) =>
+      prevShowPassword === "password" ? "text" : "password"
+    );
   };
 
   const handleRegClick = async (e) => {
@@ -78,73 +81,63 @@ const Register = () => {
           <div className="px-10">
             <form name="formReg" id="formReg">
               <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
-                <label htmlFor="name" className="label">
-                  <span className="font-black label-text">Full Name</span>
-                </label>
-                <input
+                <TextField
+                  id="outlined-basic"
+                  label="Nama Lengkap"
+                  placeholder="Nama Lengkap"
+                  variant="outlined"
+                  className="w-full"
                   onBlur={(e) => handleFormValueBlur(e, "nama")}
-                  id="name"
-                  type="text"
-                  placeholder="Full Name"
-                  className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                 />
               </div>
               <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
-                <label htmlFor="email" className="label">
-                  <span className="font-black label-text">Email</span>
-                </label>
-                <input
+                <TextField
+                  id="outlined-basic"
+                  label="Email"
+                  variant="outlined"
+                  className="w-full"
+                  placeholder="contoh@contoh.com"
                   onBlur={(e) => handleFormValueBlur(e, "email")}
-                  id="email"
-                  type="email"
-                  placeholder="xxxxx@xxxx.xxxx"
-                  className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                 />
               </div>
               <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
-                <label htmlFor="phone" className="label">
-                  <span className="font-black label-text">Phone Number</span>
-                </label>
-                <input
+                <TextField
+                  id="outlined-basic"
+                  label="Phone Number"
+                  type="number"
+                  placeholder="08xxxx"
+                  variant="outlined"
+                  className="w-full"
                   onBlur={(e) => handleFormValueBlur(e, "nomor")}
-                  id="phone"
-                  type="number"
-                  placeholder="08xxxxx"
-                  className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                 />
               </div>
-
               <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
-                <label htmlFor="NIK" className="label">
-                  <span className="font-black label-text">NIK</span>
-                </label>
-                <input
+                <TextField
+                  id="outlined-basic"
+                  label="NIX"
+                  type="number"
+                  placeholder="xxxxxxxxxx"
+                  variant="outlined"
+                  className="w-full"
                   onBlur={(e) => handleFormValueBlur(e, "NIK")}
-                  id="NIK"
-                  type="number"
-                  placeholder="NIK"
-                  className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                 />
               </div>
-
               <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
-                <label htmlFor="pw" className="label">
-                  <span className="font-black label-text">Password</span>
-                </label>
-                <div className="relative w-full max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl">
-                  <input
-                    onBlur={(e) => handleFormValueBlur(e, "password")}
-                    id="pw"
-                    type={showPassword ? "text" : "password"}
-                    placeholder="********"
-                    className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
-                  />
+                <TextField
+                  id="outlined-basic"
+                  label="Password"
+                  type={showPassword}
+                  variant="outlined"
+                  className="w-full"
+                  onBlur={(e) => handleFormValueBlur(e, "password")}
+                />
+                <div className="relative ">
                   <button
                     type="button"
                     onClick={handleTogglePassword}
-                    className="absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer"
+                    className="absolute transform -translate-y-1/2 cursor-pointer bottom-3 md:top-1/2 right-4"
                   >
-                    {showPassword ? (
+                    {showPassword == "text" ? (
                       <span role="img" aria-label="Hide Password">
                         <FaRegEyeSlash />
                       </span>
