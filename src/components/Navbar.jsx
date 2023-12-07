@@ -12,7 +12,7 @@ const Navbar = () => {
           <i className="px-3">{cookies.get("userData").users[0].nama}</i>
           <label tabIndex={0} className="">
             <div className="m-1 avatar placeholder btn btn-circle">
-              <div className="w-12 rounded-full  bg-neutral text-neutral-content">
+              <div className="w-12 rounded-full bg-neutral text-neutral-content">
                 <span>MX</span>
               </div>
             </div>
@@ -49,7 +49,7 @@ const Navbar = () => {
       );
     } else {
       return (
-        <div className="flex gap-2">
+        <div className="hidden gap-2 mr-10 md:flex">
           <button
             className="mx-auto bg-white text-indigo btn btn-sm border-indigo hover:bg-indigo hover:text-white hover:border-2 hover:border-indigo"
             onClick={() => navigate("/login")}
@@ -157,13 +157,13 @@ const Navbar = () => {
                 aria-label="close sidebar"
                 className="drawer-overlay"
               ></label>
-              <ul className="min-h-full gap-4 p-6  menu menu-vertical w-58 bg-base-200">
+              <ul className="min-h-full gap-4 p-6 menu menu-vertical w-58 bg-base-200">
                 {/* Sidebar content here */}
                 <li>
                   <details className="w-auto ">
                     <summary className="p-2">
                       <div className="avatar placeholder">
-                        <div className="w-12 rounded-full  bg-neutral text-neutral-content">
+                        <div className="w-12 rounded-full bg-neutral text-neutral-content">
                           <span>MX</span>
                         </div>
                       </div>
