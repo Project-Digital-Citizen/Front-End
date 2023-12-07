@@ -28,11 +28,11 @@ const resendOTP = axios.create({
   },
 });
 
-const getUser = axios.create({
-  baseURL: CONFIG.user_ENDPOINT,
+const API = axios.create({
+  baseURL: CONFIG.API_ENDPOINT,
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-export { regAPI, logAPI, otpAPI, resendOTP, getUser };
+export { regAPI, logAPI, otpAPI, resendOTP, API };

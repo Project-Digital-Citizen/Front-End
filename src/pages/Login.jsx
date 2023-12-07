@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import ele from "../assets/images/ele.png";
-import { logAPI, getUser } from "../data/api-digzen";
+import { logAPI, API } from "../data/api-digzen";
 import { useState } from "react";
 import { useCookies } from "react-cookie";
 import { jwtDecode } from "jwt-decode";
@@ -17,7 +17,7 @@ const Login = () => {
   const [isDisabled, setIsDisabled] = useState(false);
   const [showPassword, setShowPassword] = useState("password");
   // eslint-disable-next-line no-unused-vars
-  const [_, setCookie] = useCookies(["userLog"]);
+  const [cookies, setCookie] = useCookies(["userLog"]);
   const handleFormValueBlur = (e, name) => {
     const formDataCopy = { ...formData };
     formDataCopy[name] = e.target.value;
@@ -40,8 +40,9 @@ const Login = () => {
 
         if (response.status == 200) {
           const dec = jwtDecode(response.data.token);
-          const roleResponse = await getUser.get("", dec.userId);
-          const { role } = roleResponse.data.users[0];
+          const roleResponse = await API.get(`users/${dec.userId}`);
+          const { role } = roleResponse.data.user;
+          console.log(role);
           setCookie("userLog", dec);
           setCookie("userData", roleResponse.data);
           Swal.fire({
@@ -51,7 +52,7 @@ const Login = () => {
             timer: 1000,
           }).then(() => {
             if (role == "admin") {
-              navigate("/berandaadm");
+              navigate("/admin");
             } else {
               navigate("/");
             }

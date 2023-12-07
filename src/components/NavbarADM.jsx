@@ -1,8 +1,52 @@
 import { useNavigate } from "react-router-dom";
 import logoDigzen from "../assets/images/logo_3.png";
+import { Cookies } from "react-cookie";
 
 const NavbarADM = () => {
   const navigate = useNavigate();
+  const cookies = new Cookies();
+
+  const handleAdminLog = () => {
+    if (cookies.get("userLog")) {
+      return (
+        <div className="hidden dropdown dropdown-end lg:block pr-9">
+          <i className="px-3">{cookies.get("userData").user.nama}</i>
+          <label tabIndex={0} className="">
+            <div className="m-1 avatar placeholder btn btn-circle">
+              <div className="w-12 rounded-full bg-neutral text-neutral-content">
+                <span>AD</span>
+              </div>
+            </div>
+          </label>
+          <ul
+            tabIndex={0}
+            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <a
+                className="justify-between"
+                onClick={() => navigate("/profile")}
+              >
+                Profile
+              </a>
+            </li>
+            <li>
+              <a
+                onClick={() => {
+                  cookies.remove("userLog");
+                  cookies.remove("userData");
+                  navigate("/login");
+                }}
+              >
+                Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+      );
+    }
+  };
+
   return (
     <>
       <div className="flex h-[4rem] justify-between bg-white items-center shadow-lg z-50 sticky top-0">
@@ -16,7 +60,7 @@ const NavbarADM = () => {
               src={logoDigzen}
               alt=""
               className="h-9"
-              onClick={() => navigate("/berandaadm")}
+              onClick={() => navigate("/admin")}
             />
             <div className="hidden lg:flex md:w-[100px] items-center">
               <input
@@ -45,7 +89,7 @@ const NavbarADM = () => {
         <div className="hidden lg:block">
           <ul className="menu menu-horizontal">
             <li>
-              <a onClick={() => navigate("/berandaadm")}>Beranda</a>
+              <a onClick={() => navigate("/admin")}>Beranda</a>
             </li>
             <li>
               <a onClick={() => navigate("/mailinglist")}>
@@ -61,32 +105,7 @@ const NavbarADM = () => {
           </ul>
         </div>
         {/*  */}
-        <div className="hidden dropdown dropdown-end lg:block pr-9">
-          <i className="px-3">Admin</i>
-          <label tabIndex={0} className="">
-            <div className="m-1 avatar placeholder btn btn-circle">
-              <div className="w-12 rounded-full bg-neutral text-neutral-content">
-                <span>AD</span>
-              </div>
-            </div>
-          </label>
-          <ul
-            tabIndex={0}
-            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <a
-                className="justify-between"
-                onClick={() => navigate("/profile")}
-              >
-                Profile
-              </a>
-            </li>
-            <li>
-              <a onClick={() => navigate("/login")}>Logout</a>
-            </li>
-          </ul>
-        </div>{" "}
+        {handleAdminLog()}{" "}
         <div className=" lg:hidden">
           <div className=" drawer drawer-end lg:hidden">
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />
@@ -141,7 +160,11 @@ const NavbarADM = () => {
                       <li>
                         <a
                           className="p-2 hover:border border-indigo"
-                          onClick={() => navigate("/login")}
+                          onClick={() => {
+                            cookies.remove("userLog");
+                            cookies.remove("userData");
+                            navigate("/login");
+                          }}
                         >
                           Logout
                         </a>
@@ -151,7 +174,7 @@ const NavbarADM = () => {
                 </li>
                 <ul className="w-56 menu bg-base-200 rounded-box">
                   <li>
-                    <a onClick={() => navigate("/berandaadm")}>Beranda</a>
+                    <a onClick={() => navigate("/admin")}>Beranda</a>
                   </li>
                   <li>
                     <a onClick={() => navigate("/mailinglist")}>

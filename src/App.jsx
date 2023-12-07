@@ -22,7 +22,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Hero />} />
-        <Route path="/berandaadm" element={<BerandaADM />} />
+        <Route path="/admin" element={<BerandaADM />} />
         <Route path="/mailinglist" element={<Mailinglist />} />
         <Route path="/verifikasiktp" element={<VerifikasiKTP />} />
         <Route path="/verifikasidomisili" element={<VerifikasiDomisili />} />

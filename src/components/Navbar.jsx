@@ -9,7 +9,7 @@ const Navbar = () => {
     if (cookies.get("userLog")) {
       return (
         <div className="hidden dropdown dropdown-end md:block pr-9">
-          <i className="px-3">{cookies.get("userData").users[0].nama}</i>
+          <i className="px-3">{cookies.get("userData").user.nama}</i>
           <label tabIndex={0} className="">
             <div className="m-1 avatar placeholder btn btn-circle">
               <div className="w-12 rounded-full bg-neutral text-neutral-content">
