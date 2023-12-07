@@ -1,7 +1,70 @@
 import { useNavigate } from "react-router-dom";
 import logoDigzen from "../assets/images/logo_3.png";
+import { Cookies } from "react-cookie";
 
 const Navbar = () => {
+  const cookies = new Cookies();
+
+  const handleUserLog = () => {
+    if (cookies.get("userLog")) {
+      return (
+        <div className="hidden dropdown dropdown-end md:block pr-9">
+          <i className="px-3">{cookies.get("userData").users[0].nama}</i>
+          <label tabIndex={0} className="">
+            <div className="m-1 avatar placeholder btn btn-circle">
+              <div className="w-12 rounded-full  bg-neutral text-neutral-content">
+                <span>MX</span>
+              </div>
+            </div>
+          </label>
+          <ul
+            tabIndex={0}
+            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <a
+                className="justify-between"
+                onClick={() => navigate("/profile")}
+              >
+                Profile
+                <span className="badge">New</span>
+              </a>
+            </li>
+            <li>
+              <a>Settings</a>
+            </li>
+            <li>
+              <a
+                onClick={() => {
+                  cookies.remove();
+                }}
+              >
+                Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+      );
+    } else {
+      return (
+        <div className="flex gap-2">
+          <button
+            className="mx-auto bg-white text-indigo btn btn-sm border-indigo hover:bg-indigo hover:text-white hover:border-2 hover:border-indigo"
+            onClick={() => navigate("/login")}
+          >
+            Masuk
+          </button>
+          <button
+            className="mx-auto text-white btn btn-sm bg-indigo border-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo"
+            onClick={() => navigate("/register")}
+          >
+            Daftar
+          </button>
+        </div>
+      );
+    }
+  };
+
   const navigate = useNavigate();
   return (
     <>
@@ -61,36 +124,7 @@ const Navbar = () => {
           </ul>
         </div>
         {/*  */}
-        <div className="hidden dropdown dropdown-end md:block pr-9">
-          <i className="px-3">Username</i>
-          <label tabIndex={0} className="">
-            <div className="m-1 avatar placeholder btn btn-circle">
-              <div className="w-12 rounded-full  bg-neutral text-neutral-content">
-                <span>MX</span>
-              </div>
-            </div>
-          </label>
-          <ul
-            tabIndex={0}
-            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <a
-                className="justify-between"
-                onClick={() => navigate("/profile")}
-              >
-                Profile
-                <span className="badge">New</span>
-              </a>
-            </li>
-            <li>
-              <a>Settings</a>
-            </li>
-            <li>
-              <a onClick={() => navigate("/login")}>Logout</a>
-            </li>
-          </ul>
-        </div>{" "}
+        {handleUserLog()}{" "}
         <div className=" md:hidden">
           <div className=" drawer drawer-end md:hidden">
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />

@@ -1,9 +1,22 @@
 import NavbarADM from "../../components/NavbarADM";
 import user from "../../assets/images/user.png";
 import Footer from "../../components/Footer";
+import { useEffect } from "react";
 import Chart from "../../components/Chart/Chart";
+import { Cookies } from "react-cookie";
+// import { useNavigate } from "react-router-dom";
 
 const BerandaADM = () => {
+  const cookies = new Cookies();
+  // const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log(cookies.get("userLog"));
+    // if (cookies.get("userRole").role !== "admin") {
+    //   navigate("/");
+    // }
+  });
+
   return (
     <>
       <NavbarADM />

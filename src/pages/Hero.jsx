@@ -4,7 +4,6 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import ktp from "../assets/images/ktp.png";
 import domisili from "../assets/images/domisili.png";
-
 import ilus from "../assets/images/ilustrasi01.png";
 import ele from "../assets/images/ele.png";
 

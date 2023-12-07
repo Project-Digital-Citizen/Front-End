@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import ele from "../assets/images/ele.png";
 import { logAPI, getUser } from "../data/api-digzen";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useCookies } from "react-cookie";
 import { jwtDecode } from "jwt-decode";
 import { ToastContainer, toast } from "react-toastify";
@@ -13,8 +13,8 @@ const Login = () => {
   const [formData, setFormData] = useState({});
   const [isDisabled, setIsDisabled] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [cookies, setCookie] = useCookies(["userLog"]);
-  const [role, setRole] = useState(null);
+  // eslint-disable-next-line no-unused-vars
+  const [_, setCookie] = useCookies(["userLog"]);
   const handleFormValueBlur = (e, name) => {
     const formDataCopy = { ...formData };
     formDataCopy[name] = e.target.value;
@@ -24,16 +24,6 @@ const Login = () => {
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
-
-  useEffect(() => {
-    async () => {
-      console.log(cookies.userLog);
-      if (cookies.userLog) {
-        const response = await getUser.get("", cookies.userLog.userId);
-        setRole(response.user.role);
-      }
-    };
-  }, [cookies.userLog]);
 
   const handleLogClick = async (e) => {
     e.preventDefault();
@@ -45,7 +35,10 @@ const Login = () => {
 
         if (response.status == 200) {
           const dec = jwtDecode(response.data.token);
+          const roleResponse = await getUser.get("", dec.userId);
+          const { role } = roleResponse.data.users[0];
           setCookie("userLog", dec);
+          setCookie("userData", roleResponse.data);
           Swal.fire({
             title: "Sukses",
             icon: "success",
