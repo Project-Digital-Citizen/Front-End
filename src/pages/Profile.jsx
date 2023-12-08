@@ -6,9 +6,29 @@ import { useState } from "react";
 import { Cookies } from "react-cookie";
 import { TextField } from "@mui/material";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import EditIcon from "@mui/icons-material/Edit";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
+import Box from "@mui/material/Box";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 3,
+};
 
 const Profile = () => {
   const cookies = new Cookies();
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const [showPassword, setShowPassword] = useState("password");
   const handleTogglePassword = () => {
@@ -59,7 +79,44 @@ const Profile = () => {
               <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
                 <span className="font-black label-text">Email</span>
                 <span className="w-full max-w-screen md:w-3/5">
-                  {cookies.get("userData").user.email}
+                  {cookies.get("userData").user.email}{" "}
+                  <i className="" onClick={handleOpen}>
+                    <EditIcon fontSize="small" />
+                  </i>
+                  <Modal
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                  >
+                    <Box sx={style}>
+                      <Typography
+                        id="modal-modal-title"
+                        variant="h6"
+                        component="h2"
+                      >
+                        Edit
+                      </Typography>
+                      <Typography id="modal-modal-description" sx={{ mt: 1 }}>
+                        <div className="justify-between w-full form-control md:flex md:flex-row">
+                          <TextField
+                            id="outlined-basic"
+                            label="Email"
+                            type="email"
+                            placeholder="contoh@contoh.com"
+                            variant="outlined"
+                            className="w-full"
+                            // onBlur={(e) => handleFormValueBlur(e, "password")}
+                          />
+                        </div>
+                        <div className="flex flex-row-reverse my-2">
+                          <button className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-1 hover:border-indigo">
+                            Save
+                          </button>
+                        </div>
+                      </Typography>
+                    </Box>
+                  </Modal>
                 </span>
               </div>
               <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
