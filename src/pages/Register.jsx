@@ -7,6 +7,7 @@ import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
 import CustomError from "../util/customError";
 import Swal from "sweetalert2";
 import TextField from "@mui/material/TextField";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 const Register = () => {
   const [formData, setFormData] = useState({});
@@ -73,8 +74,14 @@ const Register = () => {
       {/* <div className="border-2 border-black "> */}
       <div className="flex items-center justify-center h-screen py-10 bg-background">
         <div className="relative z-10 w-5/6 bg-white rounded shadow-md y-10">
+          <button
+            className="btn hover:bg-white hover:text-indigo hover:border-1 hover:border-indigo bg-indigo btn-sm ml-[2.4rem] mt-[1.5rem] text-white"
+            onClick={() => navigate("/")}
+          >
+            <IoMdArrowRoundBack />
+          </button>
           {/* Isi kotak center di sini */}
-          <h1 className="p-4 px-10 pt-6 text-2xl font-black text-center text-indigo">
+          <h1 className="px-10 pb-[1rem] text-2xl font-black text-center text-indigo">
             Register
           </h1>
           <hr className="bg-indigo text-black p-[1px] mx-10 " />
@@ -162,9 +169,10 @@ const Register = () => {
                 <span className="text-xs -mt-[3px] ml-[2px] text-black">
                   sudah memiliki akun?
                   <a
-                    className="link link-primary"
+                    className="cursor-pointer text-indigo"
                     onClick={() => navigate("/login")}
                   >
+                    {" "}
                     login
                   </a>
                 </span>

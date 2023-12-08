@@ -88,7 +88,7 @@ const Login = () => {
         <div className="relative z-10 bg-white w-5/6 rounded shadow-md y-10 md:w-[70%] lg:w-[50%] xl:w-[35%]">
           {/* Isi kotak center di sini */}
           <button
-            className="btn hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo bg-indigo btn-sm ml-[2.4rem] mt-[1.5rem] text-white"
+            className="btn hover:bg-white hover:text-indigo hover:border-1 hover:border-indigo bg-indigo btn-sm ml-[2.4rem] mt-[1.5rem] text-white"
             onClick={() => navigate("/")}
           >
             <IoMdArrowRoundBack />
@@ -154,9 +154,10 @@ const Login = () => {
                 <span className="text-xs -mt-[3px] ml-[2px] text-black">
                   belum memiliki akun?
                   <a
-                    className="link link-primary"
+                    className="cursor-pointer text-indigo"
                     onClick={() => navigate("/register")}
                   >
+                    {" "}
                     Register
                   </a>
                 </span>

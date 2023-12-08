@@ -2,9 +2,51 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import ele from "../assets/images/ele.png";
+import {
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from "@mui/material";
+import { useState } from "react";
 
 const FormKTP = () => {
   const navigate = useNavigate();
+
+  // state label
+  const [label, setLabel] = useState("");
+
+  const handleChange = (event) => {
+    setLabel(event.target.value);
+  };
+
+  const tanggal = [];
+  for (let i = 1; i <= 31; i++) {
+    tanggal.push(
+      <MenuItem key={i} value={i}>
+        {i}
+      </MenuItem>
+    );
+  }
+
+  const bulan = [];
+  for (let i = 1; i <= 12; i++) {
+    bulan.push(
+      <MenuItem key={i} value={i}>
+        {i}
+      </MenuItem>
+    );
+  }
+
+  const tahun = [];
+  for (let i = 1950; i <= 2024; i++) {
+    tahun.push(
+      <MenuItem key={i} value={i}>
+        {i}
+      </MenuItem>
+    );
+  }
   return (
     <>
       <Navbar />
@@ -66,158 +108,187 @@ const FormKTP = () => {
               {/*  */}
               <form action="">
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
-                  <label className="label">
-                    <span className="font-black label-text">NIK</span>
-                  </label>
-                  <input
+                  <TextField
+                    id="outlined-basic"
+                    label="NIK"
                     type="number"
-                    placeholder="NIK"
-                    className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                    placeholder="xxxxxxxxxx"
+                    variant="outlined"
+                    className="w-full"
+                    // onBlur={(e) => handleFormValueBlur(e, "NIK")}
                   />
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
-                  <label className="label">
-                    <span className="font-black label-text">Nama</span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Nama"
-                    className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                  <TextField
+                    id="outlined-basic"
+                    label="Nama Lengkap"
+                    placeholder="Nama Lengkap"
+                    variant="outlined"
+                    className="w-full"
+                    // onBlur={(e) => handleFormValueBlur(e, "nama")}
                   />
                 </div>
-                <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
-                  <label className="label">
-                    <span className="font-black label-text">
-                      Tempat, Tanggal Lahir
-                    </span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Tempat,DD-MM-YYYY"
-                    className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                {/* ttl mobile */}
+                <div className="flex flex-row justify-between w-full gap-2 pt-4 md:hidden form-control">
+                  <TextField
+                    id="outlined-basic"
+                    label="Tempat, Tanggal Lahir"
+                    placeholder="Tempat, Tgl-Bln-Thn (10-02-2002)"
+                    variant="outlined"
+                    className="w-full"
+                    // onBlur={(e) => handleFormValueBlur(e, "nama")}
                   />
                 </div>
-                <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
-                  <label className="label">
-                    <span className="font-black label-text">Jenis Kelamin</span>
-                  </label>
-                  <select className="w-full select select-bordered select-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl">
-                    <option disabled selected>
+                {/* ttl large */}
+                <div className="flex-row justify-between hidden w-full gap-2 pt-4 md:flex form-control">
+                  <TextField
+                    id="outlined-basic"
+                    label="Tempat"
+                    placeholder="Tempat"
+                    variant="outlined"
+                    className="w-full"
+                    // onBlur={(e) => handleFormValueBlur(e, "nama")}
+                  />
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">
+                      Tanggal
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={label}
+                      label="Tanggal"
+                      onChange={handleChange}
+                    >
+                      {tanggal}
+                    </Select>
+                  </FormControl>
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Bulan</InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={label}
+                      label="Bulan"
+                      onChange={handleChange}
+                    >
+                      {bulan}
+                    </Select>
+                  </FormControl>
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Tahun</InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={label}
+                      label="Tahun"
+                      onChange={handleChange}
+                    >
+                      {tahun}
+                    </Select>
+                  </FormControl>
+                </div>
+                <div className="flex flex-row justify-between w-full gap-2 pt-4 form-control">
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">
                       Jenis Kelamin
-                    </option>
-                    <option>Laki-Laki</option>
-                    <option>Perempuan</option>
-                  </select>
-                  {/* <input
-                    type="text"
-                    placeholder="Jenis kelamin"
-                    className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
-                  /> */}
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={label}
+                      label="Jenis Kelamin"
+                      onChange={handleChange}
+                    >
+                      <MenuItem value={"Laki-Laki"}>Laki-Laki</MenuItem>
+                      <MenuItem value={"Perempuan"}>Perempuan</MenuItem>
+                    </Select>
+                  </FormControl>
                 </div>
-                <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
-                  <label className="label">
-                    <span className="font-black label-text">Alamat</span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Alamat"
-                    className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                <div className="flex flex-col justify-between w-full gap-2 pt-4 form-control md:flex md:flex-row">
+                  <TextField
+                    id="outlined-basic"
+                    label="Alamat"
+                    placeholder=""
+                    variant="outlined"
+                    className="w-full"
+                    // onBlur={(e) => handleFormValueBlur(e, "nama")}
                   />
                 </div>
-                <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
-                  <label className="label">
-                    <span className="font-black label-text lg:ml-12">
-                      RT/RW
-                    </span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="RT/RW"
-                    className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                <div className="flex flex-col justify-between w-full gap-2 pt-4 form-control md:flex md:flex-row">
+                  <TextField
+                    id="outlined-basic"
+                    label="RT/RT"
+                    placeholder="xx/xx"
+                    variant="outlined"
+                    className="w-full"
+                    // onBlur={(e) => handleFormValueBlur(e, "nama")}
                   />
-                </div>
-                <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
-                  <label className="label">
-                    <span className="font-black label-text lg:ml-12">
-                      Kel/Desa
-                    </span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Kel/Desa"
-                    className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                  <TextField
+                    id="outlined-basic"
+                    label="Kelurahan/Desa"
+                    placeholder="Kelurahan/Desa"
+                    variant="outlined"
+                    className="w-full"
+                    // onBlur={(e) => handleFormValueBlur(e, "nama")}
                   />
-                </div>
-                <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
-                  <label className="label">
-                    <span className="font-black label-text lg:ml-12">
-                      Kecamatan
-                    </span>
-                  </label>
-                  <input
-                    type="text"
+                  <TextField
+                    id="outlined-basic"
+                    label="Kecamatan"
                     placeholder="Kecamatan"
-                    className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                    variant="outlined"
+                    className="w-full"
+                    // onBlur={(e) => handleFormValueBlur(e, "nama")}
                   />
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
-                  <label className="label">
-                    <span className="font-black label-text">Agama</span>
-                  </label>
-                  <input
-                    type="text"
+                  <TextField
+                    id="outlined-basic"
+                    label="Agama"
                     placeholder="Agama"
-                    className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                    variant="outlined"
+                    className="w-full"
+                    // onBlur={(e) => handleFormValueBlur(e, "nama")}
                   />
                 </div>
-                <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
-                  <label className="label">
-                    <span className="font-black label-text">
+                <div className="flex flex-row justify-between w-full gap-2 pt-4 form-control">
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">
                       Status Perkawinan
-                    </span>
-                  </label>
-                  <select className="w-full select select-bordered select-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl">
-                    <option disabled selected>
-                      Status Perkawinan
-                    </option>
-                    <option>Belum Menikah</option>
-                    <option>Sudah Menikah</option>
-                  </select>
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={label}
+                      label="Status Perkawinan"
+                      onChange={handleChange}
+                    >
+                      <MenuItem value={"Belum Menikah"}>Belum Menikah</MenuItem>
+                      <MenuItem value={"Sudah Menikah"}>Sudah Menikah</MenuItem>
+                    </Select>
+                  </FormControl>
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
-                  <label className="label">
-                    <span className="font-black label-text">Pekerjaan</span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Pekerjaan"
-                    className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
-                  />
-                </div>
-                <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
-                  <label className="label">
-                    <span className="font-black label-text">
-                      Kewarganegaraan
-                    </span>
-                  </label>
-                  <input
-                    type="text"
+                  <TextField
+                    id="outlined-basic"
+                    label="Kewarganegaraan"
                     placeholder="Kewarganegaraan"
-                    className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                    variant="outlined"
+                    className="w-full"
+                    // onBlur={(e) => handleFormValueBlur(e, "nama")}
                   />
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
-                  <label className="label">
-                    <span className="font-black label-text">
-                      Golongan Darah
-                    </span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="A/B/O/AB..."
-                    className="w-full input input-bordered input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                  <TextField
+                    id="outlined-basic"
+                    label="Golongan Darah"
+                    placeholder="Golongan Darah"
+                    variant="outlined"
+                    className="w-full"
+                    // onBlur={(e) => handleFormValueBlur(e, "nama")}
                   />
                 </div>
+
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
                   <label className="label">
                     <span className="font-black label-text">
