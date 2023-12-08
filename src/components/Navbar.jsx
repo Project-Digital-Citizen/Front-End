@@ -101,7 +101,11 @@ const Navbar = () => {
                         <li>
                           <a
                             className="p-2 hover:border border-indigo"
-                            onClick={() => navigate("/login")}
+                            onClick={() => {
+                              cookies.remove("userLog");
+                              cookies.remove("userData");
+                              navigate("/login");
+                            }}
                           >
                             Logout
                           </a>

@@ -25,7 +25,7 @@ const NavbarADM = () => {
             <li>
               <a
                 className="justify-between"
-                onClick={() => navigate("/profile")}
+                onClick={() => navigate("/profileadmin")}
               >
                 Profile
               </a>

@@ -1,16 +1,15 @@
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
-import person from "../assets/images/user.png";
-import mailIMG from "../assets/images/ele.png";
+import Footer from "../../components/Footer";
+import person from "../../assets/images/user.png";
+import mailIMG from "../../assets/images/ele.png";
 import { useState } from "react";
 import { Cookies } from "react-cookie";
-import { TextField } from "@mui/material";
-import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import NavbarADM from "../../components/NavbarADM";
 
-const Profile = () => {
+const ProfileAdm = () => {
   const cookies = new Cookies();
 
   const [showPassword, setShowPassword] = useState("password");
+
   const handleTogglePassword = () => {
     setShowPassword((prevShowPassword) =>
       prevShowPassword === "password" ? "text" : "password"
@@ -18,7 +17,7 @@ const Profile = () => {
   };
   return (
     <>
-      <Navbar />
+      <NavbarADM />
       <img
         src={mailIMG}
         alt=""
@@ -47,9 +46,7 @@ const Profile = () => {
               <h1 className="text-2xl font-black text-center text-black">
                 {cookies.get("userData").user.nama}
               </h1>
-              <span className="text-center">
-                NIK : {cookies.get("userData").user.NIK}
-              </span>
+              <span className="text-center">NIK : 92845623945</span>
             </div>
           </div>
 
@@ -59,42 +56,52 @@ const Profile = () => {
               <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
                 <span className="font-black label-text">Email</span>
                 <span className="w-full max-w-screen md:w-3/5">
-                  {cookies.get("userData").user.email}
+                  gmail@gmail.com
                 </span>
               </div>
               <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
                 <span className="font-black label-text">Phone Number</span>
                 <span className="w-full max-w-screen md:w-3/5">
-                  {cookies.get("userData").user.nomor}
+                  08123124134
                 </span>
               </div>
-              {/* <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
+              <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
                 <span className="font-black label-text">Jenis Kelamin</span>
                 <span className="w-full max-w-screen md:w-3/5">Perempuan</span>
-              </div> */}
-
-              <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
-                <TextField
-                  id="outlined-basic"
-                  label="Password"
-                  type={showPassword}
-                  variant="outlined"
-                  className="w-full"
-                  // onBlur={(e) => handleFormValueBlur(e, "password")}
+              </div>
+              {/* <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
+                <label className="label">
+                  <span className="-ml-1 font-black label-text">Password</span>
+                </label>
+                <input
+                  type="password"
+                  placeholder="*********"
+                  className="w-full input input-bordered input-sm max-w-screen md:w-3/5"
                 />
-                <div className="relative ">
+              </div> */}
+              <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
+                <label htmlFor="pw" className="label">
+                  <span className="font-black label-text">Password</span>
+                </label>
+                <div className="relative w-full max-w-screen md:w-3/5">
+                  <input
+                    id="pw"
+                    type={showPassword ? "text" : "password"}
+                    placeholder="********"
+                    className="w-full input input-bordered input-sm max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                  />
                   <button
                     type="button"
                     onClick={handleTogglePassword}
-                    className="absolute transform -translate-y-1/2 cursor-pointer bottom-3 md:top-1/2 right-4"
+                    className="absolute transform -translate-y-1/2 cursor-pointer top-1/2 right-4"
                   >
-                    {showPassword == "text" ? (
+                    {showPassword ? (
                       <span role="img" aria-label="Hide Password">
-                        <FaRegEyeSlash />
+                        &#128065;
                       </span>
                     ) : (
                       <span role="img" aria-label="Show Password">
-                        <FaRegEye />
+                        &#128064;
                       </span>
                     )}
                   </button>
@@ -114,4 +121,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfileAdm;

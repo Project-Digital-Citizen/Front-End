@@ -16,6 +16,7 @@ import Account from "./pages/Admin/Account";
 import AccountEdit from "./pages/Admin/AccountEdit";
 import OTP from "./pages/OTP";
 import LupaPW from "./pages/LupaPW";
+import ProfileAdm from "./pages/Admin/ProfileAdm";
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/profileadmin" element={<ProfileAdm />} />
         <Route path="/formktp" element={<FormKTP />} />
         <Route path="/formdomisili" element={<FormDomisili />} />
         <Route path="/statuspengajuan" element={<StatusPengajuan />} />

@@ -35,15 +35,19 @@ const BerandaADM = () => {
             </div>
             <div className="flex flex-col px-10 my-auto md:px-0">
               <h1 className="text-2xl font-black text-center text-black ">
-                Westlee Tantrum
+                {cookies.get("userData").user.nama}
               </h1>
               <div className="flex flex-row items-center justify-between pt-3">
                 <span className="font-black label-text">NIP</span>
-                <span className="max-w-screen md:w-3/5">8234785634</span>
+                <span className="max-w-screen md:w-3/5">
+                  {cookies.get("userData").user.NIK}
+                </span>
               </div>
               <div className="flex flex-row items-center justify-between pt-3">
                 <span className="font-black label-text">Email</span>
-                <span className="max-w-screen md:w-3/5">gmail@gmail.com</span>
+                <span className="max-w-screen md:w-3/5">
+                  {cookies.get("userData").user.email}
+                </span>
               </div>
               <div className="flex flex-row items-center justify-between pt-3">
                 <span className="font-black label-text">D.O.B</span>
