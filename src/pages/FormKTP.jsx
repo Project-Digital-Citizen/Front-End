@@ -298,7 +298,7 @@ const FormKTP = () => {
                   <input
                     type="file"
                     placeholder="PDF Pengantar RT"
-                    className="w-full file-input file-input-bordered file-input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                    className="w-full rounded-[5px] file-input file-input-bordered file-input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                   />
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
@@ -310,7 +310,7 @@ const FormKTP = () => {
                   <input
                     type="file"
                     placeholder="PDF Pengantar RW"
-                    className="w-full file-input file-input-bordered file-input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                    className="w-full file-input rounded-[5px] file-input-bordered file-input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                   />
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
@@ -322,7 +322,7 @@ const FormKTP = () => {
                   <input
                     type="file"
                     placeholder="PDF Kartu Keluarga"
-                    className="w-full file-input file-input-bordered file-input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                    className="w-full rounded-[5px] file-input file-input-bordered file-input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                   />
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
@@ -332,7 +332,7 @@ const FormKTP = () => {
                   <input
                     type="file"
                     placeholder="PNG"
-                    className="w-full file-input file-input-bordered file-input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
+                    className="w-full rounded-[5px] file-input file-input-bordered file-input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                   />
                 </div>
                 <div className="flex-row-reverse pt-4 pb-6 md:flex">
