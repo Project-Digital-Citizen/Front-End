@@ -3,13 +3,34 @@ import person from "../../assets/images/user.png";
 import mailIMG from "../../assets/images/ele.png";
 import { useState } from "react";
 import { Cookies } from "react-cookie";
+import { TextField } from "@mui/material";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import EditIcon from "@mui/icons-material/Edit";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
+import Box from "@mui/material/Box";
 import NavbarADM from "../../components/NavbarADM";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 3,
+};
 
 const ProfileAdm = () => {
   const cookies = new Cookies();
 
-  const [showPassword, setShowPassword] = useState("password");
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
+  const [showPassword, setShowPassword] = useState("password");
   const handleTogglePassword = () => {
     setShowPassword((prevShowPassword) =>
       prevShowPassword === "password" ? "text" : "password"
@@ -31,9 +52,77 @@ const ProfileAdm = () => {
       <div className="flex items-center justify-center h-screen py-10 mb-5 bg-background">
         <div className="bg-white w-5/6 rounded shadow-md y-10 md:w-[70%] lg:w-[50%] xl:w-[35%] relative">
           {/* Isi kotak center di sini */}
+          <div className="flex flex-row-reverse p-2">
+            <i className="" onClick={handleOpen}>
+              <EditIcon fontSize="small" />
+            </i>
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <Box sx={style}>
+                <Typography id="modal-modal-title" variant="h6" component="h2">
+                  Edit
+                </Typography>
+                <Typography id="modal-modal-description" sx={{ mt: 1 }}>
+                  <div className="justify-between w-full mt-2 form-control md:flex md:flex-row">
+                    <TextField
+                      id="outlined-basic"
+                      label="Nama"
+                      type="text"
+                      placeholder="Nama Lengkap"
+                      variant="outlined"
+                      className="w-full"
+                      // onBlur={(e) => handleFormValueBlur(e, "password")}
+                    />
+                  </div>
+                  <div className="justify-between w-full mt-2 form-control md:flex md:flex-row">
+                    <TextField
+                      id="outlined-basic"
+                      label="Email"
+                      type="email"
+                      placeholder="contoh@contoh.com"
+                      variant="outlined"
+                      className="w-full"
+                      // onBlur={(e) => handleFormValueBlur(e, "password")}
+                    />
+                  </div>
+                  <div className="justify-between w-full mt-2 form-control md:flex md:flex-row">
+                    <TextField
+                      id="outlined-basic"
+                      label="NIK"
+                      type="number"
+                      placeholder="xxxxxxxxx"
+                      variant="outlined"
+                      className="w-full"
+                      // onBlur={(e) => handleFormValueBlur(e, "password")}
+                    />
+                  </div>
+                  <div className="justify-between w-full mt-2 form-control md:flex md:flex-row">
+                    <TextField
+                      id="outlined-basic"
+                      label="Nomor"
+                      type="number"
+                      placeholder="08xxxxxxxxxx"
+                      variant="outlined"
+                      className="w-full"
+                      // onBlur={(e) => handleFormValueBlur(e, "password")}
+                    />
+                  </div>
+                  <div className="flex flex-row-reverse my-2">
+                    <button className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-1 hover:border-indigo">
+                      Save
+                    </button>
+                  </div>
+                </Typography>
+              </Box>
+            </Modal>
+          </div>
           <div className="">
-            <div className="flex justify-center py-6 my-auto">
-              <label htmlFor="pp" className="w-32 p-2">
+            <div className="flex justify-center py-3 my-auto">
+              <label htmlFor="pp" className="w-32 p-1">
                 <img
                   src={person}
                   alt=""
@@ -46,7 +135,9 @@ const ProfileAdm = () => {
               <h1 className="text-2xl font-black text-center text-black">
                 {cookies.get("userData").user.nama}
               </h1>
-              <span className="text-center">NIK : 92845623945</span>
+              <span className="text-center">
+                NIK : {cookies.get("userData").user.NIK}
+              </span>
             </div>
           </div>
 
@@ -56,52 +147,42 @@ const ProfileAdm = () => {
               <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
                 <span className="font-black label-text">Email</span>
                 <span className="w-full max-w-screen md:w-3/5">
-                  gmail@gmail.com
+                  {cookies.get("userData").user.email}{" "}
                 </span>
               </div>
               <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
                 <span className="font-black label-text">Phone Number</span>
                 <span className="w-full max-w-screen md:w-3/5">
-                  08123124134
+                  {cookies.get("userData").user.nomor}
                 </span>
               </div>
-              <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
+              {/* <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
                 <span className="font-black label-text">Jenis Kelamin</span>
                 <span className="w-full max-w-screen md:w-3/5">Perempuan</span>
-              </div>
-              {/* <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
-                <label className="label">
-                  <span className="-ml-1 font-black label-text">Password</span>
-                </label>
-                <input
-                  type="password"
-                  placeholder="*********"
-                  className="w-full input input-bordered input-sm max-w-screen md:w-3/5"
-                />
               </div> */}
+
               <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
-                <label htmlFor="pw" className="label">
-                  <span className="font-black label-text">Password</span>
-                </label>
-                <div className="relative w-full max-w-screen md:w-3/5">
-                  <input
-                    id="pw"
-                    type={showPassword ? "text" : "password"}
-                    placeholder="********"
-                    className="w-full input input-bordered input-sm max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
-                  />
+                <TextField
+                  id="outlined-basic"
+                  label="Password"
+                  type={showPassword}
+                  variant="outlined"
+                  className="w-full"
+                  // onBlur={(e) => handleFormValueBlur(e, "password")}
+                />
+                <div className="relative ">
                   <button
                     type="button"
                     onClick={handleTogglePassword}
-                    className="absolute transform -translate-y-1/2 cursor-pointer top-1/2 right-4"
+                    className="absolute transform -translate-y-1/2 cursor-pointer bottom-3 md:top-1/2 right-4"
                   >
-                    {showPassword ? (
+                    {showPassword == "text" ? (
                       <span role="img" aria-label="Hide Password">
-                        &#128065;
+                        <FaRegEyeSlash />
                       </span>
                     ) : (
                       <span role="img" aria-label="Show Password">
-                        &#128064;
+                        <FaRegEye />
                       </span>
                     )}
                   </button>

@@ -49,10 +49,10 @@ const BerandaADM = () => {
                   {cookies.get("userData").user.email}
                 </span>
               </div>
-              <div className="flex flex-row items-center justify-between pt-3">
+              {/* <div className="flex flex-row items-center justify-between pt-3">
                 <span className="font-black label-text">D.O.B</span>
                 <span className="max-w-screen md:w-3/5">99-99-00</span>
-              </div>
+              </div> */}
             </div>
           </div>
 
