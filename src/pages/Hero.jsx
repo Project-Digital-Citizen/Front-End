@@ -6,7 +6,7 @@ import ktp from "../assets/images/ktp.png";
 import domisili from "../assets/images/domisili.png";
 import ilus from "../assets/images/ilustrasi01.png";
 import ele from "../assets/images/ele.png";
-import ScrollUpBtn from "../util/Scrollupbutton";
+import {ScrollUpBtn} from "../util/ScrollUpBtn";
 
 const Hero = () => {
   const navigate = useNavigate();
