@@ -28,7 +28,7 @@ const ScrollUpButton = () => {
 
   return (
     <button
-      className={`scroll-up-button btn btn-circle text-black border border-black bg-white ${
+      className={`scroll-up-button btn btn-circle text-white border-[3px] border-white bg-indigo ${
         isVisible ? "visible " : ""
       }`}
       onClick={scrollToTop}
