@@ -1,7 +1,7 @@
 // ScrollUpButton.js
 import { useState, useEffect } from "react";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-const ScrollUpButton = () => {
+const ScrollUpBtn = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -40,4 +40,4 @@ const ScrollUpButton = () => {
   );
 };
 
-export default ScrollUpButton;
+export default ScrollUpBtn;
