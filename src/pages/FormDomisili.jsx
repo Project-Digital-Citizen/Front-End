@@ -9,9 +9,18 @@ import {
   Select,
   TextField,
 } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Cookies } from "react-cookie";
 
 const FormDomisili = () => {
+  const cookies = new Cookies();
+
+  useEffect(() => {
+    if (!cookies.get("userData")) {
+      navigate("/login");
+    }
+  });
+
   const navigate = useNavigate();
   const [label, setLabel] = useState("");
 

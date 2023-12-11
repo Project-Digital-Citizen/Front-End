@@ -4,8 +4,18 @@ import TimelineSVG from "../components/SVG/Timelinesvg";
 import icondocs from "../assets/images/icondocs.png";
 import { useNavigate } from "react-router-dom";
 import ele from "../assets/images/ele.png";
+import { Cookies } from "react-cookie";
+import { useEffect } from "react";
 
 const StatusPengajuan = () => {
+  const cookies = new Cookies();
+
+  useEffect(() => {
+    if (!cookies.get("userData")) {
+      navigate("/login");
+    }
+  });
+
   const navigate = useNavigate();
 
   return (
