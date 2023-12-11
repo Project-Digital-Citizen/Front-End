@@ -38,16 +38,27 @@ const FormKTP = () => {
     const { tempat, tanggal, bulan, tahun } = TTL;
 
     if (tempat && tanggal && bulan && tahun) {
-      handleFormValue(
-        `${tempat}, ${tanggal}-${bulan}-${tahun}`,
-        "tempatTanggalLahir"
-      );
+      const formDataCopy = {
+        tempatTanggalLahir: `${tempat}, ${tanggal}-${bulan}-${tahun}`,
+        ...data,
+      };
+      console.log(formDataCopy);
+      setForm(formDataCopy);
     }
   };
 
   const handleFormValue = (e, name) => {
     const formDataCopy = { ...data };
     formDataCopy[name] = e.target.value;
+    if (
+      name == "suratRTImage" ||
+      name == "suratRWImage" ||
+      name == "kkImage" ||
+      name == "selfieImage"
+    ) {
+      formDataCopy[name] = e.target.files[0];
+    }
+
     setForm(formDataCopy);
   };
 
@@ -56,9 +67,19 @@ const FormKTP = () => {
     setIsDisabled(true);
     try {
       if (data) {
+        const formData = new FormData();
+        for (let key in data) {
+          formData.append(key, data[key]);
+        }
+        console.log(formData.get("selfieImage"));
         const response = await API.post(
           `ktp/${cookies.get("userLog").userId}`,
-          JSON.stringify(data)
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
         );
 
         if (response.status == 201) {
@@ -332,6 +353,16 @@ const FormKTP = () => {
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
                   <TextField
                     id="outlined-basic"
+                    label="Pekerjaan"
+                    placeholder="Pekerjaan"
+                    variant="outlined"
+                    className="w-full"
+                    onBlur={(e) => handleFormValue(e, "pekerjaan")}
+                  />
+                </div>
+                <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
+                  <TextField
+                    id="outlined-basic"
                     label="Kewarganegaraan"
                     placeholder="Kewarganegaraan"
                     variant="outlined"
@@ -366,6 +397,7 @@ const FormKTP = () => {
                   </label>
                   <input
                     type="file"
+                    onChange={(e) => handleFormValue(e, "suratRTImage")}
                     placeholder="PDF Pengantar RT"
                     className="w-full rounded-[5px] file-input file-input-bordered file-input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                   />
@@ -379,6 +411,7 @@ const FormKTP = () => {
                   <input
                     type="file"
                     placeholder="PDF Pengantar RW"
+                    onChange={(e) => handleFormValue(e, "suratRWImage")}
                     className="w-full file-input rounded-[5px] file-input-bordered file-input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                   />
                 </div>
@@ -390,6 +423,7 @@ const FormKTP = () => {
                   </label>
                   <input
                     type="file"
+                    onChange={(e) => handleFormValue(e, "kkImage")}
                     placeholder="PDF Kartu Keluarga"
                     className="w-full rounded-[5px] file-input file-input-bordered file-input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                   />
@@ -400,6 +434,7 @@ const FormKTP = () => {
                   </label>
                   <input
                     type="file"
+                    onChange={(e) => handleFormValue(e, "selfieImage")}
                     placeholder="PNG"
                     className="w-full rounded-[5px] file-input file-input-bordered file-input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                   />
