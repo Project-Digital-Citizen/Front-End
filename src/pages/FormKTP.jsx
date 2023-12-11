@@ -57,7 +57,7 @@ const FormKTP = () => {
     try {
       if (data) {
         const response = await API.post(
-          `/ktp/${cookies.get("userLog").userId}`,
+          `ktp/${cookies.get("userLog").userId}`,
           JSON.stringify(data)
         );
 

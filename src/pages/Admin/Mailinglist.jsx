@@ -1,9 +1,49 @@
+/* eslint-disable react/prop-types */
 import { useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer";
 import NavbarADM from "../../components/NavbarADM";
+import { API } from "../../data/api-digzen";
+import { useEffect, useState } from "react";
+
+const RenderList = (props) => {
+  const navigate = useNavigate();
+  const data = props?.dataPengajuan?.data?.data;
+  return (
+    <>
+      {data.map((el, idx) => (
+        <>
+          <tr key={idx}>
+            <th>{idx + 1}</th>
+            <td>{el.nama}</td>
+            <td>KTP</td>
+            <td>
+              <span
+                className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo btn-xs"
+                onClick={() => navigate("/verifikasiktp")}
+              >
+                Verify
+              </span>
+            </td>
+          </tr>
+        </>
+      ))}
+    </>
+  );
+};
 
 const Mailinglist = () => {
   const navigate = useNavigate();
+  const [dataPengajuan, setDataPengajuan] = useState([]);
+
+  const pending = async () => {
+    const response = await API.get("ktp");
+    setDataPengajuan(response);
+  };
+
+  useEffect(() => {
+    pending();
+  }, []);
+
   return (
     <>
       <NavbarADM />
@@ -28,19 +68,7 @@ const Mailinglist = () => {
               </thead>
               <tbody>
                 {/* row 1 */}
-                <tr>
-                  <th>1</th>
-                  <td>Cy Ganderton</td>
-                  <td>KTP</td>
-                  <td>
-                    <span
-                      className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo btn-xs"
-                      onClick={() => navigate("/verifikasiktp")}
-                    >
-                      Verify
-                    </span>
-                  </td>
-                </tr>
+                {<RenderList dataPengajuan={dataPengajuan} />}
                 {/* row 2 */}
                 <tr>
                   <th>2</th>
