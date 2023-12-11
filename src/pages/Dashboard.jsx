@@ -8,7 +8,7 @@ import ilus from "../assets/images/ilustrasi01.png";
 import ele from "../assets/images/ele.png";
 import { ScrollUpBtn } from "../util/ScrollUpBtn";
 
-const Hero = () => {
+const Dashboard = () => {
   const navigate = useNavigate();
 
   return (
@@ -26,12 +26,12 @@ const Hero = () => {
               className="object-cover object-center w-full h-full sm:mt-6 lg:hidden"
             />
             <h1 className="mb-3 text-5xl font-bold">Let's Gooo</h1>
-            <p className="text-justify">
+            <p className="text-left">
               Proses pengurusan surat menjadi lebih efisien dan efektif
             </p>
             <a
               href="#more"
-              className="px-4 mt-2 font-normal border-white btn btn-sm btn-ghost hover:bg-white hover:text-indigo"
+              className="px-4 mt-2 font-normal border-white btn btn-sm btn-ghost hover:bg-white hover:text-indigo scroll-smooth focus:scroll-auto"
             >
               More
             </a>
@@ -45,7 +45,7 @@ const Hero = () => {
         </div>
       </div>
       {/*  */}
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 60 1440 250">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 60 1440 250" id="more">
         <path
           fill="#83A2FF"
           fillOpacity="1"
@@ -53,7 +53,7 @@ const Hero = () => {
         ></path>
       </svg>
       {/*  */}
-      <div className="bg-background" id="more">
+      <div className="bg-background">
         {/* <img
         src={ele}
         alt=""
@@ -117,7 +117,7 @@ const Hero = () => {
       </svg>
       {/*  */}
       <div className="pb-3 bg-indigo">
-        <div className="max-w-md px-6 mx-auto sm:max-w-xl md:max-w-5xl ">
+        <div className="max-w-md px-6 mx-auto sm:max-w-xl md:max-w-5xl mb-[2rem]">
           <div className="flex-1 py-5 text-white md:p-12 md:my-auto">
             <h1
               className="mb-3 text-5xl font-bold text-center"
@@ -151,7 +151,7 @@ const Hero = () => {
             <div
               className="flex my-10 w-[20rem] h-[25rem] bg-white rounded-xl border mx-auto md:hidden"
               data-aos="fade-up"
-              data-aos-duration="2000"
+              data-aos-duration="1500"
             >
               <div className="mx-auto my-auto space-y-6">
                 <img
@@ -206,7 +206,7 @@ const Hero = () => {
             <div
               className="flex w-[20rem] h-[25rem] bg-white rounded-xl border mx-auto"
               data-aos="fade-up"
-              data-aos-duration="2000"
+              data-aos-duration="1500"
             >
               <div className="mx-auto my-auto space-y-6">
                 <img
@@ -239,4 +239,4 @@ const Hero = () => {
     </>
   );
 };
-export default Hero;
+export default Dashboard;

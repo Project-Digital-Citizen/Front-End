@@ -109,35 +109,37 @@ const Login = () => {
                   id="outlined-basic"
                   label="Email"
                   variant="outlined"
-                  className="w-full animate__animated animate__fadeInLeftBig"
+                  className="w-full animate__animated animate__bounceIn"
                   onBlur={(e) => handleFormValueBlur(e, "email")}
                 />
               </div>
-              <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
-                <TextField
-                  id="outlined-basic"
-                  label="Password"
-                  type={showPassword}
-                  variant="outlined"
-                  className="w-full animate__animated animate__fadeInRightBig"
-                  onBlur={(e) => handleFormValueBlur(e, "password")}
-                />
-                <div className="relative ">
-                  <button
-                    type="button"
-                    onClick={handleTogglePassword}
-                    className="absolute transform -translate-y-1/2 cursor-pointer bottom-3 md:top-1/2 right-4"
-                  >
-                    {showPassword == "text" ? (
-                      <span role="img" aria-label="Hide Password">
-                        <FaRegEyeSlash />
-                      </span>
-                    ) : (
-                      <span role="img" aria-label="Show Password">
-                        <FaRegEye />
-                      </span>
-                    )}
-                  </button>
+              <div className="animate__animated animate__bounceIn">
+                <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
+                  <TextField
+                    id="outlined-basic"
+                    label="Password"
+                    type={showPassword}
+                    variant="outlined"
+                    className="w-full"
+                    onBlur={(e) => handleFormValueBlur(e, "password")}
+                  />
+                  <div className="relative ">
+                    <button
+                      type="button"
+                      onClick={handleTogglePassword}
+                      className="absolute transform -translate-y-1/2 cursor-pointer bottom-3 md:top-1/2 right-4"
+                    >
+                      {showPassword == "text" ? (
+                        <span role="img" aria-label="Hide Password">
+                          <FaRegEyeSlash />
+                        </span>
+                      ) : (
+                        <span role="img" aria-label="Show Password">
+                          <FaRegEye />
+                        </span>
+                      )}
+                    </button>
+                  </div>
                 </div>
               </div>
               <div className="flex flex-row-reverse pt-2">

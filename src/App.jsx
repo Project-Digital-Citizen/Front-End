@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Hero from "./pages/Hero";
+import Dashboard from "./pages/Dashboard";
 import FormKTP from "./pages/FormKTP";
 import FormDomisili from "./pages/FormDomisili";
 import StatusPengajuan from "./pages/StatusPengajuan";
@@ -26,7 +26,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Hero />} />
+        <Route path="/" element={<Dashboard />} />
         <Route path="/admin" element={<BerandaADM />} />
         <Route path="/mailinglist" element={<Mailinglist />} />
         <Route path="/verifikasiktp" element={<VerifikasiKTP />} />
