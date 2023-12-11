@@ -40,4 +40,4 @@ const ScrollUpBtn = () => {
   );
 };
 
-export default ScrollUpBtn;
+export { ScrollUpBtn };
