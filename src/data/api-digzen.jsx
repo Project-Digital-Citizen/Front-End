@@ -35,4 +35,13 @@ const API = axios.create({
   },
 });
 
-export { regAPI, logAPI, otpAPI, resendOTP, API };
+const ktpAPI = axios.create({
+  baseURL: CONFIG.KTP_ENDPOINT,
+  headers: {
+    "Content-Type": "multipart/form-data",
+  },
+  maxContentLength: Infinity,
+  maxBodyLength: Infinity,
+});
+
+export { regAPI, logAPI, otpAPI, resendOTP, API, ktpAPI };

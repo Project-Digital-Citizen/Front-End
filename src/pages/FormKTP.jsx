@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 import { Cookies } from "react-cookie";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
-import { API } from "../data/api-digzen";
+import { ktpAPI } from "../data/api-digzen";
 import CustomError from "../util/customError";
 
 const FormKTP = () => {
@@ -71,22 +71,18 @@ const FormKTP = () => {
         for (let key in data) {
           formData.append(key, data[key]);
         }
-        console.log(formData.get("selfieImage"));
-        const response = await API.post(
-          `ktp/${cookies.get("userLog").userId}`,
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
+        const response = await ktpAPI.post(
+          `/${cookies.get("userLog").userId}`,
+          formData
         );
-
+        console.log(response);
         if (response.status == 201) {
           Swal.fire({
             title: "Sukses",
             icon: "success",
             text: response.data.message,
+            showConfirmButton: false,
+            timer: 1000,
           }).then(() => {
             navigate("/statuspengajuan");
           });
