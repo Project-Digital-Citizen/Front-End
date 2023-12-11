@@ -11,6 +11,10 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Cookies } from "react-cookie";
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
+import { API } from "../data/api-digzen";
+import CustomError from "../util/customError";
 
 const FormKTP = () => {
   const cookies = new Cookies();
@@ -20,9 +24,11 @@ const FormKTP = () => {
       navigate("/login");
     }
   });
+
   const navigate = useNavigate();
-  const [label, setLabel] = useState({});
+  const [data, setForm] = useState({});
   const [TTL, setTTL] = useState({});
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const handleTTL = (e, name) => {
     const formTTL = { ...TTL };
@@ -40,9 +46,46 @@ const FormKTP = () => {
   };
 
   const handleFormValue = (e, name) => {
-    const formDataCopy = { ...label };
+    const formDataCopy = { ...data };
     formDataCopy[name] = e.target.value;
-    setLabel(formDataCopy);
+    setForm(formDataCopy);
+  };
+
+  const handleRegClick = async (e) => {
+    e.preventDefault();
+    setIsDisabled(true);
+    try {
+      if (data) {
+        const response = await API.post(
+          `/ktp/${cookies.get("userLog").userId}`,
+          JSON.stringify(data)
+        );
+
+        if (response.status == 201) {
+          Swal.fire({
+            title: "Sukses",
+            icon: "success",
+            text: response.data.message,
+          }).then(() => {
+            navigate("/statuspengajuan");
+          });
+        }
+      } else {
+        throw new CustomError(
+          "validationError",
+          "Form tidak lengkap mohon lengkapi form terlebih dahulu"
+        );
+      }
+    } catch (err) {
+      console.log(err);
+      if (err.name == "validationError") {
+        toast.error(err.message);
+      } else {
+        toast.error(err?.response?.data?.message);
+      }
+    } finally {
+      setIsDisabled(false);
+    }
   };
 
   const tanggalSelect = [];
@@ -362,7 +405,11 @@ const FormKTP = () => {
                   />
                 </div>
                 <div className="flex-row-reverse pt-4 pb-6 md:flex">
-                  <button className="text-white btn btn-block bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo md:w-1/6">
+                  <button
+                    disabled={isDisabled}
+                    onClick={handleRegClick}
+                    className="text-white btn btn-block bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo md:w-1/6"
+                  >
                     Submit
                   </button>
                 </div>
