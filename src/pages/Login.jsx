@@ -104,22 +104,22 @@ const Login = () => {
           <hr className="bg-indigo text-black p-[1px] mx-10 " />
           <div className="px-10">
             <form action="">
-              <div className="justify-between w-full pt-4 animate__animated animate__fadeInLeftBig form-control md:flex md:flex-row">
+              <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
                 <TextField
                   id="outlined-basic"
                   label="Email"
                   variant="outlined"
-                  className="w-full"
+                  className="w-full animate__animated animate__fadeInLeftBig"
                   onBlur={(e) => handleFormValueBlur(e, "email")}
                 />
               </div>
-              <div className="justify-between w-full pt-4 animate__animated animate__fadeInRightBig form-control md:flex md:flex-row">
+              <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
                 <TextField
                   id="outlined-basic"
                   label="Password"
                   type={showPassword}
                   variant="outlined"
-                  className="w-full"
+                  className="w-full animate__animated animate__fadeInRightBig"
                   onBlur={(e) => handleFormValueBlur(e, "password")}
                 />
                 <div className="relative ">
