@@ -127,6 +127,10 @@ const VerifikasiKTP = () => {
                   <span className="font-black label-text">Kewarganegaraan</span>
                   <span className="w-full max-w-screen md:w-3/5">Konoha</span>
                 </div>
+                <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
+                  <span className="font-black label-text">Golongan Darah</span>
+                  <span className="w-full max-w-screen md:w-3/5">O</span>
+                </div>
 
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
                   <span className="font-black label-text">
@@ -159,19 +163,19 @@ const VerifikasiKTP = () => {
                     </Modal>
                   </div>
                 </div>
-                <div className="justify-between w-full pt-4">
+                {/* <div className="justify-between w-full pt-4">
                   <span className="font-black label-text">Keterangan</span>
                   <textarea
-                    value="loremfksdjlg bsdug sdiufghskjdfbglkjd fgudfbgkjs dbfgkjs dofkjgb sokdjfg skjdfgjiabgjasdkgj adlskjgb alkdsjg ajkdshg akjdsgh akjdshg akjdsg kdjsgh akjdgb akjdg ajkdshg lakjdsg lakjdsbg lkajsdb gakjsdbg alksjdbg aksjdgb aksjdgb lakjdsg akjsdbg alkjsdbg lkjasdbg akjdbg lakjdsgb lsjkdgb oausgb alkjsdbgl kajsdbgoiauwbeg jabsdlgkj alsdkjgb akjdsbg kjabds gkjabsdog kjbalskdjgbjasd bgjasb dglkajdgsohwejkg alsdkjgburig touasdgkjbfdgyureglkjrbg oi jdsgoiuadb gkj asdbguwrbg  "
+                    value="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, recusandae quos alias odio quam eaque. Repellendus delectus impedit sit nemo cumque?"
                     className="w-full bg-white textarea textarea-bordered textarea-md max-w-screen md:max-w-md: md:mt-2 lg:max-w-2xl xl:max-w-4xl"
                     disabled
                   />
-                </div>
+                </div> */}
                 <div className="flex-row-reverse gap-1 pt-4 pb-6 md:flex">
                   <button className="text-white btn btn-block bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo md:w-1/6">
                     Accept
                   </button>
-                  <button className="text-white btn btn-block bg-red-600 btn-error hover:bg-white hover:text-red-600 hover:border-2 hover:border-red-600 md:w-1/6">
+                  <button className="text-white bg-red-600 btn btn-block btn-error hover:bg-white hover:text-red-600 hover:border-2 hover:border-red-600 md:w-1/6">
                     Reject
                   </button>
                 </div>

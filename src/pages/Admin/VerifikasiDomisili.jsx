@@ -1,12 +1,8 @@
 import Footer from "../../components/Footer";
 import Modal from "../../components/Modal";
 import NavbarADM from "../../components/NavbarADM";
-import photo from "../../assets/images/photo.png";
-import { useState } from "react";
 
 const VerifikasiDomisili = () => {
-  const [showModal, setShowModal] = useState(false);
-
   return (
     <>
       <NavbarADM />
@@ -23,44 +19,32 @@ const VerifikasiDomisili = () => {
               {/*  */}
               <form action="">
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
-                  <span className="font-black label-text">Nama Lengkap</span>
+                  <span className="font-black label-text">No. KK</span>
                   <span className="w-full max-w-screen md:w-3/5">
-                    Ariel Tatum
+                    23897452973845
                   </span>
                 </div>
 
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
                   <span className="font-black label-text">
-                    Tempat, tanggal lahir
+                    Nama Kepala Keluarga
                   </span>
-                  <span className="w-full max-w-screen md:w-3/5">
-                    Jakarta, 99-99-00
-                  </span>
+                  <span className="w-full max-w-screen md:w-3/5">Citizen</span>
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
-                  <span className="font-black label-text">Jenis Kelamin</span>
-                  <span className="w-full max-w-screen md:w-3/5">
-                    Laku-Laku
-                  </span>
+                  <span className="font-black label-text">Alamat Baru</span>
+                  <span className="w-full max-w-screen md:w-3/5">Citizen</span>
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
-                  <span className="font-black label-text">Alamat</span>
-                  <span className="w-full max-w-screen md:w-3/5">
-                    Jl. Konogo Sari
-                  </span>
-                </div>
-                <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
-                  <span className="font-black label-text md:ml-12">RT/RW</span>
-                  <span className="w-full max-w-screen md:w-2/4 md:-">
-                    003/009
-                  </span>
+                  <span className="font-black label-text">Provinsi</span>
+                  <span className="w-full max-w-screen md:w-3/5">Citizen</span>
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
                   <span className="font-black label-text md:ml-12">
-                    Kel/Desa
+                    Kabupaten/Kota
                   </span>
                   <span className="w-full max-w-screen md:w-2/4 md:-">
-                    Ichiraku
+                    Citizen
                   </span>
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
@@ -68,74 +52,79 @@ const VerifikasiDomisili = () => {
                     Kecamatan
                   </span>
                   <span className="w-full max-w-screen md:w-2/4 md:-">
-                    Center Ichiraku
+                    Citizen
                   </span>
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
-                  <span className="font-black label-text">Agama</span>
-                  <span className="w-full max-w-screen md:w-3/5">Agama</span>
+                  <span className="font-black label-text md:ml-12">
+                    Kelurahan/Desa
+                  </span>
+                  <span className="w-full max-w-screen md:w-2/4 md:-">
+                    Citizen
+                  </span>
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
-                  <span className="font-black label-text">Nomor KTP</span>
+                  <span className="font-black label-text">
+                    Klasifikasi Pindah
+                  </span>
+                  <span className="w-full max-w-screen md:w-3/5">Citizen</span>
+                </div>
+                <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
+                  <span className="font-black label-text">
+                    NIK Keluarga Yang Pindah
+                  </span>
                   <span className="w-full max-w-screen md:w-3/5">
                     928743562834
                   </span>
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
-                  <span className="font-black label-text">Pekerjaan</span>
-                  <span className="w-full max-w-screen md:w-3/5">Anbu</span>
-                </div>
-                <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
-                  <span className="font-black label-text">Nomor Telepon</span>
-                  <span className="w-full max-w-screen md:w-3/5">
-                    081238413
-                  </span>
+                  <span className="font-black label-text">Alasan Pindah</span>
+                  <span className="w-full max-w-screen md:w-3/5">Citizen</span>
                 </div>
 
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
                   <span className="font-black label-text">
-                    Surat Pengantar RT
+                    KK Dari Daerah Asal
                   </span>
                   <div className="flex w-full max-w-screen md:w-3/5">
                     {/* <button className="btn btn-sm btn-block md:w-auto">
                       
                     </button> */}
-                    <Modal file="Pengantar_RT.pdf" source="gambar">
-                      Pengantar_RT.pdf
+                    <Modal
+                      file="KK Dari Daerah Asal"
+                      source="KK Dari Daerah Asal"
+                    >
+                      KK Dari Daerah Asal
                     </Modal>
                   </div>
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
                   <span className="font-black label-text">
-                    Surat Pengantar RW
+                    KTP Keluarga Yang Pindah
                   </span>
                   <div className="flex w-full max-w-screen md:w-3/5">
-                    <Modal file="Pengantar_RW.pdf" source="RW">
-                      Pengantar_RW.pdf
+                    <Modal
+                      file="KTP Keluarga Yang Pindah"
+                      source="KTP Keluarga Yang Pindah"
+                    >
+                      KTP Keluarga Yang Pindah
                     </Modal>
                   </div>
                 </div>
-                <div className="flex justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
-                  <span className="font-black label-text">Kartu Keluarga</span>
-                  <div className="flex w-full max-w-screen md:w-3/5">
-                    <Modal file="Kartu_Keluarga.pdf" source="KK">
-                      Kartu_Keluarga.pdf
-                    </Modal>
-                  </div>
-                </div>
-                <div className="justify-between w-full pt-4">
+
+                {/* <div className="justify-between w-full pt-4">
                   <span className="font-black label-text">Keterangan</span>
                   <textarea
                     value="loremfksdjlg bsdug sdiufghskjdfbglkjd fgudfbgkjs dbfgkjs dofkjgb sokdjfg skjdfgjiabgjasdkgj adlskjgb alkdsjg ajkdshg akjdsgh akjdshg akjdsg kdjsgh akjdgb akjdg ajkdshg lakjdsg lakjdsbg lkajsdb gakjsdbg alksjdbg aksjdgb aksjdgb lakjdsg akjsdbg alkjsdbg lkjasdbg akjdbg lakjdsgb lsjkdgb oausgb alkjsdbgl kajsdbgoiauwbeg jabsdlgkj alsdkjgb akjdsbg kjabds gkjabsdog kjbalskdjgbjasd bgjasb dglkajdgsohwejkg alsdkjgburig touasdgkjbfdgyureglkjrbg oi jdsgoiuadb gkj asdbguwrbg  "
                     className="w-full bg-white textarea textarea-bordered textarea-md max-w-screen md:max-w-md: md:mt-2 lg:max-w-2xl xl:max-w-4xl"
                     disabled
                   />
-                </div>
+                </div> */}
                 <div className="flex-row-reverse gap-1 pt-4 pb-6 md:flex">
                   <button className="text-white btn btn-block bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo md:w-1/6">
                     Accept
                   </button>
-                  <button className="text-white bg-red-600 btn btn-error hover:bg-white hover:text-red-600 hover:border-2 hover:border-red-600 md:w-1/6">
+                  <button className="mt-2 text-white bg-red-600 md:mt-0 btn btn-block btn-error hover:bg-white hover:text-red-600 hover:border-2 hover:border-red-600 md:w-1/6">
                     Reject
                   </button>
                 </div>

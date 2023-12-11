@@ -101,7 +101,7 @@ const FormKTP = () => {
           <div className="relative z-10 w-11/12 mx-auto bg-white shadow-2xl rounded-xl ">
             <h1 className="p-4 px-10 pt-6 text-2xl font-black text-indigo">
               {" "}
-              Form Pengajuan
+              Form Pengajuan KTP
             </h1>
             <hr className="bg-indigo text-black p-[1px] mx-10 " />
             <div className="px-10">
@@ -271,8 +271,8 @@ const FormKTP = () => {
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
                   <TextField
                     id="outlined-basic"
-                    label="Kewarganegaraan"
-                    placeholder="Kewarganegaraan"
+                    label="Pekerjaan"
+                    placeholder="Pekerjaan"
                     variant="outlined"
                     className="w-full"
                     // onBlur={(e) => handleFormValueBlur(e, "nama")}
@@ -281,14 +281,32 @@ const FormKTP = () => {
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
                   <TextField
                     id="outlined-basic"
-                    label="Golongan Darah"
-                    placeholder="Golongan Darah"
+                    label="Kewarganegaraan"
+                    placeholder="Kewarganegaraan"
                     variant="outlined"
                     className="w-full"
                     // onBlur={(e) => handleFormValueBlur(e, "nama")}
                   />
                 </div>
-
+                <div className="flex flex-row justify-between w-full gap-2 pt-4 form-control">
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">
+                      Golongan Darah
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={label}
+                      label="Golongan Darah"
+                      onChange={handleChange}
+                    >
+                      <MenuItem value={"A"}>A</MenuItem>
+                      <MenuItem value={"B"}>B</MenuItem>
+                      <MenuItem value={"AB"}>AB</MenuItem>
+                      <MenuItem value={"O"}>O</MenuItem>
+                    </Select>
+                  </FormControl>
+                </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
                   <label className="label">
                     <span className="font-black label-text">
