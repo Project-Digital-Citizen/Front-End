@@ -17,7 +17,7 @@ const Dashboard = () => {
       <div className="bg-indigo">
         <div className="px-6 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0 lg:h-[27rem]">
           <div
-            className="text-white py-5 md:p-12 flex-1 md:my-auto lg:ml-[8rem]"
+            className="text-white py-5 md:p-12 flex-1 md:my-auto lg:ml-[4rem] xl:mr-[10rem]"
             data-aos="fade-right"
           >
             <img
@@ -37,7 +37,7 @@ const Dashboard = () => {
             </a>
           </div>
           <div
-            className="hidden lg:flex w-[500px] h-auto p-5 my-auto lg:mr-[10rem]"
+            className="hidden lg:flex w-[500px] h-auto p-5 my-auto lg:mr-[4rem] xl:mr-[10rem]"
             data-aos="fade-left"
           >
             <img src={ilus} alt="Laptop" className="object-cover " />
