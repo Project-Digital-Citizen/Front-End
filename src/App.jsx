@@ -17,6 +17,10 @@ import AccountEdit from "./pages/Admin/AccountEdit";
 import OTP from "./pages/OTP";
 import LupaPW from "./pages/LupaPW";
 import ProfileAdm from "./pages/Admin/ProfileAdm";
+import "animate.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
+AOS.init();
 
 const App = () => {
   return (

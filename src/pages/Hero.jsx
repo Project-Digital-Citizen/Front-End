@@ -16,7 +16,10 @@ const Hero = () => {
       <Navbar />
       <div className="bg-indigo">
         <div className="px-6 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0 lg:h-[27rem]">
-          <div className="text-white py-5 md:p-12 flex-1 md:my-auto lg:ml-[8rem]">
+          <div
+            className="text-white py-5 md:p-12 flex-1 md:my-auto lg:ml-[8rem]"
+            data-aos="fade-right"
+          >
             <img
               src={ilus}
               alt="Laptop"
@@ -33,7 +36,10 @@ const Hero = () => {
               More
             </a>
           </div>
-          <div className="hidden lg:flex w-[500px] h-auto p-5 my-auto lg:mr-[10rem]">
+          <div
+            className="hidden lg:flex w-[500px] h-auto p-5 my-auto lg:mr-[10rem]"
+            data-aos="fade-left"
+          >
             <img src={ilus} alt="Laptop" className="object-cover " />
           </div>
         </div>
@@ -59,13 +65,17 @@ const Hero = () => {
           className="absolute right-0 object-cover object-left w-32 h-52 top-[33rem]"
         />
         <div className="px-6 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0 lg:h-[20rem] lg:mx-[5rem]">
-          <div className="flex flex-wrap py-5 text-black md:p-12 md:my-auto lg:hidden">
+          <div
+            className="flex flex-wrap py-5 text-black md:p-12 md:my-auto lg:hidden"
+            data-aos="fade-right"
+          >
             <img
               src={ilus}
               alt="Laptop"
               className="object-cover object-center w-full h-full sm:mt-6"
+              data-aos="fade-right"
             />
-            <div className="pt-3 lg:hidden">
+            <div className="pt-3 lg:hidden" data-aos="fade-left">
               <h1 className="mb-3 text-5xl font-bold">Digital Citizen</h1>
               <p className="text-justify">
                 Digital citizen merupakan website yang dirancang untuk
@@ -76,10 +86,16 @@ const Hero = () => {
               </p>
             </div>
           </div>
-          <div className="hidden lg:flex lg:w-[1500px] h-auto p-5 mx-auto my-auto">
+          <div
+            className="hidden lg:flex lg:w-[1500px] h-auto p-5 mx-auto my-auto"
+            data-aos="fade-right"
+          >
             <img src={ilus} alt="Laptop" className="object-cover " />
           </div>
-          <div className="flex-col hidden h-auto p-5 mx-auto my-auto mr-6 lg:flex ">
+          <div
+            className="flex-col hidden h-auto p-5 mx-auto my-auto mr-6 lg:flex "
+            data-aos="fade-left"
+          >
             <h1 className="mb-3 text-5xl font-bold">Digital Citizen</h1>
             <p className="text-justify">
               Digital citizen merupakan website yang dirancang untuk memudahkan
@@ -103,10 +119,17 @@ const Hero = () => {
       <div className="pb-3 bg-indigo">
         <div className="max-w-md px-6 mx-auto sm:max-w-xl md:max-w-5xl ">
           <div className="flex-1 py-5 text-white md:p-12 md:my-auto">
-            <h1 className="mb-3 text-5xl font-bold text-center">
+            <h1
+              className="mb-3 text-5xl font-bold text-center"
+              data-aos="fade-up"
+            >
               Pengajuan Surat
             </h1>
-            <div className="flex my-10 w-[20rem] h-[25rem] bg-white rounded-xl border mx-auto md:hidden">
+            <div
+              className="flex my-10 w-[20rem] h-[25rem] bg-white rounded-xl border mx-auto md:hidden"
+              data-aos="fade-up"
+              data-aos-duration="1500"
+            >
               <div className="mx-auto my-auto space-y-6">
                 <img src={ktp} alt="KTP" className="mx-auto shadow-lg" />
                 <p className="text-xl font-black text-center text-black">KTP</p>
@@ -125,7 +148,11 @@ const Hero = () => {
               </div>
             </div>
             {/*  */}
-            <div className="flex my-10 w-[20rem] h-[25rem] bg-white rounded-xl border mx-auto md:hidden">
+            <div
+              className="flex my-10 w-[20rem] h-[25rem] bg-white rounded-xl border mx-auto md:hidden"
+              data-aos="fade-up"
+              data-aos-duration="2000"
+            >
               <div className="mx-auto my-auto space-y-6">
                 <img
                   src={domisili}
@@ -153,7 +180,11 @@ const Hero = () => {
             {/*  */}
           </div>
           <div className="hidden w-auto h-auto gap-4 p-5 mx-auto my-auto md:flex lg:mr-6 ">
-            <div className="flex w-[20rem] h-[25rem] bg-white rounded-xl border mx-auto">
+            <div
+              className="flex w-[20rem] h-[25rem] bg-white rounded-xl border mx-auto"
+              data-aos="fade-up"
+              data-aos-duration="1500"
+            >
               <div className="mx-auto my-auto space-y-6">
                 <img src={ktp} alt="KTP" className="mx-auto shadow-lg" />
                 <p className="text-xl font-black text-center text-black">KTP</p>
@@ -172,7 +203,11 @@ const Hero = () => {
               </div>
             </div>
             {/*  */}
-            <div className="flex w-[20rem] h-[25rem] bg-white rounded-xl border mx-auto">
+            <div
+              className="flex w-[20rem] h-[25rem] bg-white rounded-xl border mx-auto"
+              data-aos="fade-up"
+              data-aos-duration="2000"
+            >
               <div className="mx-auto my-auto space-y-6">
                 <img
                   src={domisili}
