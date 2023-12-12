@@ -1,13 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import ele from "../assets/images/ele.png";
 import { regAPI } from "../data/api-digzen";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
 import CustomError from "../util/customError";
 import Swal from "sweetalert2";
 import TextField from "@mui/material/TextField";
 import { IoMdArrowRoundBack } from "react-icons/io";
+import { Cookies } from "react-cookie";
 
 const Register = () => {
   const [formData, setFormData] = useState({});
@@ -62,6 +63,12 @@ const Register = () => {
   };
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (new Cookies().get("userData")) {
+      navigate("/");
+    }
+  });
 
   return (
     <>

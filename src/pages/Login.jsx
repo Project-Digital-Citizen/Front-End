@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import ele from "../assets/images/ele.png";
 import { logAPI, API } from "../data/api-digzen";
-import { useState } from "react";
-import { useCookies } from "react-cookie";
+import { useEffect, useState } from "react";
+import { useCookies, Cookies } from "react-cookie";
 import { jwtDecode } from "jwt-decode";
 import { ToastContainer, toast } from "react-toastify";
 import CustomError from "../util/customError";
@@ -75,6 +75,12 @@ const Login = () => {
       setIsDisabled(false);
     }
   };
+
+  useEffect(() => {
+    if (new Cookies().get("userData")) {
+      navigate("/");
+    }
+  });
 
   return (
     <>
