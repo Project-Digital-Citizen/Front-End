@@ -39,7 +39,6 @@ const ktpAPI = axios.create({
   baseURL: CONFIG.KTP_ENDPOINT,
   headers: {
     "Content-Type": "multipart/form-data",
-    "Access-Control-Allow-Origin": "*",
   },
   maxContentLength: Infinity,
   maxBodyLength: Infinity,

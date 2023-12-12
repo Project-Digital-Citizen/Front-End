@@ -15,7 +15,10 @@ import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { ktpAPI } from "../data/api-digzen";
 import CustomError from "../util/customError";
-import DatePicker from "../components/DatePicker";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import dayjs from "dayjs";
 
 const FormKTP = () => {
   const cookies = new Cookies();
@@ -28,29 +31,12 @@ const FormKTP = () => {
 
   const navigate = useNavigate();
   const [data, setForm] = useState({});
-  const [TTL, setTTL] = useState({});
+
   const [isDisabled, setIsDisabled] = useState(false);
-
-  const handleTTL = (e, name) => {
-    const formTTL = { ...TTL };
-    formTTL[name] = e.target.value;
-    setTTL(formTTL);
-
-    const { tempat, tanggal, bulan, tahun } = TTL;
-
-    if (tempat && tanggal && bulan && tahun) {
-      const formDataCopy = {
-        tempatTanggalLahir: `${tempat}, ${tanggal}-${bulan}-${tahun}`,
-        ...data,
-      };
-      console.log(formDataCopy);
-      setForm(formDataCopy);
-    }
-  };
 
   const handleFormValue = (e, name) => {
     const formDataCopy = { ...data };
-    formDataCopy[name] = e.target.value;
+    formDataCopy[name] = e;
     if (
       name == "suratRTImage" ||
       name == "suratRWImage" ||
@@ -58,6 +44,20 @@ const FormKTP = () => {
       name == "selfieImage"
     ) {
       formDataCopy[name] = e.target.files[0];
+    }
+    if (name == "tempat" || name == "tanggal") {
+      let tempat = formDataCopy["tempat"];
+      let tanggal = formDataCopy["tanggal"] ? formDataCopy["tanggal"] : null;
+
+      if (name == "tempat") {
+        tempat = e;
+      } else if (name == "tanggal") {
+        tanggal = tanggal ? dayjs(tanggal).format("DD-MM-YYYY") : null;
+      }
+
+      if (tempat && tanggal) {
+        formDataCopy["tempatTanggalLahir"] = `${tempat}, ${tanggal}`;
+      }
     }
 
     setForm(formDataCopy);
@@ -72,10 +72,13 @@ const FormKTP = () => {
         for (let key in data) {
           formData.append(key, data[key]);
         }
-        const response = await ktpAPI.post(
-          `/${cookies.get("userLog").userId}`,
-          formData
-        );
+        const userId = cookies.get("userLog").userId;
+        const response = await ktpAPI.post(`/${userId}`, formData, {
+          headers: {
+            "Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
+          },
+          withCredentials: true,
+        });
         console.log(response);
         if (response.status == 201) {
           Swal.fire({
@@ -199,7 +202,7 @@ const FormKTP = () => {
                     type="number"
                     placeholder="xxxxxxxxxx"
                     className="w-full"
-                    onBlur={(e) => handleFormValue(e, "NIK")}
+                    onBlur={(e) => handleFormValue(e.target.value, "NIK")}
                   />
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
@@ -209,7 +212,7 @@ const FormKTP = () => {
                     placeholder="Nama Lengkap"
                     variant="outlined"
                     className="w-full"
-                    onBlur={(e) => handleFormValue(e, "nama")}
+                    onBlur={(e) => handleFormValue(e.target.value, "nama")}
                   />
                 </div>
                 {/* ttl mobile */}
@@ -232,11 +235,16 @@ const FormKTP = () => {
                     placeholder="Tempat"
                     variant="outlined"
                     className="w-full"
-                    onChange={(e) => handleTTL(e, "tempat")}
+                    onChange={(e) => handleFormValue(e.target.value, "tempat")}
                   />
-                  <FormControl fullWidth>
-                    <DatePicker />
-                  </FormControl>
+
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DatePicker
+                      label="Tanggal Lahir"
+                      format="DD-MM-YYYY"
+                      onChange={(e) => handleFormValue(e, "tanggal")}
+                    />
+                  </LocalizationProvider>
                   {/* <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">
                       Tanggal
@@ -282,7 +290,9 @@ const FormKTP = () => {
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
                       label="Jenis Kelamin"
-                      onChange={(e) => handleFormValue(e, "jenisKelamin")}
+                      onChange={(e) =>
+                        handleFormValue(e.target.value, "jenisKelamin")
+                      }
                     >
                       <MenuItem value={"Laki-Laki"}>Laki-Laki</MenuItem>
                       <MenuItem value={"Perempuan"}>Perempuan</MenuItem>
@@ -296,7 +306,7 @@ const FormKTP = () => {
                     placeholder=""
                     variant="outlined"
                     className="w-full"
-                    onBlur={(e) => handleFormValue(e, "alamat")}
+                    onBlur={(e) => handleFormValue(e.target.value, "alamat")}
                   />
                 </div>
                 <div className="flex flex-col justify-between w-full gap-2 pt-4 form-control md:flex md:flex-row">
@@ -306,7 +316,7 @@ const FormKTP = () => {
                     placeholder="xx/xx"
                     variant="outlined"
                     className="w-full"
-                    onBlur={(e) => handleFormValue(e, "rtRw")}
+                    onBlur={(e) => handleFormValue(e.target.value, "rtRw")}
                   />
                   <TextField
                     id="outlined-basic"
@@ -314,7 +324,9 @@ const FormKTP = () => {
                     placeholder="Kelurahan/Desa"
                     variant="outlined"
                     className="w-full"
-                    onBlur={(e) => handleFormValue(e, "kelurahanDesa")}
+                    onBlur={(e) =>
+                      handleFormValue(e.target.value, "kelurahanDesa")
+                    }
                   />
                   <TextField
                     id="outlined-basic"
@@ -322,7 +334,7 @@ const FormKTP = () => {
                     placeholder="Kecamatan"
                     variant="outlined"
                     className="w-full"
-                    onBlur={(e) => handleFormValue(e, "kecamatan")}
+                    onBlur={(e) => handleFormValue(e.target.value, "kecamatan")}
                   />
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
@@ -332,7 +344,7 @@ const FormKTP = () => {
                     placeholder="Agama"
                     variant="outlined"
                     className="w-full"
-                    onBlur={(e) => handleFormValue(e, "agama")}
+                    onBlur={(e) => handleFormValue(e.target.value, "agama")}
                   />
                 </div>
                 <div className="flex flex-row justify-between w-full gap-2 pt-4 form-control">
@@ -344,7 +356,7 @@ const FormKTP = () => {
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
                       label="Status Perkawinan"
-                      onBlur={(e) => handleFormValue(e, "status")}
+                      onBlur={(e) => handleFormValue(e.target.value, "status")}
                     >
                       <MenuItem value={"Belum Menikah"}>Belum Menikah</MenuItem>
                       <MenuItem value={"Sudah Menikah"}>Sudah Menikah</MenuItem>
@@ -358,7 +370,7 @@ const FormKTP = () => {
                     placeholder="Pekerjaan"
                     variant="outlined"
                     className="w-full"
-                    onBlur={(e) => handleFormValue(e, "pekerjaan")}
+                    onBlur={(e) => handleFormValue(e.target.value, "pekerjaan")}
                   />
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
@@ -368,7 +380,9 @@ const FormKTP = () => {
                     placeholder="Kewarganegaraan"
                     variant="outlined"
                     className="w-full"
-                    onBlur={(e) => handleFormValue(e, "kewarganegaraan")}
+                    onBlur={(e) =>
+                      handleFormValue(e.target.value, "kewarganegaraan")
+                    }
                   />
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
@@ -380,7 +394,9 @@ const FormKTP = () => {
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
                       label="Golongan Darah"
-                      onChange={(e) => handleFormValue(e, "golonganDarah")}
+                      onChange={(e) =>
+                        handleFormValue(e.target.value, "golonganDarah")
+                      }
                     >
                       <MenuItem value={"A"}>A</MenuItem>
                       <MenuItem value={"B"}>B</MenuItem>
