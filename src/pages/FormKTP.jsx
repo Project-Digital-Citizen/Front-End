@@ -15,6 +15,7 @@ import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { ktpAPI } from "../data/api-digzen";
 import CustomError from "../util/customError";
+import DatePicker from "../components/DatePicker";
 
 const FormKTP = () => {
   const cookies = new Cookies();
@@ -223,6 +224,9 @@ const FormKTP = () => {
                   />
                 </div>
                 {/* ttl large */}
+                <div className="flex-row justify-between hidden w-full gap-2 pt-4 md:flex form-control">
+                  <DatePicker />
+                </div>
                 <div className="flex-row justify-between hidden w-full gap-2 pt-4 md:flex form-control">
                   <TextField
                     id="outlined-basic"
