@@ -213,7 +213,7 @@ const FormKTP = () => {
                   />
                 </div>
                 {/* ttl mobile */}
-                <div className="flex flex-row justify-between w-full gap-2 pt-4 md:hidden form-control">
+                {/* <div className="flex flex-row justify-between w-full gap-2 pt-4 md:hidden form-control">
                   <TextField
                     id="outlined-basic"
                     label="Tempat, Tanggal Lahir"
@@ -222,12 +222,10 @@ const FormKTP = () => {
                     className="w-full"
                     onBlur={(e) => handleFormValue(e, "tempatTanggalLahir")}
                   />
-                </div>
+                </div> */}
                 {/* ttl large */}
-                <div className="flex-row justify-between hidden w-full gap-2 pt-4 md:flex form-control">
-                  <DatePicker />
-                </div>
-                <div className="flex-row justify-between hidden w-full gap-2 pt-4 md:flex form-control">
+
+                <div className="flex-row justify-between w-full gap-2 pt-4 md:flex form-control">
                   <TextField
                     id="outlined-basic"
                     label="Tempat"
@@ -237,6 +235,9 @@ const FormKTP = () => {
                     onChange={(e) => handleTTL(e, "tempat")}
                   />
                   <FormControl fullWidth>
+                    <DatePicker />
+                  </FormControl>
+                  {/* <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">
                       Tanggal
                     </InputLabel>
@@ -270,7 +271,7 @@ const FormKTP = () => {
                     >
                       {tahunSelect}
                     </Select>
-                  </FormControl>
+                  </FormControl> */}
                 </div>
                 <div className="flex flex-row justify-between w-full gap-2 pt-4 form-control">
                   <FormControl fullWidth>
