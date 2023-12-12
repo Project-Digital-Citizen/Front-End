@@ -5,6 +5,64 @@ import { Cookies } from "react-cookie";
 const Navbar = () => {
   const cookies = new Cookies();
 
+  const handleUserLogMobile = () => {
+    if (cookies.get("userLog")) {
+      return (
+        <li>
+          <details className="w-auto ">
+            <summary className="p-2">
+              <div className="avatar placeholder">
+                <div className="w-12 rounded-full bg-neutral text-neutral-content">
+                  <span>U</span>
+                </div>
+              </div>
+              <i>{cookies.get("userData").user.nama}</i>
+            </summary>
+            <ul>
+              <li>
+                <a
+                  className="p-2 hover:border border-indigo"
+                  onClick={() => navigate("/profile")}
+                >
+                  Profile
+                </a>
+              </li>
+              <li>
+                <a
+                  className="p-2 hover:border border-indigo"
+                  onClick={() => {
+                    cookies.remove("userLog");
+                    cookies.remove("userData");
+                    navigate("/login");
+                  }}
+                >
+                  Logout
+                </a>
+              </li>
+            </ul>
+          </details>
+        </li>
+      );
+    } else {
+      return (
+        <li>
+          <button
+            className="mx-auto bg-white text-indigo btn btn-sm border-indigo hover:bg-indigo hover:text-white hover:border-1 hover:border-indigo"
+            onClick={() => navigate("/login")}
+          >
+            Masuk
+          </button>
+          <button
+            className="mx-auto text-white btn btn-sm bg-indigo border-indigo hover:bg-white hover:text-indigo hover:border-1 hover:border-indigo"
+            onClick={() => navigate("/register")}
+          >
+            Daftar
+          </button>
+        </li>
+      );
+    }
+  };
+
   const handleUserLog = () => {
     if (cookies.get("userLog")) {
       return (
@@ -198,36 +256,7 @@ const Navbar = () => {
                   ></label>
                   <ul className="min-h-full gap-4 p-6 menu menu-vertical w-58 bg-base-200">
                     {/* Sidebar content here */}
-                    <li>
-                      <details className="w-auto ">
-                        <summary className="p-2">
-                          <div className="avatar placeholder">
-                            <div className="w-12 rounded-full bg-neutral text-neutral-content">
-                              <span>U</span>
-                            </div>
-                          </div>
-                          <i>guest</i>
-                        </summary>
-                        <ul>
-                          <li>
-                            <a
-                              className="p-2 hover:border border-indigo"
-                              onClick={() => navigate("/profile")}
-                            >
-                              Profile
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="p-2 hover:border border-indigo"
-                              onClick={() => navigate("/login")}
-                            >
-                              Logout
-                            </a>
-                          </li>
-                        </ul>
-                      </details>
-                    </li>
+                    {handleUserLogMobile()}
                     <ul className="w-56 menu bg-base-200 rounded-box">
                       <li>
                         <a onClick={() => navigate("/")}>Beranda</a>

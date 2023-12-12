@@ -18,7 +18,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState("password");
   // eslint-disable-next-line no-unused-vars
   const [cookies, setCookie] = useCookies(["userLog"]);
-  const handleFormValueBlur = (e, name) => {
+  const handleFormValue = (e, name) => {
     const formDataCopy = { ...formData };
     formDataCopy[name] = e.target.value;
     setFormData(formDataCopy);
@@ -116,7 +116,7 @@ const Login = () => {
                   label="Email"
                   variant="outlined"
                   className="w-full animate__animated animate__bounceIn"
-                  onBlur={(e) => handleFormValueBlur(e, "email")}
+                  onChange={(e) => handleFormValue(e, "email")}
                 />
               </div>
               <div className="animate__animated animate__bounceIn">
@@ -127,7 +127,7 @@ const Login = () => {
                     type={showPassword}
                     variant="outlined"
                     className="w-full"
-                    onBlur={(e) => handleFormValueBlur(e, "password")}
+                    onChange={(e) => handleFormValue(e, "password")}
                   />
                   <div className="relative ">
                     <button
