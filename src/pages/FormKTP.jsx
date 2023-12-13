@@ -77,7 +77,6 @@ const FormKTP = () => {
           headers: {
             "Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
           },
-          withCredentials: true,
         });
         console.log(response);
         if (response.status == 201) {
