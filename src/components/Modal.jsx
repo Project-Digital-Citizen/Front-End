@@ -1,7 +1,7 @@
 import { useState } from "react";
-import gambar from "../assets/images/ilustrasi01.png";
 
 const Modal = (props) => {
+  // eslint-disable-next-line react/prop-types
   const { children, file, source } = props;
   const [showModal, setShowModal] = useState(false);
   return (
@@ -19,8 +19,7 @@ const Modal = (props) => {
             <div className="w-11/12 max-w-5xl modal-box">
               <h3 className="text-lg font-bold">{file}</h3>
               <div className="">
-                <img src={{ source }} alt="" />
-                console.log ({source});
+                <img src={source} alt="" />
               </div>
               <div className="modal-action">
                 <form method="dialog">

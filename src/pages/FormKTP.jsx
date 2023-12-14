@@ -446,7 +446,12 @@ const FormKTP = () => {
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
                   <label className="label">
-                    <span className="font-black label-text">Photo</span>
+                    <span className="font-black label-text">
+                      Photo{" "}
+                      <small className="text-red-500">
+                        * Tambahkan Background Biru
+                      </small>
+                    </span>
                   </label>
                   <input
                     type="file"
