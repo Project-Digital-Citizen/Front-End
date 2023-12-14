@@ -8,27 +8,35 @@ import { useEffect, useState } from "react";
 const RenderList = (props) => {
   const navigate = useNavigate();
   const data = props?.dataPengajuan?.data?.data;
-  return (
-    <>
-      {data.map((el, idx) => (
-        <>
-          <tr key={idx}>
-            <th>{idx + 1}</th>
-            <td>{el.nama}</td>
-            <td>KTP</td>
-            <td>
-              <span
-                className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo btn-xs"
-                onClick={() => navigate("/verifikasiktp")}
-              >
-                Verify
-              </span>
-            </td>
-          </tr>
-        </>
-      ))}
-    </>
-  );
+  if (!data || data.length === 0) {
+    return (
+      <tr>
+        <td colSpan="4">No data available</td>
+      </tr>
+    );
+  } else {
+    return (
+      <>
+        {data.map((el, idx) => (
+          <>
+            <tr key={idx}>
+              <th>{idx + 1}</th>
+              <td>{el.nama}</td>
+              <td>KTP</td>
+              <td>
+                <span
+                  className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo btn-xs"
+                  onClick={() => navigate("/verifikasiktp")}
+                >
+                  Verify
+                </span>
+              </td>
+            </tr>
+          </>
+        ))}
+      </>
+    );
+  }
 };
 
 const Mailinglist = () => {
@@ -36,12 +44,17 @@ const Mailinglist = () => {
   const [dataPengajuan, setDataPengajuan] = useState([]);
 
   const pending = async () => {
-    const response = await API.get("ktp");
-    setDataPengajuan(response);
+    try {
+      const response = await API.get("ktp");
+      setDataPengajuan(response);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
 
   useEffect(() => {
     pending();
+    console.log(dataPengajuan);
   }, []);
 
   return (
@@ -67,103 +80,7 @@ const Mailinglist = () => {
                 </tr>
               </thead>
               <tbody>
-                {/* row 1 */}
-                {<RenderList dataPengajuan={dataPengajuan} />}
-                {/* row 2 */}
-                <tr>
-                  <th>2</th>
-                  <td>Hart Hagerty</td>
-                  <td>Domisili</td>
-                  <td>
-                    <span
-                      className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo btn-xs"
-                      onClick={() => navigate("/verifikasidomisili")}
-                    >
-                      Verify
-                    </span>
-                  </td>
-                </tr>
-                {/* row 3 */}
-                <tr>
-                  <th>3</th>
-                  <td>Brice Swyre</td>
-                  <td>KTP</td>
-                  <td>
-                    <span className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo btn-xs">
-                      Verify
-                    </span>
-                  </td>
-                </tr>
-                <tr>
-                  <th>3</th>
-                  <td>Brice Swyre</td>
-                  <td>KTP</td>
-                  <td>
-                    <span className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo btn-xs">
-                      Verify
-                    </span>
-                  </td>
-                </tr>
-                <tr>
-                  <th>3</th>
-                  <td>Brice Swyre</td>
-                  <td>KTP</td>
-                  <td>
-                    <span className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo btn-xs">
-                      Verify
-                    </span>
-                  </td>
-                </tr>
-                <tr>
-                  <th>3</th>
-                  <td>Brice Swyre</td>
-                  <td>KTP</td>
-                  <td>
-                    <span className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo btn-xs">
-                      Verify
-                    </span>
-                  </td>
-                </tr>
-                <tr>
-                  <th>3</th>
-                  <td>Brice Swyre</td>
-                  <td>KTP</td>
-                  <td>
-                    <span className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo btn-xs">
-                      Verify
-                    </span>
-                  </td>
-                </tr>
-                <tr>
-                  <th>3</th>
-                  <td>Brice Swyre</td>
-                  <td>KTP</td>
-                  <td>
-                    <span className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo btn-xs">
-                      Verify
-                    </span>
-                  </td>
-                </tr>
-                <tr>
-                  <th>3</th>
-                  <td>Brice Swyre</td>
-                  <td>KTP</td>
-                  <td>
-                    <span className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo btn-xs">
-                      Verify
-                    </span>
-                  </td>
-                </tr>
-                <tr>
-                  <th>3</th>
-                  <td>Brice Swyre</td>
-                  <td>KTP</td>
-                  <td>
-                    <span className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo btn-xs">
-                      Verify
-                    </span>
-                  </td>
-                </tr>
+                <RenderList dataPengajuan={dataPengajuan} />
               </tbody>
             </table>
           </div>

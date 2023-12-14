@@ -92,6 +92,9 @@ const NavbarADM = () => {
               <a onClick={() => navigate("/admin")}>Beranda</a>
             </li>
             <li>
+              <a onClick={() => navigate("/")}>Beranda User</a>
+            </li>
+            <li>
               <a onClick={() => navigate("/mailinglist")}>
                 Mailing List{" "}
                 <div className="badge badge-sm badge-accent badge-outline">
