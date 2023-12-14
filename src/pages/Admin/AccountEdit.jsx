@@ -1,5 +1,5 @@
 import Footer from "../../components/Footer";
-import Modal from "../../components/Modal";
+// import Modal from "../../components/Modal";
 import NavbarADM from "../../components/NavbarADM";
 import photo from "../../assets/images/photo.png";
 import { useState } from "react";

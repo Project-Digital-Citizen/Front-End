@@ -7,6 +7,13 @@ const regAPI = axios.create({
   },
 });
 
+const userAPI = axios.create({
+  baseURL: CONFIG.user_ENDPOINT,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
 const logAPI = axios.create({
   baseURL: CONFIG.LOG_ENDPOINT,
   headers: {
@@ -44,4 +51,4 @@ const ktpAPI = axios.create({
   maxBodyLength: Infinity,
 });
 
-export { regAPI, logAPI, otpAPI, resendOTP, API, ktpAPI };
+export { regAPI, logAPI, otpAPI, resendOTP, API, ktpAPI, userAPI };
