@@ -40,7 +40,6 @@ const RenderList = (props) => {
 };
 
 const Mailinglist = () => {
-  const navigate = useNavigate();
   const [dataPengajuan, setDataPengajuan] = useState([]);
 
   const pending = async () => {
@@ -54,7 +53,6 @@ const Mailinglist = () => {
 
   useEffect(() => {
     pending();
-    console.log(dataPengajuan);
   }, []);
 
   return (

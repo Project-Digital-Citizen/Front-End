@@ -1,8 +1,35 @@
 import { useNavigate } from "react-router-dom";
 import logoDigzen from "../assets/images/logo_3.png";
 import { Cookies } from "react-cookie";
+import { useEffect, useState } from "react";
+import { API } from "../data/api-digzen";
+
+const RenderList = (props) => {
+  // eslint-disable-next-line react/prop-types
+  const data = props?.dataPengajuan?.data?.data;
+  if (!data || data.length === 0) {
+    return 0;
+  } else {
+    return data.length;
+  }
+};
 
 const NavbarADM = () => {
+  const [dataPengajuan, setDataPengajuan] = useState([]);
+
+  const pending = async () => {
+    try {
+      const response = await API.get("ktp");
+      setDataPengajuan(response);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    pending();
+  }, []);
+
   const navigate = useNavigate();
   const cookies = new Cookies();
 
@@ -98,7 +125,7 @@ const NavbarADM = () => {
               <a onClick={() => navigate("/mailinglist")}>
                 Mailing List{" "}
                 <div className="badge badge-sm badge-accent badge-outline">
-                  +1
+                  <RenderList dataPengajuan={dataPengajuan} />
                 </div>
               </a>
             </li>
@@ -183,7 +210,7 @@ const NavbarADM = () => {
                     <a onClick={() => navigate("/mailinglist")}>
                       Mailing List{" "}
                       <div className="badge badge-sm badge-accent badge-outline">
-                        +1
+                        <RenderList dataPengajuan={dataPengajuan} />
                       </div>
                     </a>
                   </li>
