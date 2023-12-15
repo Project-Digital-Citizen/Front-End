@@ -57,7 +57,6 @@ const RenderList = (props) => {
       <>
         <Modal
           open={open2}
-          onClose={handleClose}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
