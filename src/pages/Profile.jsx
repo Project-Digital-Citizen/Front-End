@@ -215,16 +215,15 @@ const Profile = () => {
                 <span className="font-black label-text">Jenis Kelamin</span>
                 <span className="w-full max-w-screen md:w-3/5">Perempuan</span>
               </div> */}
-
               <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
                 <TextField
                   id="outlined-basic"
-                  label="Password"
+                  label="Change Password"
                   type={showPassword}
                   inputProps={{ minLength: 8 }}
                   variant="outlined"
                   className="w-full"
-                  // onBlur={(e) => handleFormValueBlur(e, "password")}
+                  onBlur={(value) => handleFormValue(value, "password")}
                 />
                 <div className="relative ">
                   <button
@@ -248,6 +247,7 @@ const Profile = () => {
                 <button
                   disabled={buttonDisable}
                   className="text-white btn btn-md bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo"
+                  onClick={handleEditSubmit}
                 >
                   Save
                 </button>

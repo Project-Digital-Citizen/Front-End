@@ -183,6 +183,7 @@ const Register = () => {
                   id="outlined-basic"
                   label="Password"
                   type={showPassword}
+                  inputMode="numeric"
                   inputProps={{ minLength: 8 }}
                   variant="outlined"
                   className="w-full"
