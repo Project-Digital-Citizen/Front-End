@@ -37,6 +37,69 @@ const RenderList = (props) => {
   } else {
     return (
       <>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              Edit
+            </Typography>
+            <Typography id="modal-modal-description" sx={{ mt: 1 }}>
+              <div className="justify-between w-full mt-2 form-control md:flex md:flex-row">
+                <TextField
+                  id="outlined-basic"
+                  label="Nama"
+                  type="text"
+                  placeholder="Nama Lengkap"
+                  variant="outlined"
+                  className="w-full"
+                  // onBlur={(e) => handleFormValueBlur(e, "password")}
+                />
+              </div>
+              <div className="justify-between w-full mt-2 form-control md:flex md:flex-row">
+                <TextField
+                  id="outlined-basic"
+                  label="Email"
+                  type="email"
+                  placeholder="contoh@contoh.com"
+                  variant="outlined"
+                  className="w-full"
+                  // onBlur={(e) => handleFormValueBlur(e, "password")}
+                />
+              </div>
+              <div className="justify-between w-full mt-2 form-control md:flex md:flex-row">
+                <TextField
+                  id="outlined-basic"
+                  label="NIK"
+                  type="number"
+                  placeholder="xxxxxxxxx"
+                  variant="outlined"
+                  className="w-full"
+                  // onBlur={(e) => handleFormValueBlur(e, "password")}
+                />
+              </div>
+              <div className="justify-between w-full mt-2 form-control md:flex md:flex-row">
+                <TextField
+                  id="outlined-basic"
+                  label="Nomor"
+                  type="number"
+                  placeholder="08xxxxxxxxxx"
+                  variant="outlined"
+                  className="w-full"
+                  // onBlur={(e) => handleFormValueBlur(e, "password")}
+                />
+              </div>
+              <div className="flex flex-row-reverse my-2">
+                <button className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-1 hover:border-indigo">
+                  Save
+                </button>
+              </div>
+            </Typography>
+          </Box>
+        </Modal>
         {data.map((el) => (
           <>
             <tr>
@@ -65,73 +128,6 @@ const RenderList = (props) => {
                   <i className="" onClick={handleOpen}>
                     <EditIcon fontSize="small" />
                   </i>
-                  <Modal
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
-                  >
-                    <Box sx={style}>
-                      <Typography
-                        id="modal-modal-title"
-                        variant="h6"
-                        component="h2"
-                      >
-                        Edit
-                      </Typography>
-                      <Typography id="modal-modal-description" sx={{ mt: 1 }}>
-                        <div className="justify-between w-full mt-2 form-control md:flex md:flex-row">
-                          <TextField
-                            id="outlined-basic"
-                            label="Nama"
-                            type="text"
-                            placeholder="Nama Lengkap"
-                            variant="outlined"
-                            className="w-full"
-                            // onBlur={(e) => handleFormValueBlur(e, "password")}
-                          />
-                        </div>
-                        <div className="justify-between w-full mt-2 form-control md:flex md:flex-row">
-                          <TextField
-                            id="outlined-basic"
-                            label="Email"
-                            type="email"
-                            placeholder="contoh@contoh.com"
-                            variant="outlined"
-                            className="w-full"
-                            // onBlur={(e) => handleFormValueBlur(e, "password")}
-                          />
-                        </div>
-                        <div className="justify-between w-full mt-2 form-control md:flex md:flex-row">
-                          <TextField
-                            id="outlined-basic"
-                            label="NIK"
-                            type="number"
-                            placeholder="xxxxxxxxx"
-                            variant="outlined"
-                            className="w-full"
-                            // onBlur={(e) => handleFormValueBlur(e, "password")}
-                          />
-                        </div>
-                        <div className="justify-between w-full mt-2 form-control md:flex md:flex-row">
-                          <TextField
-                            id="outlined-basic"
-                            label="Nomor"
-                            type="number"
-                            placeholder="08xxxxxxxxxx"
-                            variant="outlined"
-                            className="w-full"
-                            // onBlur={(e) => handleFormValueBlur(e, "password")}
-                          />
-                        </div>
-                        <div className="flex flex-row-reverse my-2">
-                          <button className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-1 hover:border-indigo">
-                            Save
-                          </button>
-                        </div>
-                      </Typography>
-                    </Box>
-                  </Modal>
                 </span>
               </td>
             </tr>
