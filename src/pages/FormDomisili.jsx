@@ -83,7 +83,12 @@ const FormDomisili = () => {
                   <TextField
                     id="outlined-basic"
                     label="No. KK"
-                    type="number"
+                    type="text"
+                    inputProps={{
+                      minLength: 16,
+                      maxLength: 16,
+                      pattern: "[0-9]*",
+                    }}
                     placeholder="xxxxxxxxxx"
                     variant="outlined"
                     className="w-full"
@@ -191,7 +196,12 @@ const FormDomisili = () => {
                   <TextField
                     id="outlined-basic"
                     label="NIK Keluarga Yang Pindah"
-                    type="number"
+                    type="text"
+                    inputProps={{
+                      minLength: 16,
+                      maxLength: 16,
+                      pattern: "[0-9]*",
+                    }}
                     placeholder="NIK Keluarga Yang Pindah"
                     variant="outlined"
                     className="w-full"

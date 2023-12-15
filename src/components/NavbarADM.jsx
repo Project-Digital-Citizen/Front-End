@@ -36,39 +36,48 @@ const NavbarADM = () => {
   const handleAdminLog = () => {
     if (cookies.get("userLog")) {
       return (
-        <div className="hidden dropdown dropdown-end lg:block pr-9">
-          <i className="px-3">{cookies.get("userData").user.nama}</i>
-          <label tabIndex={0} className="">
-            <div className="m-1 avatar placeholder btn btn-circle">
-              <div className="w-12 rounded-full bg-neutral text-neutral-content">
-                <span>AD</span>
+        <div className="flex">
+          <i className="hidden px-1 py-4 lg:flex-col lg:flex">
+            {cookies.get("userData").user.nama}
+          </i>
+          <div className="hidden pr-5 dropdown dropdown-end lg:block">
+            <label tabIndex={0} className="">
+              <div className="m-1 avatar placeholder btn btn-circle">
+                <div className="w-12 rounded-full bg-neutral text-neutral-content">
+                  <img
+                    src={`https://ui-avatars.com/api/?name=${
+                      cookies.get("userData").user.nama
+                    }`}
+                    className="w-[8rem] border-2 border-black rounded-full"
+                  />
+                </div>
               </div>
-            </div>
-          </label>
-          <ul
-            tabIndex={0}
-            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <a
-                className="justify-between"
-                onClick={() => navigate("/profileadmin")}
-              >
-                Profile
-              </a>
-            </li>
-            <li>
-              <a
-                onClick={() => {
-                  cookies.remove("userLog");
-                  cookies.remove("userData");
-                  navigate("/login");
-                }}
-              >
-                Logout
-              </a>
-            </li>
-          </ul>
+            </label>
+            <ul
+              tabIndex={0}
+              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <a
+                  className="justify-between"
+                  onClick={() => navigate("/profileadmin")}
+                >
+                  Profile
+                </a>
+              </li>
+              <li>
+                <a
+                  onClick={() => {
+                    cookies.remove("userLog");
+                    cookies.remove("userData");
+                    navigate("/login");
+                  }}
+                >
+                  Logout
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       );
     }
@@ -173,7 +182,12 @@ const NavbarADM = () => {
                     <summary className="p-2">
                       <div className="avatar placeholder">
                         <div className="w-12 rounded-full bg-neutral text-neutral-content">
-                          <span>AD</span>
+                          <img
+                            src={`https://ui-avatars.com/api/?name=${
+                              cookies.get("userData").user.nama
+                            }`}
+                            className="w-[8rem] border-2 border-black rounded-full"
+                          />
                         </div>
                       </div>
                       <i>Admin</i>

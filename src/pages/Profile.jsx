@@ -1,6 +1,5 @@
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import person from "../assets/images/user.png";
 import mailIMG from "../assets/images/ele.png";
 import { useState } from "react";
 import { Cookies } from "react-cookie";
@@ -122,11 +121,13 @@ const Profile = () => {
           </div>
           <div className="">
             <div className="flex justify-center py-3 my-auto">
-              <label htmlFor="pp" className="w-32 p-1">
+              <label htmlFor="pp" className="p-1 ">
                 <img
-                  src={person}
+                  src={`https://ui-avatars.com/api/?name=${
+                    cookies.get("userData").user.nama
+                  }`}
                   alt=""
-                  className="border-4 border-black rounded-full"
+                  className="w-[8rem] border-4 border-black rounded-full"
                 />
               </label>
               <input type="file" id="pp" className="hidden" />

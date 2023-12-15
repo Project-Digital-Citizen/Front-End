@@ -198,7 +198,12 @@ const FormKTP = () => {
                   <TextField
                     id="outlined-number"
                     label="NIK"
-                    type="number"
+                    type="text"
+                    inputProps={{
+                      minLength: 16,
+                      maxLength: 16,
+                      pattern: "[0-9]*",
+                    }}
                     placeholder="xxxxxxxxxx"
                     className="w-full"
                     onBlur={(e) => handleFormValue(e.target.value, "NIK")}

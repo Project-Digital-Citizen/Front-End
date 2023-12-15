@@ -1,5 +1,4 @@
 import NavbarADM from "../../components/NavbarADM";
-import user from "../../assets/images/user.png";
 import Footer from "../../components/Footer";
 import { useEffect } from "react";
 import Chart from "../../components/Chart/Chart";
@@ -27,9 +26,10 @@ const BerandaADM = () => {
             <div className="flex justify-center pb-3 md:pb-0 md:-ml-12">
               <div className="w-32 y-2 md:w-40">
                 <img
-                  src={user}
-                  alt=""
-                  className="border-4 border-black rounded-full"
+                  src={`https://ui-avatars.com/api/?name=${
+                    cookies.get("userData").user.nama
+                  }`}
+                  className="w-[8rem] border-4 border-black rounded-full"
                 />
               </div>
             </div>

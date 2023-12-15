@@ -22,43 +22,51 @@ const Navbar = () => {
       if (e == 1) {
         return (
           <>
-            <div className="hidden dropdown dropdown-end md:block pr-9">
-              <i className="px-3">{cookies.get("userData").user.nama}</i>
-              <label tabIndex={0} className="">
-                <div className="m-1 avatar placeholder btn btn-circle">
-                  <div className="w-12 rounded-full bg-neutral text-neutral-content">
-                    <span>MX</span>
+            <div className="flex">
+              <i className="hidden px-1 py-4 md:flex-col md:flex">
+                {cookies.get("userData").user.nama}
+              </i>
+              <div className="hidden pr-7 dropdown dropdown-end md:block">
+                <label tabIndex={0} className="">
+                  <div className="m-1 avatar placeholder btn btn-circle">
+                    <div className="w-12 rounded-full bg-neutral">
+                      <img
+                        src={`https://ui-avatars.com/api/?name=${
+                          cookies.get("userData").user.nama
+                        }`}
+                        className="w-[8rem] border-2 border-black rounded-full"
+                      />
+                    </div>
                   </div>
-                </div>
-              </label>
-              <ul
-                tabIndex={0}
-                className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-              >
-                <li>
-                  <a
-                    className="justify-between"
-                    onClick={() => navigate("/profile")}
-                  >
-                    Profile
-                    <span className="badge">New</span>
-                  </a>
-                </li>
-                <li>
-                  <a>Settings</a>
-                </li>
-                <li>
-                  <a
-                    onClick={() => {
-                      cookies.remove("userLog");
-                      cookies.remove("userData");
-                      navigate("/login");
-                    }}
-                  >
-                    Logout
-                  </a>
-                </li>
-              </ul>
+                </label>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                >
+                  <li>
+                    <a
+                      className="justify-between"
+                      onClick={() => navigate("/profile")}
+                    >
+                      Profile
+                    </a>
+                  </li>
+                  <li>
+                    <a>Settings</a>
+                  </li>
+                  <li>
+                    <a
+                      onClick={() => {
+                        cookies.remove("userLog");
+                        cookies.remove("userData");
+                        navigate("/login");
+                      }}
+                    >
+                      Logout
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
             <div className=" md:hidden">
               <div className=" drawer drawer-end md:hidden">
@@ -101,7 +109,12 @@ const Navbar = () => {
                         <summary className="p-2">
                           <div className="avatar placeholder">
                             <div className="w-12 rounded-full bg-neutral text-neutral-content">
-                              <span>{cookies.get("userData").user.nama}</span>
+                              <img
+                                src={`https://ui-avatars.com/api/?name=${
+                                  cookies.get("userData").user.nama
+                                }`}
+                                className="w-[8rem] border-2 border-black rounded-full"
+                              />
                             </div>
                           </div>
                           <i>{cookies.get("userData").user.nama}</i>
