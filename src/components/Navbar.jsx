@@ -291,20 +291,20 @@ const Navbar = () => {
         );
       } else if (e == 2) {
         return (
-          <li>
+          <div className="flex justify-around">
             <button
-              className="mx-auto bg-white text-indigo btn btn-sm border-indigo hover:bg-indigo hover:text-white hover:border-1 hover:border-indigo"
+              className="bg-white text-indigo btn btn-sm border-indigo hover:bg-indigo hover:text-white hover:border-1 hover:border-indigo"
               onClick={() => navigate("/login")}
             >
               Masuk
             </button>
             <button
-              className="mx-auto text-white btn btn-sm bg-indigo border-indigo hover:bg-white hover:text-indigo hover:border-1 hover:border-indigo"
+              className="text-white btn btn-sm bg-indigo border-indigo hover:bg-white hover:text-indigo hover:border-1 hover:border-indigo"
               onClick={() => navigate("/register")}
             >
               Daftar
             </button>
-          </li>
+          </div>
         );
       }
     }

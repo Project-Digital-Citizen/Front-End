@@ -166,6 +166,7 @@ const Profile = () => {
                   id="outlined-basic"
                   label="Password"
                   type={showPassword}
+                  inputProps={{ minLength: 8 }}
                   variant="outlined"
                   className="w-full"
                   // onBlur={(e) => handleFormValueBlur(e, "password")}

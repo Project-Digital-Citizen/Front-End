@@ -13,13 +13,20 @@ import { Cookies } from "react-cookie";
 const Register = () => {
   const [formData, setFormData] = useState({});
   const [isDisabled, setIsDisabled] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState("password");
 
   const handleFormValueBlur = (e, name) => {
     const formDataCopy = { ...formData };
-    formDataCopy[name] = e.target.value;
+    let inputValue = e.target.value;
+    if (name === "NIK") {
+      inputValue = inputValue.replace(/\D/g, "").slice(0, 16);
+    }
+    formDataCopy[name] = inputValue;
     setFormData(formDataCopy);
   };
+  //   formDataCopy[name] = e.target.value;
+  //   setFormData(formDataCopy);
+  // };
 
   const handleTogglePassword = () => {
     setShowPassword((prevShowPassword) =>
@@ -31,25 +38,54 @@ const Register = () => {
     e.preventDefault();
     setIsDisabled(true);
     const { email, nomor, nama, password, NIK } = formData;
-    try {
-      if (nama && email && nomor && NIK && password) {
-        const response = await regAPI.post("", JSON.stringify(formData));
 
-        if (response.status == 201) {
-          Swal.fire({
-            title: "Sukses",
-            icon: "success",
-            text: response.data.message,
-          }).then(() => {
-            navigate("/otp", { state: { email } });
-          });
-        }
-      } else {
+    try {
+      // Validasi form
+      if (!nama || !email || !nomor || !NIK || !password) {
         throw new CustomError(
           "validationError",
-          "Form tidak lengkap mohon lengkapi form terlebih dahulu"
+          "Form tidak lengkap, mohon lengkapi form terlebih dahulu"
         );
       }
+
+      // Validasi NIK
+      if (NIK.length !== 16) {
+        throw new CustomError(
+          "validationError",
+          "NIK harus terdiri dari 16 digit"
+        );
+      }
+
+      // Validasi password
+      if (password.length < 8) {
+        throw new CustomError(
+          "validationError",
+          "Password harus minimal 8 karakter"
+        );
+      }
+
+      // Lakukan registrasi jika semua validasi berhasil
+      const response = await regAPI.post("", JSON.stringify(formData));
+
+      // try {
+      //   if (nama && email && nomor && NIK && password) {
+      //     const response = await regAPI.post("", JSON.stringify(formData));
+
+      if (response.status == 201) {
+        Swal.fire({
+          title: "Sukses",
+          icon: "success",
+          text: response.data.message,
+        }).then(() => {
+          navigate("/otp", { state: { email } });
+        });
+      }
+      // } else {
+      //   throw new CustomError(
+      //     "validationError",
+      //     "Form tidak lengkap mohon lengkapi form terlebih dahulu"
+      //   );
+      // }
     } catch (err) {
       console.log(err);
       if (err.name == "validationError") {
@@ -129,7 +165,13 @@ const Register = () => {
                 <TextField
                   id="outlined-basic"
                   label="NIK"
-                  type="number"
+                  type="text"
+                  // maxLength={16}
+                  inputProps={{
+                    minLength: 16,
+                    maxLength: 16,
+                    pattern: "[0-9]*",
+                  }}
                   placeholder="xxxxxxxxxx"
                   variant="outlined"
                   className="w-full"
@@ -141,6 +183,7 @@ const Register = () => {
                   id="outlined-basic"
                   label="Password"
                   type={showPassword}
+                  inputProps={{ minLength: 8 }}
                   variant="outlined"
                   className="w-full"
                   onBlur={(e) => handleFormValueBlur(e, "password")}

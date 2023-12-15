@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import CustomError from "../util/customError";
 import Swal from "sweetalert2";
+import { TextField } from "@mui/material";
 
 const OTP = () => {
   const email = useLocation()?.state?.email;
@@ -123,30 +124,36 @@ const OTP = () => {
           <hr className="bg-indigo text-black p-[1px] mx-10 " />
           <div className="px-10">
             <form action="">
-              <div className="justify-between w-full pt-4 form-control flex gap-1 flex-row">
-                <input
+              <div className="flex flex-row justify-between w-full gap-1 pt-4 form-control">
+                <TextField
                   onBlur={(e) => handleFormValueBlur(e, "otp1")}
-                  type="number"
+                  type="tel"
+                  pattern="[0-9]*"
+                  maxLength="1"
+                  inputProps={{ pattern: "[0-9]*", maxLength: "1" }}
                   placeholder=""
-                  className="w-full mx-auto input input-bordered input-md max-w-screen md:max-w-xs"
+                  className="max-w-screen md:max-w-xs"
                 />
-                <input
+                <TextField
                   onBlur={(e) => handleFormValueBlur(e, "otp2")}
-                  type="number"
+                  type="text"
+                  inputProps={{ pattern: "[0-9]*", maxLength: "1" }}
                   placeholder=""
-                  className="w-full mx-auto input input-bordered input-md max-w-screen md:max-w-xs"
+                  className="max-w-screen md:max-w-xs"
                 />
-                <input
+                <TextField
                   onBlur={(e) => handleFormValueBlur(e, "otp3")}
-                  type="number"
+                  type="text"
+                  inputProps={{ pattern: "[0-9]*", maxLength: "1" }}
                   placeholder=""
-                  className="w-full mx-auto input input-bordered input-md max-w-screen md:max-w-xs"
+                  className="max-w-screen md:max-w-xs"
                 />
-                <input
+                <TextField
                   onBlur={(e) => handleFormValueBlur(e, "otp4")}
-                  type="number"
+                  type="text"
+                  inputProps={{ pattern: "[0-9]*", maxLength: "1" }}
                   placeholder=""
-                  className="w-full mx-auto input input-bordered input-md max-w-screen md:max-w-xs"
+                  className="max-w-screen md:max-w-xs"
                 />
               </div>
 
