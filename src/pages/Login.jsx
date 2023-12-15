@@ -42,9 +42,12 @@ const Login = () => {
           const dec = jwtDecode(response.data.token);
           const roleResponse = await API.get(`users/${dec.userId}`);
           const { role } = roleResponse.data.user;
-          console.log(role);
-          setCookie("userLog", dec);
-          setCookie("userData", roleResponse.data);
+          setCookie("userLog", dec, {
+            expires: new Date(Date.now() + dec.exp),
+          });
+          setCookie("userData", roleResponse.data, {
+            expires: new Date(Date.now() + dec.exp),
+          });
           Swal.fire({
             title: "Sukses",
             icon: "success",
