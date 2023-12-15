@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import ktp from "../assets/images/ktp.png";
 import domisili from "../assets/images/domisili.png";
 import ilus from "../assets/images/ilustrasi01.png";
+import logo from "../assets/images/logo_3.png";
 import ele from "../assets/images/ele.png";
 import { ScrollUpBtn } from "../util/ScrollUpBtn";
 
@@ -70,7 +71,7 @@ const Dashboard = () => {
             data-aos="fade-right"
           >
             <img
-              src={ilus}
+              src={logo}
               alt="Laptop"
               className="object-cover object-center w-full h-full sm:mt-6"
               data-aos="fade-right"
@@ -90,7 +91,7 @@ const Dashboard = () => {
             className="hidden lg:flex lg:w-[1500px] h-auto p-5 mx-auto my-auto"
             data-aos="fade-right"
           >
-            <img src={ilus} alt="Laptop" className="object-cover " />
+            <img src={logo} alt="Laptop" className="object-cover " />
           </div>
           <div
             className="flex-col hidden h-auto p-5 mx-auto my-auto mr-6 lg:flex "
@@ -133,7 +134,7 @@ const Dashboard = () => {
               <div className="mx-auto my-auto space-y-6">
                 <img src={ktp} alt="KTP" className="mx-auto shadow-lg" />
                 <p className="text-xl font-black text-center text-black">KTP</p>
-                <p className="px-2 font-medium text-center text-black text-md">
+                <p className="px-6 font-medium text-justify text-black text-md">
                   Kartu Tanda Penduduk merupakan kartu identitas diri secara
                   resmi yang diterbitkan oleh Kementrian Dalam Negeri
                 </p>
@@ -162,7 +163,7 @@ const Dashboard = () => {
                 <p className="text-xl font-black text-center text-black">
                   Surat Domisili
                 </p>
-                <p className="px-2 font-medium text-center text-black text-md">
+                <p className="px-6 font-medium text-justify text-black text-m">
                   Surat domisili merupakan dokumen untuk membuktikan bahwa
                   seseorang betul tinggal pada suatu wilayah tertentu
                 </p>
@@ -188,7 +189,7 @@ const Dashboard = () => {
               <div className="mx-auto my-auto space-y-6">
                 <img src={ktp} alt="KTP" className="mx-auto shadow-lg" />
                 <p className="text-xl font-black text-center text-black">KTP</p>
-                <p className="px-2 font-medium text-center text-black text-md">
+                <p className="px-6 font-medium text-justify text-black text-m">
                   Kartu Tanda Penduduk merupakan kartu identitas diri secara
                   resmi yang diterbitkan oleh Kementrian Dalam Negeri
                 </p>
@@ -217,7 +218,7 @@ const Dashboard = () => {
                 <p className="text-xl font-black text-center text-black">
                   Surat Domisili
                 </p>
-                <p className="px-2 font-medium text-center text-black text-md">
+                <p className="px-6 font-medium text-justify text-black text-m">
                   Surat domisili merupakan dokumen untuk membuktikan bahwa
                   seseorang betul tinggal pada suatu wilayah tertentu
                 </p>
