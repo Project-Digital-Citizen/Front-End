@@ -16,3 +16,7 @@
   opacity: 1;
   visibility: visible;
 }
+
+.swal2-container {
+  z-index: 9999;
+}
