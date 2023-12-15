@@ -22,7 +22,7 @@ const Navbar = () => {
       if (e == 1) {
         return (
           <>
-            <div className="flex">
+            <div className="hidden md:flex">
               <i className="hidden px-1 py-4 md:flex-col md:flex">
                 {cookies.get("userData").user.nama}
               </i>
