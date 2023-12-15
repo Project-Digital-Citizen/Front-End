@@ -287,7 +287,7 @@ const Account = () => {
                 <tr className="text-white bg-indigo">
                   <th>NIK</th>
                   <th>Nama</th>
-                  <th className="md:flex md:justify-center">Verifikasi</th>
+                  <th className="md:flex md:justify-center">Aksi</th>
                 </tr>
               </thead>
               <tbody>
