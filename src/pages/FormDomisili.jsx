@@ -73,7 +73,7 @@ const FormDomisili = () => {
           <div className="relative z-10 w-11/12 mx-auto bg-white shadow-2xl rounded-xl">
             <h1 className="p-4 px-10 pt-6 text-2xl font-black text-indigo">
               {" "}
-              Form Pengajuan KTP
+              Form Pengajuan Domisili
             </h1>
             <hr className="bg-indigo text-black p-[1px] mx-10 " />
             <div className="px-10">
@@ -217,6 +217,7 @@ const FormDomisili = () => {
                   </label>
                   <input
                     type="file"
+                    accept="image/*"
                     placeholder="KK Dari Daerah Asal"
                     className="w-full rounded-[5px] file-input file-input-bordered file-input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                   />
@@ -229,6 +230,7 @@ const FormDomisili = () => {
                   </label>
                   <input
                     type="file"
+                    accept="image/*"
                     placeholder="KTP Keluarga Yang Pindah"
                     className="w-full rounded-[5px] file-input file-input-bordered file-input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
                   />

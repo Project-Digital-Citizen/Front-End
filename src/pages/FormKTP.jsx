@@ -413,6 +413,7 @@ const FormKTP = () => {
                   </label>
                   <input
                     type="file"
+                    accept="image/*"
                     onChange={(e) => handleFormValue(e, "suratRTImage")}
                     placeholder="PDF Pengantar RT"
                     className="w-full rounded-[5px] file-input file-input-bordered file-input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
@@ -426,6 +427,7 @@ const FormKTP = () => {
                   </label>
                   <input
                     type="file"
+                    accept="image/*"
                     placeholder="PDF Pengantar RW"
                     onChange={(e) => handleFormValue(e, "suratRWImage")}
                     className="w-full file-input rounded-[5px] file-input-bordered file-input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
@@ -439,6 +441,7 @@ const FormKTP = () => {
                   </label>
                   <input
                     type="file"
+                    accept="image/*"
                     onChange={(e) => handleFormValue(e, "kkImage")}
                     placeholder="PDF Kartu Keluarga"
                     className="w-full rounded-[5px] file-input file-input-bordered file-input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"
@@ -455,6 +458,7 @@ const FormKTP = () => {
                   </label>
                   <input
                     type="file"
+                    accept="image/*"
                     onChange={(e) => handleFormValue(e, "selfieImage")}
                     placeholder="PNG"
                     className="w-full rounded-[5px] file-input file-input-bordered file-input-md max-w-screen md:max-w-md lg:max-w-2xl xl:max-w-4xl"

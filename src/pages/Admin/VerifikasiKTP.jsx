@@ -1,7 +1,6 @@
 import Footer from "../../components/Footer";
 import Modal from "../../components/Modal";
 import NavbarADM from "../../components/NavbarADM";
-import photo from "../../assets/images/photo.png";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { API } from "../../data/api-digzen";
