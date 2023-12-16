@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import NavbarADM from "../../components/NavbarADM";
 import Footer from "../../components/Footer";
 import { useEffect, useState } from "react";
@@ -91,8 +90,6 @@ const RenderList = (props) => {
       });
     }
   };
-
-  const navigate = useNavigate();
   // eslint-disable-next-line react/prop-types
   const data = props?.dataUser?.data?.users;
   if (!data || data.length === 0) {
