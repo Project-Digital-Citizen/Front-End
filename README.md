@@ -8,7 +8,7 @@
     <img src="src/assets/images/logo_3.png" alt="Logo" width="140" height="80">
   </a>
 
-<h3 align="center">Apptivity</h3>
+<h3 align="center">Digital Citizen</h3>
 
   <p align="center">
     Ease your way with Digital Citizen
@@ -20,7 +20,7 @@
     ·
     <a href="https://github.com/Project-Digital-Citizen/Back-End">Report Bug</a>
     ·
-    <a href="https://github.com/Project-Digital-Citizen/Back-End">Request Feature</a>
+    <a href="https://github.com/Project--Citizen/Back-End">Request Feature</a>
   </p>
 </div>
 
