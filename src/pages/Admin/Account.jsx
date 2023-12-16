@@ -65,7 +65,7 @@ const RenderList = (props) => {
         icon: "warning",
         text: "Account deletion is irreversible",
         showCancelButton: true,
-        confirmButtonText: "yes",
+        confirmButtonText: "Yes",
       }).then(async (result) => {
         if (result.isConfirmed) {
           try {
