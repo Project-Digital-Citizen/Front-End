@@ -2,10 +2,19 @@ import Footer from "../../components/Footer";
 import Modal from "../../components/Modal";
 import NavbarADM from "../../components/NavbarADM";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { API } from "../../data/api-digzen";
+import { Cookies } from "react-cookie";
 
 const RenderList = (props) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log(new Cookies().get("userLog"));
+    if (new Cookies().get("userData").user.role !== "admin") {
+      navigate("/");
+    }
+  });
   const [showModal, setShowModal] = useState(false);
   // eslint-disable-next-line react/prop-types
   const data = props?.dataPengajuan?.data?.data;

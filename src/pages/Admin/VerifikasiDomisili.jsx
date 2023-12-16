@@ -1,8 +1,19 @@
+import { useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer";
 import Modal from "../../components/Modal";
 import NavbarADM from "../../components/NavbarADM";
+import { useEffect } from "react";
+import { Cookies } from "react-cookie";
 
 const VerifikasiDomisili = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log(new Cookies().get("userLog"));
+    if (new Cookies().get("userData").user.role !== "admin") {
+      navigate("/");
+    }
+  });
   return (
     <>
       <NavbarADM />

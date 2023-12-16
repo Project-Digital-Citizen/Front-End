@@ -10,6 +10,7 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Cookies } from "react-cookie";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -33,7 +34,7 @@ const RenderList = (props) => {
   const handleClose = () => setOpen(false);
   const [valueEdit, setValue] = useState({});
   const [userDetail, setDetail] = useState({});
-  const [currentID, setCurrentID] = useState("");
+  const [current, setCurrent] = useState({});
   const [isDisabled, setIsDisabled] = useState(false);
 
   const handleFormValue = (value, name) => {
@@ -51,9 +52,9 @@ const RenderList = (props) => {
 
   const handleInfoClick = async (id) => {
     handleClose();
-    setCurrentID(id);
     try {
       const response = await userAPI.get(`/${id}`);
+      setCurrent({ id });
       setDetail(response.data.user);
       handleOpen();
     } catch (error) {
@@ -252,7 +253,7 @@ const RenderList = (props) => {
                 <button
                   disabled={isDisabled}
                   onClick={() => {
-                    handleEditSubmit(currentID);
+                    handleEditSubmit(current.id);
                   }}
                   className="w-20 text-white btn btn-sm bg-indigo hover:bg-white hover:text-indigo hover:border-1 hover:border-indigo"
                 >
@@ -327,6 +328,7 @@ const RenderList = (props) => {
               <td>{el.nama}</td>
               <td className="md:justify-center md:flex">
                 <button
+                  disabled={isDisabled}
                   className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo btn-xs"
                   onClick={() => {
                     handleInfoClick(el._id);
@@ -335,6 +337,7 @@ const RenderList = (props) => {
                   Info
                 </button>
                 <button
+                  disabled={isDisabled}
                   className="text-white bg-red-600 btn hover:bg-white hover:text-red-600 hover:border-2 hover:border-red-600 btn-xs"
                   onClick={() => {
                     handleDeleteClick(el._id);
@@ -352,6 +355,14 @@ const RenderList = (props) => {
 };
 
 const Account = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log(new Cookies().get("userLog"));
+    if (new Cookies().get("userData").user.role !== "admin") {
+      navigate("/");
+    }
+  });
   const [dataUser, setDataUser] = useState([]);
 
   const pending = async () => {

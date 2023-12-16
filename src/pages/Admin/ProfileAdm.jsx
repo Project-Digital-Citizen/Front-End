@@ -1,7 +1,7 @@
 import Footer from "../../components/Footer";
 import person from "../../assets/images/user.png";
 import mailIMG from "../../assets/images/ele.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Cookies } from "react-cookie";
 import { TextField } from "@mui/material";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
@@ -10,6 +10,7 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import NavbarADM from "../../components/NavbarADM";
+import { useNavigate } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -25,6 +26,15 @@ const style = {
 
 const ProfileAdm = () => {
   const cookies = new Cookies();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log(cookies.get("userLog"));
+    if (cookies.get("userData").user.role !== "admin") {
+      navigate("/");
+    }
+  });
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);

@@ -4,6 +4,7 @@ import Footer from "../../components/Footer";
 import NavbarADM from "../../components/NavbarADM";
 import { API } from "../../data/api-digzen";
 import { useEffect, useState } from "react";
+import { Cookies } from "react-cookie";
 
 const RenderList = (props) => {
   const navigate = useNavigate();
@@ -40,6 +41,14 @@ const RenderList = (props) => {
 };
 
 const Mailinglist = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log(new Cookies().get("userLog"));
+    if (new Cookies().get("userData").user.role !== "admin") {
+      navigate("/");
+    }
+  });
   const [dataPengajuan, setDataPengajuan] = useState([]);
 
   const pending = async () => {
