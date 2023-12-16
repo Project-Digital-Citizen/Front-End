@@ -45,10 +45,14 @@ const NavbarADM = () => {
               <div className="m-1 avatar placeholder btn btn-circle">
                 <div className="w-12 rounded-full bg-neutral text-neutral-content">
                   <img
-                    src={`https://ui-avatars.com/api/?name=${
-                      cookies.get("userData").user.nama
-                    }`}
-                    className="w-[8rem] border-2 border-black rounded-full"
+                    src={
+                      cookies.get("userData").user.userImage
+                        ? cookies.get("userData").user.userImage
+                        : `https://ui-avatars.com/api/?name=${
+                            cookies.get("userData").user.nama
+                          }`
+                    }
+                    className="bg-white w-[8rem] border-2 border-black rounded-full"
                   />
                 </div>
               </div>

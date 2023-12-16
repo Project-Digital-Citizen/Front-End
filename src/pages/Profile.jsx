@@ -177,11 +177,15 @@ const Profile = () => {
             <div className="flex justify-center py-3 my-auto">
               <label htmlFor="pp" className="p-1 ">
                 <img
-                  src={`https://ui-avatars.com/api/?name=${
-                    cookies.get("userData").user.nama
-                  }`}
+                  src={
+                    cookies.get("userData").user.userImage
+                      ? cookies.get("userData").user.userImage
+                      : `https://ui-avatars.com/api/?name=${
+                          cookies.get("userData").user.nama
+                        }`
+                  }
                   alt=""
-                  className="w-[8rem] border-4 border-black rounded-full"
+                  className="object-cover w-[8rem] h-[8rem] border-4 border-black rounded-full"
                 />
               </label>
               <input type="file" id="pp" className="hidden" />
