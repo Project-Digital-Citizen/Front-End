@@ -8,6 +8,7 @@ const CONFIG = {
   reOTP_ENDPOINT: "https://api.digzen.site/email/resend-otp",
   user_ENDPOINT: "https://api.digzen.site/users",
   KTP_ENDPOINT: "https://api.digzen.site/ktp",
+  DOM_ENDPOINT: "https://api.digzen.site/domisili",
 };
 
 export default CONFIG;

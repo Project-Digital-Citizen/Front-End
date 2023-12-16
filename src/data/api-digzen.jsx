@@ -51,4 +51,13 @@ const ktpAPI = axios.create({
   maxBodyLength: Infinity,
 });
 
-export { regAPI, logAPI, otpAPI, resendOTP, API, ktpAPI, userAPI };
+const domisiliAPI = axios.create({
+  baseURL: CONFIG.DOM_ENDPOINT,
+  headers: {
+    "Content-Type": "multipart/form-data",
+  },
+  maxContentLength: Infinity,
+  maxBodyLength: Infinity,
+});
+
+export { regAPI, logAPI, otpAPI, resendOTP, API, ktpAPI, userAPI, domisiliAPI };

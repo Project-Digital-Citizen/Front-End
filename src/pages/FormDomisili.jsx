@@ -11,6 +11,10 @@ import {
 } from "@mui/material";
 import { useState, useEffect } from "react";
 import { Cookies } from "react-cookie";
+import { domisiliAPI } from "../data/api-digzen";
+import Swal from "sweetalert2";
+import CustomError from "../util/customError";
+import { toast } from "react-toastify";
 
 const FormDomisili = () => {
   const cookies = new Cookies();
@@ -22,7 +26,6 @@ const FormDomisili = () => {
   });
 
   const navigate = useNavigate();
-  const [label, setLabel] = useState("");
   const [data, setForm] = useState({});
 
   const [isDisabled, setIsDisabled] = useState(false);
@@ -36,9 +39,51 @@ const FormDomisili = () => {
     setForm(formDataCopy);
   };
 
-  const handleChange = (event) => {
-    setLabel(event.target.value);
+  const handleRegClick = async (e) => {
+    e.preventDefault();
+    setIsDisabled(true);
+    try {
+      if (data) {
+        const formData = new FormData();
+        for (let key in data) {
+          formData.append(key, data[key]);
+        }
+        const userId = cookies.get("userLog").userId;
+        const response = await domisiliAPI.post(`/${userId}`, formData, {
+          headers: {
+            "Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
+          },
+        });
+        console.log(response);
+        if (response.status == 201) {
+          Swal.fire({
+            title: "Sukses",
+            icon: "success",
+            text: response.data.message,
+            showConfirmButton: false,
+            timer: 1000,
+          }).then(() => {
+            navigate("/statuspengajuan");
+          });
+        }
+      } else {
+        throw new CustomError(
+          "validationError",
+          "Form tidak lengkap mohon lengkapi form terlebih dahulu"
+        );
+      }
+    } catch (err) {
+      console.log(err);
+      if (err.name == "validationError") {
+        toast.error(err.message);
+      } else {
+        toast.error(err?.response?.data?.message);
+      }
+    } finally {
+      setIsDisabled(false);
+    }
   };
+
   return (
     <>
       <Navbar />
@@ -182,7 +227,6 @@ const FormDomisili = () => {
                     <Select
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
-                      value={label}
                       label="Klasifikasi Pindah"
                       onChange={(e) => handleFormValue(e, "klasifikasiPindah")}
                     >
@@ -262,7 +306,11 @@ const FormDomisili = () => {
                   />
                 </div>
                 <div className="flex-row-reverse pt-4 pb-6 md:flex">
-                  <button className="text-white btn btn-block bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo md:w-1/6">
+                  <button
+                    onClick={handleRegClick}
+                    disabled={isDisabled}
+                    className="text-white btn btn-block bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo md:w-1/6"
+                  >
                     Submit
                   </button>
                 </div>
