@@ -57,7 +57,7 @@
 <img src="src/assets/images/img readme/dashboard.png" alt="Logo" width="100%" height="100%">
 <img src="src/assets/images/img readme/profile.png" alt="Logo" width="100%" height="100%">
 <img src="src/assets/images/img readme/pengajuan_ktp.png" alt="Logo" width="100%" height="100%">
-<img src="src/assets/images/img readme/pengajuan_domisili" alt="Logo" width="100%" height="100%">
+<img src="src/assets/images/img readme/pengajuan_domisili.png" alt="Logo" width="100%" height="100%">
 <img src="src/assets/images/img readme/status_pengajuan.png" alt="Logo" width="100%" height="100%">
 
 
