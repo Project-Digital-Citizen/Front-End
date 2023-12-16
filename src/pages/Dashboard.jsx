@@ -8,10 +8,11 @@ import ilus from "../assets/images/ilustrasi01.png";
 import logo from "../assets/images/logo_3.png";
 import ele from "../assets/images/ele.png";
 import { ScrollUpBtn } from "../util/ScrollUpBtn";
+import { welcomeTour } from "../util/Tour";
 
 const Dashboard = () => {
   const navigate = useNavigate();
-
+  welcomeTour()
   return (
     <>
       <Navbar />
@@ -32,7 +33,7 @@ const Dashboard = () => {
             </p>
             <a
               href="#more"
-              className="px-4 mt-2 font-normal border-white btn btn-sm btn-ghost hover:bg-white hover:text-indigo scroll-smooth focus:scroll-auto"
+              className="more px-4 mt-2 font-normal border-white btn btn-sm btn-ghost hover:bg-white hover:text-indigo scroll-smooth focus:scroll-auto"
             >
               More
             </a>
@@ -54,7 +55,7 @@ const Dashboard = () => {
         ></path>
       </svg>
       {/*  */}
-      <div className="bg-background">
+      <div className="bg-background digzen-def">
         {/* <img
         src={ele}
         alt=""
@@ -118,124 +119,47 @@ const Dashboard = () => {
       </svg>
       {/*  */}
       <div className="pb-3 bg-indigo">
-        <div className="max-w-md px-6 mx-auto sm:max-w-xl md:max-w-5xl mb-[2rem]">
-          <div className="flex-1 py-5 text-white md:p-12 md:my-auto">
-            <h1
-              className="mb-3 text-5xl font-bold text-center"
-              data-aos="fade-up"
-            >
-              Pengajuan Surat
-            </h1>
-            <div
-              className="flex my-10 w-[20rem] h-[25rem] bg-white rounded-xl border mx-auto md:hidden"
-              data-aos="fade-up"
-              data-aos-duration="1500"
-            >
-              <div className="mx-auto my-auto space-y-6">
-                <img src={ktp} alt="KTP" className="mx-auto shadow-lg" />
-                <p className="text-xl font-black text-center text-black">KTP</p>
-                <p className="px-6 font-medium text-justify text-black text-md">
-                  Kartu Tanda Penduduk merupakan kartu identitas diri secara
-                  resmi yang diterbitkan oleh Kementrian Dalam Negeri
-                </p>
-                <div className="flex">
-                  <button
-                    className="mx-auto text-white btn btn-sm bg-indigo border-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo"
-                    onClick={() => navigate("/formktp")}
-                  >
-                    Buat
-                  </button>
-                </div>
-              </div>
-            </div>
-            {/*  */}
-            <div
-              className="flex my-10 w-[20rem] h-[25rem] bg-white rounded-xl border mx-auto md:hidden"
-              data-aos="fade-up"
-              data-aos-duration="1500"
-            >
-              <div className="mx-auto my-auto space-y-6">
-                <img
-                  src={domisili}
-                  alt="Surat Domisili"
-                  className="mx-auto shadow-lg"
-                />
-                <p className="text-xl font-black text-center text-black">
-                  Surat Domisili
-                </p>
-                <p className="px-6 font-medium text-justify text-black text-m">
-                  Surat domisili merupakan dokumen untuk membuktikan bahwa
-                  seseorang betul tinggal pada suatu wilayah tertentu
-                </p>
-                <div className="flex">
-                  <button
-                    className="mx-auto text-white btn btn-sm bg-indigo border-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo"
-                    onClick={() => navigate("/formdomisili")}
-                  >
-                    Buat
-                  </button>
-                </div>
-              </div>
-            </div>
+  <div className="max-w-md px-6 mx-auto sm:max-w-xl md:max-w-5xl mb-[2rem]">
+    <div className="flex-1 py-5 text-white md:p-12 md:my-auto">
+      <h1 className="mb-3 text-5xl font-bold text-center" data-aos="fade-up">
+        Pengajuan Surat
+      </h1>
 
-            {/*  */}
-          </div>
-          <div className="hidden w-auto h-auto gap-4 p-5 mx-auto my-auto md:flex lg:mr-6">
-            <div
-              className="flex w-[20rem] h-[25rem] bg-white rounded-xl border mx-auto hover:shadow-2xl"
-              data-aos="fade-up"
-              data-aos-duration="1500"
-            >
-              <div className="mx-auto my-auto space-y-6">
-                <img src={ktp} alt="KTP" className="mx-auto shadow-lg" />
-                <p className="text-xl font-black text-center text-black">KTP</p>
-                <p className="px-6 font-medium text-justify text-black text-m">
-                  Kartu Tanda Penduduk merupakan kartu identitas diri secara
-                  resmi yang diterbitkan oleh Kementrian Dalam Negeri
-                </p>
-                <div className="flex">
-                  <button
-                    className="mx-auto text-white btn btn-sm bg-indigo border-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo"
-                    onClick={() => navigate("/formktp")}
-                  >
-                    Buat
-                  </button>
-                </div>
-              </div>
-            </div>
-            {/*  */}
-            <div
-              className="flex w-[20rem] h-[25rem] bg-white rounded-xl border mx-auto hover:shadow-2xl"
-              data-aos="fade-up"
-              data-aos-duration="1500"
-            >
-              <div className="mx-auto my-auto space-y-6">
-                <img
-                  src={domisili}
-                  alt="Surat Domisili"
-                  className="mx-auto shadow-lg"
-                />
-                <p className="text-xl font-black text-center text-black">
-                  Surat Domisili
-                </p>
-                <p className="px-6 font-medium text-justify text-black text-m">
-                  Surat domisili merupakan dokumen untuk membuktikan bahwa
-                  seseorang betul tinggal pada suatu wilayah tertentu
-                </p>
-                <div className="flex">
-                  <button
-                    className="mx-auto text-white btn btn-sm bg-indigo border-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo"
-                    onClick={() => navigate("/formdomisili")}
-                  >
-                    Buat
-                  </button>
-                </div>
+      <div className="flex flex-col md:flex-row justify-between items-center md:space-x-4">
+
+        {[
+          { img: ktp, title: "KTP", desc: "Kartu Tanda Penduduk merupakan kartu identitas diri secara resmi yang diterbitkan oleh Kementrian Dalam Negeri", link: "/formktp" },
+          { img: domisili, title: "Surat Domisili", desc: "Surat domisili merupakan dokumen untuk membuktikan bahwa seseorang betul tinggal pada suatu wilayah tertentu", link: "/formdomisili" },
+        ].map((item, index) => (
+          <div
+            key={index}
+            className={`flex my-10 ${index === 1 ? 'md:ml-4' : ''}`}
+            data-aos="fade-up"
+           
+          >
+            <div className={`${index === 0 ? 'ktp-def' : 'domisili-def'} mx-auto my-auto pt-5 space-y-6 w-[20rem] h-[25rem] bg-white rounded-xl border shadow-lg`}>
+              <img src={item.img} alt={item.title} className="mx-auto" />
+              <p className="text-xl font-black text-center text-black">{item.title}</p>
+              <p className={`px-6 font-medium text-justify text-black text-${index === 0 ? 'md' : 'm'}`}>
+                {item.desc}
+              </p>
+              <div className="flex">
+                <button
+                  className="mx-auto text-white btn btn-sm bg-indigo border-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo"
+                  onClick={() => navigate(item.link)}
+                >
+                  Buat
+                </button>
               </div>
             </div>
           </div>
-        </div>
-        <ScrollUpBtn />
+        ))}
       </div>
+    </div>
+    <ScrollUpBtn />
+  </div>
+</div>
+
       <Footer />
     </>
   );
