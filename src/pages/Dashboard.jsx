@@ -63,7 +63,7 @@ const Dashboard = () => {
         <img
           src={ele}
           alt=""
-          className="absolute right-0 object-cover object-left w-32 h-52 top-[33rem]"
+          className="hidden md:block absolute right-0 object-cover object-left w-32 h-52 top-[33rem]"
         />
         <div className="px-6 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0 lg:h-[20rem] lg:mx-[5rem]">
           <div
@@ -180,9 +180,9 @@ const Dashboard = () => {
 
             {/*  */}
           </div>
-          <div className="hidden w-auto h-auto gap-4 p-5 mx-auto my-auto md:flex lg:mr-6 ">
+          <div className="hidden w-auto h-auto gap-4 p-5 mx-auto my-auto md:flex lg:mr-6">
             <div
-              className="flex w-[20rem] h-[25rem] bg-white rounded-xl border mx-auto"
+              className="flex w-[20rem] h-[25rem] bg-white rounded-xl border mx-auto hover:shadow-2xl"
               data-aos="fade-up"
               data-aos-duration="1500"
             >
@@ -205,7 +205,7 @@ const Dashboard = () => {
             </div>
             {/*  */}
             <div
-              className="flex w-[20rem] h-[25rem] bg-white rounded-xl border mx-auto"
+              className="flex w-[20rem] h-[25rem] bg-white rounded-xl border mx-auto hover:shadow-2xl"
               data-aos="fade-up"
               data-aos-duration="1500"
             >

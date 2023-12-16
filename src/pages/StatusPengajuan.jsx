@@ -108,26 +108,51 @@ const StatusPengajuan = () => {
           <p className="my-auto">Back</p>
         </div>
         {/*  */}
-        <div className="flex items-center justify-center h-screen p-5 pb-16">
-          <div className="z-10 w-11/12 mx-auto bg-white shadow-2xl rounded-xl md:w-96">
-            <div className="flex justify-center py-5 md:justify-start md:ml-10 ">
-              <div className="my-auto">
-                <img src={icondocs} alt="" className="h-[50px]" />
+        <div className="flex flex-col content-center justify-center md:flex-row mt-[10%]">
+          <div className="flex items-center justify-center p-5">
+            <div className="z-10 w-11/12 mx-auto bg-white shadow-2xl rounded-xl md:w-96">
+              <div className="flex justify-center py-5 md:justify-start md:ml-10 ">
+                <div className="my-auto">
+                  <img src={icondocs} alt="" className="h-[50px]" />
+                </div>
+                <div className="flex flex-col my-auto font-black text-indigo">
+                  <h1 className="text-2xl ">Status Pengajuan</h1>
+                  <span className="text-xs -mt-[3px] ml-[2px] text-black">
+                    29347856394875
+                  </span>
+                </div>
               </div>
-              <div className="flex flex-col my-auto font-black text-indigo">
-                <h1 className="text-2xl ">Status Pengajuan</h1>
-                <span className="text-xs -mt-[3px] ml-[2px] text-black">
-                  29347856394875
-                </span>
+              <hr className="bg-indigo text-black p-[1px] mx-10 " />
+              <div className="max-w-md p-7">
+                {/*  */}
+                <ul className="timeline timeline-vertical">
+                  <RenderList dataPengajuan={dataPengajuan} />
+                </ul>
+                {/*  */}
               </div>
             </div>
-            <hr className="bg-indigo text-black p-[1px] mx-10 " />
-            <div className="max-w-md p-7">
-              {/*  */}
-              <ul className="timeline timeline-vertical">
-                <RenderList dataPengajuan={dataPengajuan} />
-              </ul>
-              {/*  */}
+          </div>
+          <div className="flex items-center justify-center p-5">
+            <div className="z-10 w-11/12 mx-auto bg-white shadow-2xl rounded-xl md:w-96">
+              <div className="flex justify-center py-5 md:justify-start md:ml-10 ">
+                <div className="my-auto">
+                  <img src={icondocs} alt="" className="h-[50px]" />
+                </div>
+                <div className="flex flex-col my-auto font-black text-indigo">
+                  <h1 className="text-2xl ">Status Pengajuan</h1>
+                  <span className="text-xs -mt-[3px] ml-[2px] text-black">
+                    29347856394875
+                  </span>
+                </div>
+              </div>
+              <hr className="bg-indigo text-black p-[1px] mx-10 " />
+              <div className="max-w-md p-7">
+                {/*  */}
+                <ul className="timeline timeline-vertical">
+                  <RenderList dataPengajuan={dataPengajuan} />
+                </ul>
+                {/*  */}
+              </div>
             </div>
           </div>
         </div>
