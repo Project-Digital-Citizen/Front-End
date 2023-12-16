@@ -15,11 +15,12 @@ import VerifikasiDomisili from "./pages/Admin/VerifikasiDomisili";
 import Account from "./pages/Admin/Account";
 import AccountEdit from "./pages/Admin/AccountEdit";
 import OTP from "./pages/OTP";
-import LupaPW from "./pages/LupaPW";
 import ProfileAdm from "./pages/Admin/ProfileAdm";
 import "animate.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import ForgotPassword from "./pages/ForgotPassword";
+import NewPassword from "./pages/NewPassword";
 AOS.init();
 
 const App = () => {
@@ -41,7 +42,8 @@ const App = () => {
         <Route path="/formdomisili" element={<FormDomisili />} />
         <Route path="/statuspengajuan" element={<StatusPengajuan />} />
         <Route path="/otp" element={<OTP />} />
-        <Route path="/lupapw" element={<LupaPW />} />
+        <Route path="/forgotpassword" element={<ForgotPassword />} />
+        <Route path="/newpassword" element={<NewPassword />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Router>
