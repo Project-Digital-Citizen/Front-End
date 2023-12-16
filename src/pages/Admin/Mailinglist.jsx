@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer";
 import NavbarADM from "../../components/NavbarADM";
 import { API } from "../../data/api-digzen";
+import SearchIcon from "@mui/icons-material/Search";
 import { useEffect, useState } from "react";
 import { Cookies } from "react-cookie";
+import { InputAdornment, TextField } from "@mui/material";
 
 const RenderList = (props) => {
   const navigate = useNavigate();
@@ -74,8 +76,25 @@ const Mailinglist = () => {
             Daftar Pengajuan Surat
           </div>
           <hr className="bg-indigo text-black p-[1px] mx-10 " />
-
-          <div className="m-2 overflow-x-auto bg-white border rounded border-base-300">
+          <div className="flex justify-center p-2 md:justify-start">
+            <TextField
+              id="outlined-basic"
+              label="Search"
+              type="text"
+              variant="outlined"
+              size="small"
+              className=""
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+              }}
+              // onBlur={(value) => handleFormValue(value, "nama")}
+            />
+          </div>
+          <div className="mx-2 mb-2 overflow-x-auto bg-white border rounded border-base-300">
             <table className="table table-zebra">
               {/* head */}
               <thead>

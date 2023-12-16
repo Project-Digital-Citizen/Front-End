@@ -95,36 +95,20 @@ const NavbarADM = () => {
             <h2 className="w-[58px] md:hidden"></h2>
           </div>
           {/*  */}
-          <div className="w-auto gap-2 -ml-6 cursor-pointer lg:flex pl-9 md:ml-0">
-            <img
-              src={logoDigzen}
-              alt=""
-              className="h-9"
-              onClick={() => navigate("/admin")}
-            />
-            <div className="hidden lg:flex md:w-[100px] items-center">
-              <input
-                type="text"
-                placeholder="Search"
-                className="border w-[180px] p-[2px] pl-3 rounded-l"
-              />
-              <button className="flex bg-blue-500 text-white p-[3px] rounded-r">
-                <span className="material-symbols-outlined">search</span>
-              </button>
-            </div>
+          <div
+            className="hidden cursor-pointer md:flex pl-9"
+            onClick={() => navigate("/admin")}
+          >
+            <img src={logoDigzen} alt="" className="h-9" />
+            <p className="p-1 text-lg font-bold text-indigo">Digital Citizen</p>
           </div>
         </div>
-        <div className="flex cursor-pointer lg:hidden ">
-          <div className="flex items-center">
-            <input
-              type="text"
-              placeholder="Search"
-              className="border w-[180px] p-[2px] pl-3 rounded-l"
-            />
-            <button className="flex bg-indigo text-white p-[3px] rounded-r">
-              <span className="material-symbols-outlined">search</span>
-            </button>
-          </div>
+        <div
+          className="flex cursor-pointer md:hidden "
+          onClick={() => navigate("/admin")}
+        >
+          <img src={logoDigzen} alt="" className="h-9" />
+          <p className="p-1 text-lg font-bold text-indigo">Digital Citizen</p>
         </div>
         <div className="hidden lg:block">
           <ul className="menu menu-horizontal">
