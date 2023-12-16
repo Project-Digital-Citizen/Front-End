@@ -8,6 +8,8 @@ import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import { TextField } from "@mui/material";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import Swal from "sweetalert2";
+import { Cookies } from "react-cookie";
 
 const style = {
   position: "absolute",
@@ -22,6 +24,7 @@ const style = {
 };
 
 const RenderList = (props) => {
+  const cookies = new Cookies();
   const [open2, setOpen2] = useState(false);
   const [open, setOpen] = useState(false);
   const handleOpen2 = () => setOpen2(true);
@@ -29,6 +32,7 @@ const RenderList = (props) => {
   const handleClose2 = () => setOpen2(false);
   const handleClose = () => setOpen(false);
   const [valueEdit, setValue] = useState({});
+  const [userDetail, setDetail] = useState({});
 
   const handleFormValue = (value, name) => {
     const formDataCopy = { ...valueEdit };
@@ -43,6 +47,51 @@ const RenderList = (props) => {
     );
   };
 
+  const handleInfoClick = async (id) => {
+    const response = await userAPI.get(`/${id}`);
+    setDetail(response.data.user);
+    handleOpen();
+  };
+
+  const handleDeleteClick = (id) => {
+    if (id === cookies.get("userLog").userId) {
+      Swal.fire({
+        title: "You can't delete yourself",
+        icon: "error",
+      });
+    } else {
+      Swal.fire({
+        title: "Are you sure?",
+        icon: "warning",
+        text: "Account deletion is irreversible",
+        showCancelButton: true,
+        confirmButtonText: "yes",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          try {
+            const response = await userAPI.delete(`/${id}`);
+            if (response.data.status === "success") {
+              Swal.fire({
+                title: "Account Deleted",
+                icon: "success",
+                text: response.data.message,
+                showConfirmButton: false,
+              });
+            } else {
+              Swal.fire({
+                title: "Something went wrong",
+                icon: "question",
+                text: response.data.message,
+              });
+            }
+          } catch (error) {
+            console.error(error);
+          }
+        }
+      });
+    }
+  };
+
   const navigate = useNavigate();
   // eslint-disable-next-line react/prop-types
   const data = props?.dataUser?.data?.users;
@@ -55,7 +104,7 @@ const RenderList = (props) => {
   } else {
     return (
       <>
-        <Modal
+        <Modal /* Modal 2 */
           open={open2}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
@@ -166,7 +215,7 @@ const RenderList = (props) => {
             </Typography>
           </Box>
         </Modal>
-        <Modal
+        <Modal /* Modal 1 */
           open={open}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
@@ -180,33 +229,21 @@ const RenderList = (props) => {
                 <form action="">
                   <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
                     <span className="font-semibold label-text">NIK</span>
-                    <span className="w-2/4">
-                      238472634
-                      {/* {cookies.get("userData").user.email}{" "} */}
-                    </span>
+                    <span className="w-2/4">{userDetail.NIK}</span>
                   </div>
                   <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
                     <span className="font-semibold label-text">Nama</span>
-                    <span className="w-2/4">
-                      westlee
-                      {/* {cookies.get("userData").user.email}{" "} */}
-                    </span>
+                    <span className="w-2/4">{userDetail.nama}</span>
                   </div>
                   <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
                     <span className="font-semibold label-text">Email</span>
-                    <span className="w-2/4">
-                      gmail.comsdfsdfsdfsdfds
-                      {/* {cookies.get("userData").user.email}{" "} */}
-                    </span>
+                    <span className="w-2/4">{userDetail.email}</span>
                   </div>
                   <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
                     <span className="font-semibold label-text">
                       Phone Number
                     </span>
-                    <span className="w-2/4">
-                      9238529485
-                      {/* {cookies.get("userData").user.nomor} */}
-                    </span>
+                    <span className="w-2/4">{userDetail.nomor}</span>
                   </div>
                 </form>
               </div>
@@ -233,18 +270,22 @@ const RenderList = (props) => {
               <th>{el.NIK}</th>
               <td>{el.nama}</td>
               <td className="md:justify-center md:flex">
-                <span
+                <button
                   className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo btn-xs"
-                  onClick={handleOpen}
+                  onClick={() => {
+                    handleInfoClick(el._id);
+                  }}
                 >
                   Info
-                </span>
-                <span
+                </button>
+                <button
                   className="text-white bg-red-600 btn hover:bg-white hover:text-red-600 hover:border-2 hover:border-red-600 btn-xs"
-                  onClick={() => navigate("")}
+                  onClick={() => {
+                    handleDeleteClick(el._id);
+                  }}
                 >
                   Delete
-                </span>
+                </button>
               </td>
             </tr>
           </>
