@@ -9,6 +9,7 @@ import { TextField } from "@mui/material";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Cookies } from "react-cookie";
+import { toast } from "react-toastify";
 
 const style = {
   position: "absolute",
@@ -32,6 +33,8 @@ const RenderList = (props) => {
   const handleClose = () => setOpen(false);
   const [valueEdit, setValue] = useState({});
   const [userDetail, setDetail] = useState({});
+  const [currentID, setCurrentID] = useState("");
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const handleFormValue = (value, name) => {
     const formDataCopy = { ...valueEdit };
@@ -47,9 +50,50 @@ const RenderList = (props) => {
   };
 
   const handleInfoClick = async (id) => {
-    const response = await userAPI.get(`/${id}`);
-    setDetail(response.data.user);
-    handleOpen();
+    handleClose();
+    setCurrentID(id);
+    try {
+      const response = await userAPI.get(`/${id}`);
+      setDetail(response.data.user);
+      handleOpen();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleEditSubmit = async (id) => {
+    setIsDisabled(true);
+    try {
+      const response = await userAPI.put(`/${id}`, JSON.stringify(valueEdit));
+
+      if (response.status == 200) {
+        const responseDetail = await userAPI.get(
+          `/${cookies.get("userLog").userId}`
+        );
+
+        cookies.set("userData", responseDetail.data, {
+          expires: new Date(Date.now() + cookies.get("userLog").exp),
+        });
+        Swal.fire({
+          title: "Sukses",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1000,
+        }).then(() => {
+          handleClose2();
+          handleInfoClick(id);
+        });
+      }
+    } catch (err) {
+      console.log(err);
+      if (err.name == "Error") {
+        toast.error(err.message);
+      } else {
+        toast.error(err?.response?.data?.message);
+      }
+    } finally {
+      setIsDisabled(false);
+    }
   };
 
   const handleDeleteClick = (id) => {
@@ -68,6 +112,7 @@ const RenderList = (props) => {
       }).then(async (result) => {
         if (result.isConfirmed) {
           try {
+            setIsDisabled(true);
             const response = await userAPI.delete(`/${id}`);
             if (response.data.status === "success") {
               Swal.fire({
@@ -83,8 +128,13 @@ const RenderList = (props) => {
                 text: response.data.message,
               });
             }
-          } catch (error) {
-            console.error(error);
+          } catch (err) {
+            console.log(err);
+            if (err.name == "Error") {
+              toast.error(err.message);
+            } else {
+              toast.error(err?.response?.data?.message);
+            }
           }
         }
       });
@@ -199,10 +249,17 @@ const RenderList = (props) => {
                 </div>
               </div>
               <div className="flex flex-row-reverse gap-2 pt-4 my-2">
-                <button className="w-20 text-white btn btn-sm bg-indigo hover:bg-white hover:text-indigo hover:border-1 hover:border-indigo">
+                <button
+                  disabled={isDisabled}
+                  onClick={() => {
+                    handleEditSubmit(currentID);
+                  }}
+                  className="w-20 text-white btn btn-sm bg-indigo hover:bg-white hover:text-indigo hover:border-1 hover:border-indigo"
+                >
                   Save
                 </button>
                 <button
+                  disabled={isDisabled}
                   className="w-20 text-white bg-green-600 btn btn-sm hover:bg-white hover:text-green-600 hover:border-2 hover:border-green-600"
                   onClick={handleClose2}
                 >
@@ -246,12 +303,14 @@ const RenderList = (props) => {
               </div>
               <div className="flex flex-row-reverse gap-2 mt-4">
                 <button
+                  disabled={isDisabled}
                   className="w-20 text-white bg-yellow-400 btn btn-sm hover:bg-white hover:text-yellow-400 hover:border-2 hover:border-yellow-400"
                   onClick={handleOpen2}
                 >
                   Edit
                 </button>
                 <button
+                  disabled={isDisabled}
                   className="w-20 text-white bg-indigo btn btn-sm hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo"
                   onClick={handleClose}
                 >
