@@ -100,7 +100,7 @@ const FormDomisili = () => {
           <span className="text-lg font-bold material-symbols-outlined ">
             arrow_back
           </span>
-          <p className="my-auto">back</p>
+          <p className="my-auto">Back</p>
         </div>
         <div className="relative justify-center p-5">
           <div className="w-11/12 mx-auto bg-white shadow-2xl rounded-xl ">

@@ -5,7 +5,62 @@ import icondocs from "../assets/images/icondocs.png";
 import { useNavigate } from "react-router-dom";
 import ele from "../assets/images/ele.png";
 import { Cookies } from "react-cookie";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { API } from "../data/api-digzen";
+
+const RenderList = (props) => {
+  // eslint-disable-next-line react/prop-types
+  const data = props?.dataPengajuan?.data?.data;
+  if (!data || data.length === 0) {
+    return (
+      <tr>
+        <td colSpan="4">No data available</td>
+      </tr>
+    );
+  } else {
+    return (
+      <>
+        {data.map((el) => {
+          if (el.idktp) {
+            return (
+              <>
+                <li>
+                  <hr />
+                  <div className="timeline-start">
+                    {el.submissionDate.substr(0, 10).split("T")}
+                  </div>
+                  <div className="timeline-middle">
+                    <TimelineSVG />
+                  </div>
+                  <div className="timeline-end timeline-box">KTP Pending</div>
+                  <hr />
+                </li>
+              </>
+            );
+          } else {
+            return (
+              <>
+                <li>
+                  <hr />
+                  <div className="timeline-start">
+                    {el.submissionDate.substr(0, 10).split("T")}
+                  </div>
+                  <div className="timeline-middle">
+                    <TimelineSVG />
+                  </div>
+                  <div className="timeline-end timeline-box">
+                    Domisili Pending
+                  </div>
+                  <hr />
+                </li>
+              </>
+            );
+          }
+        })}
+      </>
+    );
+  }
+};
 
 const StatusPengajuan = () => {
   const cookies = new Cookies();
@@ -15,6 +70,21 @@ const StatusPengajuan = () => {
       navigate("/login");
     }
   });
+
+  const [dataPengajuan, setDataPengajuan] = useState([]);
+
+  const pending = async () => {
+    try {
+      const response = await API.get(`status/${cookies.get("userLog").userId}`);
+      setDataPengajuan(response);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    pending();
+  }, []);
 
   const navigate = useNavigate();
 
@@ -35,7 +105,7 @@ const StatusPengajuan = () => {
           <span className="text-lg font-bold material-symbols-outlined ">
             arrow_back
           </span>
-          <p className="my-auto">back</p>
+          <p className="my-auto">Back</p>
         </div>
         {/*  */}
         <div className="flex items-center justify-center h-screen p-5 pb-16">
@@ -55,32 +125,7 @@ const StatusPengajuan = () => {
             <div className="max-w-md p-7">
               {/*  */}
               <ul className="timeline timeline-vertical">
-                <li>
-                  <div className="timeline-start">30-33-2024</div>
-                  <div className="timeline-middle">
-                    <TimelineSVG />
-                  </div>
-                  <div className="timeline-end timeline-box">Pengajuan</div>
-                  <hr />
-                </li>
-                <li>
-                  <hr />
-                  <div className="timeline-start">30-33-2024</div>
-                  <div className="timeline-middle">
-                    <TimelineSVG />
-                  </div>
-                  <div className="timeline-end timeline-box">Ditolak</div>
-                  <hr />
-                </li>
-                <li>
-                  <hr />
-                  <div className="timeline-start">30-33-2024</div>
-                  <div className="timeline-middle">
-                    <TimelineSVG />
-                  </div>
-                  <div className="timeline-end timeline-box">Verify</div>
-                  <hr />
-                </li>
+                <RenderList dataPengajuan={dataPengajuan} />
               </ul>
               {/*  */}
             </div>
