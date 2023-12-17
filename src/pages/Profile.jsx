@@ -47,7 +47,6 @@ const Profile = () => {
   };
 
   const handleEditSubmit = async (e) => {
-    console.log(valueEdit);
     e.preventDefault();
     setIsDisabled(true);
     try {

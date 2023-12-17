@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { API } from "../../data/api-digzen";
 import { Cookies } from "react-cookie";
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const RenderList = (props) => {
   const navigate = useNavigate();
@@ -16,6 +18,7 @@ const RenderList = (props) => {
     }
   });
   const [showModal, setShowModal] = useState(false);
+  const [buttonDisable, setIsDisabled] = useState(false);
   // eslint-disable-next-line react/prop-types
   const data = props?.dataPengajuan?.data?.data;
   if (!data || data.length === 0) {
@@ -25,6 +28,40 @@ const RenderList = (props) => {
       </tr>
     );
   } else {
+    const handleVerifSubmit = async (val) => {
+      let verified = val;
+
+      setIsDisabled(true);
+      try {
+        const response = await API.put(
+          `/ktp/${data._id}`,
+          { verified, reason: "KTP Terverifikasi" },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (response.status == 200) {
+          Swal.fire({
+            title: "Accepted",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1000,
+          });
+        }
+      } catch (err) {
+        console.log(err);
+        if (err.name == "validationError") {
+          toast.error(err.message);
+        } else {
+          toast.error(err?.response?.data?.message);
+        }
+      } finally {
+        setIsDisabled(false);
+      }
+    };
     return (
       <>
         <div className="flex items-center justify-center py-10 bg-background">
@@ -215,10 +252,18 @@ const RenderList = (props) => {
                   />
                 </div> */}
                   <div className="flex-row-reverse gap-1 pt-4 pb-6 md:flex">
-                    <button className="text-white btn btn-block bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo md:w-1/6">
+                    <button
+                      disabled={buttonDisable}
+                      onClick={() => handleVerifSubmit("accept")}
+                      className="text-white btn btn-block bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo md:w-1/6"
+                    >
                       Accept
                     </button>
-                    <button className="text-white bg-red-600 btn btn-block btn-error hover:bg-white hover:text-red-600 hover:border-2 hover:border-red-600 md:w-1/6">
+                    <button
+                      disabled={buttonDisable}
+                      onClick={() => handleVerifSubmit("reject")}
+                      className="text-white bg-red-600 btn btn-block btn-error hover:bg-white hover:text-red-600 hover:border-2 hover:border-red-600 md:w-1/6"
+                    >
                       Reject
                     </button>
                   </div>
