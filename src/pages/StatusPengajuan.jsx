@@ -1,14 +1,32 @@
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import TimelineSVG from "../components/SVG/Timelinesvg";
 import icondocs from "../assets/images/icondocs.png";
 import { useNavigate } from "react-router-dom";
 import ele from "../assets/images/ele.png";
 import { Cookies } from "react-cookie";
 import { useEffect, useState } from "react";
 import { API } from "../data/api-digzen";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
+import Box from "@mui/material/Box";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  // width: window.innerWidth <= 390 ? 300 : 500,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 3,
+};
 
 const RenderList = (props) => {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   const data = props?.dataPengajuan?.data?.data;
   const jenis = props?.jenis;
   if (!data || data.length === 0) {
@@ -25,7 +43,45 @@ const RenderList = (props) => {
             if (el.idktp) {
               return (
                 <>
-                  <li>
+                  <div className="">
+                    <div className="">
+                      <p className="font-black label-text">Submission Date</p>
+                      <p>{el.submissionDate.substr(0, 10).split("T")}</p>
+                    </div>
+                    <div className="mt-3">
+                      <p className="font-black label-text">Status</p>
+                      <p>Accepted</p>
+                    </div>
+                    <div className="mt-3">
+                      <p className="font-black label-text">Result</p>
+                      <p className="btn btn-sm" onClick={handleOpen}>
+                        Open Result
+                      </p>
+                      <Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                      >
+                        <Box sx={style}>
+                          <Typography>
+                            <div className="">
+                              <img src={ele} alt="" />
+                            </div>
+                          </Typography>
+                        </Box>
+                      </Modal>
+                    </div>
+                    <div className="mt-3">
+                      <span className="font-black label-text">Reason</span>
+                      <textarea
+                        value="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia doloribus ipsa praesentium distinctio et accusantium recusandae repellat assumenda cum dolor, vel quae fugiat."
+                        className="w-full bg-white textarea textarea-bordered textarea-md max-w-screen md:max-w-md: md:mt-2 lg:max-w-2xl xl:max-w-4xl"
+                        disabled
+                      />
+                    </div>
+                  </div>
+                  {/* <li>
                     <hr />
                     <div className="timeline-start">
                       {el.submissionDate.substr(0, 10).split("T")}
@@ -37,7 +93,7 @@ const RenderList = (props) => {
                       Pengajuan KTP
                     </div>
                     <hr />
-                  </li>
+                  </li> */}
                 </>
               );
             }
@@ -51,19 +107,44 @@ const RenderList = (props) => {
             if (el.idktp) {
               return (
                 <>
-                  <li>
-                    <hr />
-                    <div className="timeline-start">
-                      {el.submissionDate.substr(0, 10).split("T")}
+                  <div className="">
+                    <div className="">
+                      <p className="font-black label-text">Submission Date</p>
+                      <p>{el.submissionDate.substr(0, 10).split("T")}</p>
                     </div>
-                    <div className="timeline-middle">
-                      <TimelineSVG />
+                    <div className="mt-3">
+                      <p className="font-black label-text">Status</p>
+                      <p>Accepted</p>
                     </div>
-                    <div className="timeline-end timeline-box">
-                      Pengajuan Surat Domisili
+                    <div className="mt-3">
+                      <p className="font-black label-text">Result</p>
+                      <p className="btn btn-sm" onClick={handleOpen}>
+                        Open Result
+                      </p>
+                      <Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                      >
+                        <Box sx={style}>
+                          <Typography>
+                            <div className="">
+                              <img src={ele} alt="" />
+                            </div>
+                          </Typography>
+                        </Box>
+                      </Modal>
                     </div>
-                    <hr />
-                  </li>
+                    <div className="mt-3">
+                      <span className="font-black label-text">Reason</span>
+                      <textarea
+                        value="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia doloribus ipsa praesentium distinctio et accusantium recusandae repellat assumenda cum dolor, vel quae fugiat."
+                        className="w-full bg-white textarea textarea-bordered textarea-md max-w-screen md:max-w-md: md:mt-2 lg:max-w-2xl xl:max-w-4xl"
+                        disabled
+                      />
+                    </div>
+                  </div>
                 </>
               );
             }
@@ -108,7 +189,7 @@ const StatusPengajuan = () => {
         className="absolute top-0 right-0 z-0 object-cover object-left w-32 h-52"
       />
       <Navbar />
-      <div className="bg-[#F5F5FA] h-screen">
+      <div className="bg-[#F5F5FA] ">
         {/*  */}
         <div
           className="flex w-[60px] pt-[2rem] ml-16 cursor-pointer"
@@ -120,15 +201,15 @@ const StatusPengajuan = () => {
           <p className="my-auto">Back</p>
         </div>
         {/*  */}
-        <div className="flex flex-col content-center justify-center md:flex-row mt-[10%]">
-          <div className="flex items-center justify-center p-5">
+        <div className="flex flex-col content-center justify-center md:flex-row my-[2%]">
+          <div className="z-0 flex items-center justify-center p-5">
             <div className="z-10 w-11/12 mx-auto bg-white shadow-2xl rounded-xl md:w-96">
-              <div className="flex justify-center py-5 md:justify-start md:ml-10 ">
+              <div className="flex justify-center py-5 ">
                 <div className="my-auto">
                   <img src={icondocs} alt="" className="h-[50px]" />
                 </div>
                 <div className="flex flex-col my-auto font-black text-indigo">
-                  <h1 className="text-2xl ">Status Pengajuan KTP</h1>
+                  <h1 className="text-lg md:text-xl">Status Pengajuan KTP</h1>
                 </div>
               </div>
               <hr className="bg-indigo text-black p-[1px] mx-10 " />
@@ -141,14 +222,16 @@ const StatusPengajuan = () => {
               </div>
             </div>
           </div>
-          <div className="flex items-center justify-center p-5">
+          <div className="z-0 flex items-center justify-center p-5">
             <div className="z-10 w-11/12 mx-auto bg-white shadow-2xl rounded-xl md:w-96">
-              <div className="flex justify-center py-5 md:justify-start md:ml-10 ">
+              <div className="flex justify-center py-5 ">
                 <div className="my-auto">
                   <img src={icondocs} alt="" className="h-[50px]" />
                 </div>
                 <div className="flex flex-col my-auto font-black text-indigo">
-                  <h1 className="text-2xl ">Status Pengajuan Domisili</h1>
+                  <h1 className="text-lg md:text-xl">
+                    Status Pengajuan Domisili
+                  </h1>
                 </div>
               </div>
               <hr className="bg-indigo text-black p-[1px] mx-10 " />
