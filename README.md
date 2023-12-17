@@ -151,10 +151,10 @@ How to install local Digital Citizen on your laptop? let's follow the instructio
 <!-- CONTACT -->
 ## Contact
 
-- [Westlee Matthew Agustinus](-)
-- [Fadiyah Dhara Al Arsya](-)
-- [Yoel Steady Valentino](-)
-- [Muh. Deni Setiawan](-)
+- [Westlee Matthew Agustinus](https://www.linkedin.com/in/westlee-matthew-agustinus-542783195?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
+- [Fadiyah Dhara Al Arsya](https://www.linkedin.com/in/fadiyaharsya/)
+- [Yoel Steady Valentino](https://www.linkedin.com/in/yoelsteadyvalentino)
+- [Muh. Deni Setiawan](https://id.linkedin.com/in/muh-deni-setiawan-d19082002)
 - [Bambang Pratama Putra Hadi](-)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
