@@ -142,7 +142,12 @@ const Profile = () => {
                     <TextField
                       id="outlined-basic"
                       label="NIK"
-                      type="number"
+                      type="text"
+                      inputProps={{
+                        minLength: 16,
+                        maxLength: 16,
+                        pattern: "[0-9]*",
+                      }}
                       placeholder="xxxxxxxxx"
                       variant="outlined"
                       className="w-full"
