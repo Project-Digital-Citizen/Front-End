@@ -129,6 +129,7 @@ const Login = () => {
                     id="outlined-basic"
                     label="Password"
                     type={showPassword}
+                    inputProps={{ minLength: 8 }}
                     variant="outlined"
                     className="w-full"
                     onChange={(e) => handleFormValue(e, "password")}

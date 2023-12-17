@@ -107,7 +107,6 @@ const NewPassword = () => {
                   id="outlined-basic"
                   label="New Password"
                   type={showPassword}
-                  inputMode="text"
                   inputProps={{ minLength: 8 }}
                   variant="outlined"
                   className="w-full"
