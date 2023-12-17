@@ -42,7 +42,7 @@ const RenderList = (props) => {
   }
 };
 
-const Mailinglist = () => {
+const MailinglistDomisili = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -98,12 +98,13 @@ const Mailinglist = () => {
             <div className="">
               <div
                 className="text-white btn btn-sm bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo"
-                onClick={() => navigate("/mailinglistdomisili")}
+                onClick={() => navigate("/mailinglist")}
               >
-                Mailing List Domisili
+                Mailing List KTP
               </div>
             </div>
           </div>
+
           <div className="mx-2 mb-2 overflow-x-auto bg-white border rounded border-base-300">
             <table className="table table-zebra">
               {/* head */}
@@ -127,4 +128,4 @@ const Mailinglist = () => {
     </>
   );
 };
-export default Mailinglist;
+export default MailinglistDomisili;
