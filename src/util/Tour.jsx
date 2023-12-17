@@ -13,12 +13,12 @@ const welcomeTour = () => {
     showButtons: ["next", "previous", "close"],
     steps: [
       {
-        element: "#root",
+        element: ".first",
         popover: {
           title: "Selamat Datang di Digzen",
           description:
             "Terima kasih telah menggunakan Digzen. Ini adalah panduan pertama Anda.",
-          position: "bottom",
+          position: "top",
         },
       },
       {

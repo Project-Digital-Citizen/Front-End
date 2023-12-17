@@ -12,11 +12,11 @@ import { welcomeTour } from "../util/Tour";
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  welcomeTour()
+  welcomeTour();
   return (
     <>
       <Navbar />
-      <div className="bg-indigo">
+      <div className="bg-indigo first">
         <div className="px-6 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0 lg:h-[27rem]">
           <div
             className="text-white py-5 md:p-12 flex-1 md:my-auto lg:ml-[4rem] xl:mr-[10rem]"
@@ -33,7 +33,7 @@ const Dashboard = () => {
             </p>
             <a
               href="#more"
-              className="more px-4 mt-2 font-normal border-white btn btn-sm btn-ghost hover:bg-white hover:text-indigo scroll-smooth focus:scroll-auto"
+              className="px-4 mt-2 font-normal border-white more btn btn-sm btn-ghost hover:bg-white hover:text-indigo scroll-smooth focus:scroll-auto"
             >
               More
             </a>
@@ -119,46 +119,67 @@ const Dashboard = () => {
       </svg>
       {/*  */}
       <div className="pb-3 bg-indigo">
-  <div className="max-w-md px-6 mx-auto sm:max-w-xl md:max-w-5xl mb-[2rem]">
-    <div className="flex-1 py-5 text-white md:p-12 md:my-auto">
-      <h1 className="mb-3 text-5xl font-bold text-center" data-aos="fade-up">
-        Pengajuan Surat
-      </h1>
+        <div className="max-w-md px-6 mx-auto sm:max-w-xl md:max-w-5xl mb-[2rem]">
+          <div className="flex-1 py-5 text-white md:p-12 md:my-auto">
+            <h1
+              className="mb-3 text-5xl font-bold text-center"
+              data-aos="fade-up"
+            >
+              Pengajuan Surat
+            </h1>
 
-      <div className="flex flex-col md:flex-row justify-between items-center md:space-x-4">
-
-        {[
-          { img: ktp, title: "KTP", desc: "Kartu Tanda Penduduk merupakan kartu identitas diri secara resmi yang diterbitkan oleh Kementrian Dalam Negeri", link: "/formktp" },
-          { img: domisili, title: "Surat Domisili", desc: "Surat domisili merupakan dokumen untuk membuktikan bahwa seseorang betul tinggal pada suatu wilayah tertentu", link: "/formdomisili" },
-        ].map((item, index) => (
-          <div
-            key={index}
-            className={`flex my-10 ${index === 1 ? 'md:ml-4' : ''}`}
-            data-aos="fade-up"
-           
-          >
-            <div className={`${index === 0 ? 'ktp-def' : 'domisili-def'} mx-auto my-auto pt-5 space-y-6 w-[20rem] h-[25rem] bg-white rounded-xl border shadow-lg`}>
-              <img src={item.img} alt={item.title} className="mx-auto" />
-              <p className="text-xl font-black text-center text-black">{item.title}</p>
-              <p className={`px-6 font-medium text-justify text-black text-${index === 0 ? 'md' : 'm'}`}>
-                {item.desc}
-              </p>
-              <div className="flex">
-                <button
-                  className="mx-auto text-white btn btn-sm bg-indigo border-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo"
-                  onClick={() => navigate(item.link)}
+            <div className="flex flex-col items-center justify-between md:flex-row md:space-x-4">
+              {[
+                {
+                  img: ktp,
+                  title: "KTP",
+                  desc: "Kartu Tanda Penduduk merupakan kartu identitas diri secara resmi yang diterbitkan oleh Kementrian Dalam Negeri",
+                  link: "/formktp",
+                },
+                {
+                  img: domisili,
+                  title: "Surat Domisili",
+                  desc: "Surat domisili merupakan dokumen untuk membuktikan bahwa seseorang betul tinggal pada suatu wilayah tertentu",
+                  link: "/formdomisili",
+                },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className={`flex my-10 ${index === 1 ? "md:ml-4" : ""}`}
+                  data-aos="fade-up"
                 >
-                  Buat
-                </button>
-              </div>
+                  <div
+                    className={`${
+                      index === 0 ? "ktp-def" : "domisili-def"
+                    } mx-auto my-auto pt-5 space-y-6 w-[20rem] h-[25rem] bg-white rounded-xl border shadow-lg`}
+                  >
+                    <img src={item.img} alt={item.title} className="mx-auto" />
+                    <p className="text-xl font-black text-center text-black">
+                      {item.title}
+                    </p>
+                    <p
+                      className={`px-6 font-medium text-justify text-black text-${
+                        index === 0 ? "md" : "m"
+                      }`}
+                    >
+                      {item.desc}
+                    </p>
+                    <div className="flex">
+                      <button
+                        className="mx-auto text-white btn btn-sm bg-indigo border-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo"
+                        onClick={() => navigate(item.link)}
+                      >
+                        Buat
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-        ))}
+          <ScrollUpBtn />
+        </div>
       </div>
-    </div>
-    <ScrollUpBtn />
-  </div>
-</div>
 
       <Footer />
     </>
