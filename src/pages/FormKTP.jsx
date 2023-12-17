@@ -332,9 +332,7 @@ const FormKTP = () => {
                     placeholder="Kabupaten/Kota"
                     variant="outlined"
                     className="w-full"
-                    onBlur={(e) =>
-                      handleFormValue(e.target.value, "kabupatenKota")
-                    }
+                    onBlur={(e) => handleFormValue(e.target.value, "kabupaten")}
                   />
                 </div>
                 <div className="flex flex-col justify-between w-full gap-2 pt-4 form-control md:flex md:flex-row">

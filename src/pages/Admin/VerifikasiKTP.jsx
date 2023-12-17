@@ -162,7 +162,7 @@ const RenderList = (props) => {
                       Kabupaten/Kota
                     </span>
                     <span className="w-full max-w-screen md:w-2/4 md:-">
-                      {data.kabubaten}
+                      {data.kabupaten}
                     </span>
                   </div>
                   <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
