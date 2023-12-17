@@ -9,10 +9,20 @@ import logo from "../assets/images/logo_3.png";
 import ele from "../assets/images/ele.png";
 import { ScrollUpBtn } from "../util/ScrollUpBtn";
 import { welcomeTour } from "../util/Tour";
+import { Cookies } from "react-cookie";
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  welcomeTour();
+  const cookies = new Cookies();
+
+  if (cookies.get("userLog")) {
+    if (cookies.get("userData").user.role == "admin") {
+      welcomeTour("exit");
+    }
+  } else {
+    welcomeTour("drive");
+  }
+
   return (
     <>
       <Navbar />

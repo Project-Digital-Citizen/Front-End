@@ -19,7 +19,6 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import dayjs from "dayjs";
-import { ktpTour } from "../util/Tour";
 
 const FormKTP = () => {
   const cookies = new Cookies();
@@ -135,7 +134,6 @@ const FormKTP = () => {
       </MenuItem>
     );
   }
-  ktpTour();
   return (
     <>
       <Navbar />
