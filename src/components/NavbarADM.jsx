@@ -178,7 +178,7 @@ const NavbarADM = () => {
                                     cookies.get("userData").user.nama
                                   }`
                             }
-                            className="w-[8rem] border-2 border-black rounded-full"
+                            className="bg-white w-[8rem] border-2 border-black rounded-full"
                           />
                         </div>
                       </div>
@@ -211,6 +211,9 @@ const NavbarADM = () => {
                 <ul className="w-56 menu bg-base-200 rounded-box">
                   <li>
                     <a onClick={() => navigate("/admin")}>Beranda</a>
+                  </li>
+                  <li>
+                    <a onClick={() => navigate("/")}>Beranda User</a>
                   </li>
                   <li>
                     <a onClick={() => navigate("/mailinglist")}>
