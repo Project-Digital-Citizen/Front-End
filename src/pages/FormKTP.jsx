@@ -194,9 +194,9 @@ const FormKTP = () => {
             <div className="px-10">
               {/*  */}
               <form action="">
-                <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
+                <div className="justify-between w-full pt-4 nik form-control md:flex md:flex-row">
                   <TextField
-                    id="outlined-number"
+                    id="outlined-number nik"
                     label="NIK"
                     type="text"
                     inputProps={{
@@ -205,7 +205,7 @@ const FormKTP = () => {
                       pattern: "[0-9]*",
                     }}
                     placeholder="xxxxxxxxxx"
-                    className="w-full"
+                    className="w-full nik"
                     onBlur={(e) => handleFormValue(e.target.value, "NIK")}
                   />
                 </div>
