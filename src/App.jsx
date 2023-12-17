@@ -21,11 +21,13 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import ForgotPassword from "./pages/ForgotPassword";
 import NewPassword from "./pages/NewPassword";
+import ScrollToTopOnPageChange from "./util/ScrollToUp";
 AOS.init();
 
 const App = () => {
   return (
     <Router>
+      <ScrollToTopOnPageChange />
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/admin" element={<BerandaADM />} />

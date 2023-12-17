@@ -2,8 +2,8 @@
 import { driver } from "driver.js";
 import "driver.js/dist/driver.css";
 
-const welcomeTour = () => {
-  // Konfigurasi objek driver
+const welcomeTour = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   const driverObj = driver({
     overlayColor: "#83a2ff",
     showProgress: true,
@@ -63,31 +63,29 @@ const welcomeTour = () => {
   driverObj.drive();
 };
 
-const ktpTour = () => {
+const ktpTour = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   const driverObj = driver({
-    popoverClass: "driverjs-theme",
-    stagePadding: 0,
-    onDestroyed: () => {
-      document?.activeElement?.blur();
-    },
-  });
-
-  const nik = document.getElementById("nik");
-  const formEl = document.querySelector("form");
-
-  nik.addEventListener("focus", () => {
-    driverObj.highlight({
-      element: nik,
-      popover: {
-        title: "Name",
-        description: "Enter your name here",
+    overlayColor: "#83a2ff",
+    showProgress: true,
+    nextBtnText: "Selanjutnya",
+    prevBtnText: "Sebelumnya",
+    doneBtnText: "Selesai",
+    showButtons: ["next", "previous", "close"],
+    steps: [
+      {
+        element: ".nikEl",
+        popover: {
+          title: "Animated Tour Example",
+          description:
+            "Here is the code example showing animated tour. Let's walk you through it.",
+          side: "left",
+          align: "start",
+        },
       },
-    });
+    ],
   });
 
-  formEl.addEventListener("blur", () => {
-    driverObj.destroy();
-  });
   driverObj.drive();
 };
 
