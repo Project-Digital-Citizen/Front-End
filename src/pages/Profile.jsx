@@ -132,6 +132,7 @@ const Profile = () => {
                       id="outlined-basic"
                       label="Email"
                       type="email"
+                      inputProps={{ style: { textTransform: "lowercase" } }}
                       placeholder="contoh@contoh.com"
                       variant="outlined"
                       className="w-full"

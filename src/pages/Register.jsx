@@ -144,6 +144,7 @@ const Register = () => {
                 <TextField
                   id="outlined-basic"
                   label="Email"
+                  inputProps={{ style: { textTransform: "lowercase" } }}
                   variant="outlined"
                   className="w-full"
                   placeholder="contoh@contoh.com"

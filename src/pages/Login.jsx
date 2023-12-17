@@ -117,6 +117,7 @@ const Login = () => {
                 <TextField
                   id="outlined-basic"
                   label="Email"
+                  inputProps={{ style: { textTransform: "lowercase" } }}
                   variant="outlined"
                   className="w-full animate__animated animate__bounceIn"
                   onChange={(e) => handleFormValue(e, "email")}
