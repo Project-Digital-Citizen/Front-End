@@ -156,6 +156,7 @@ const Register = () => {
                   id="outlined-basic"
                   label="Phone Number"
                   type="number"
+                  inputProps={{ minLength: 10 }}
                   placeholder="08xxxx"
                   variant="outlined"
                   className="w-full"

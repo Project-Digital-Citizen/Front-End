@@ -160,6 +160,7 @@ const Profile = () => {
                       id="outlined-basic"
                       label="Nomor"
                       type="number"
+                      inputProps={{ minLength: 10 }}
                       placeholder="08xxxxxxxxxx"
                       variant="outlined"
                       className="w-full"

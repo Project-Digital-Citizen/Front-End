@@ -88,7 +88,7 @@ const ForgotPassword = () => {
         <div className="relative z-10 bg-white w-5/6 rounded shadow-md y-10 md:w-[70%] lg:w-[50%] xl:w-[35%]">
           {/* Isi kotak center di sini */}
 
-          <h1 className="px-10 pb-[1rem] text-2xl font-medium text-center text-black">
+          <h1 className="px-10 py-[1rem] text-2xl font-medium text-center text-black">
             Lupa Password
           </h1>
           <hr className="bg-indigo text-black p-[1px] mx-10 " />
