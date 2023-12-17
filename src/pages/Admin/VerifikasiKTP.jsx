@@ -151,6 +151,22 @@ const RenderList = (props) => {
                   </div>
                   <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
                     <span className="font-black label-text md:ml-12">
+                      Provinsi
+                    </span>
+                    <span className="w-full max-w-screen md:w-2/4 md:-">
+                      {data.provinsi}
+                    </span>
+                  </div>
+                  <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
+                    <span className="font-black label-text md:ml-12">
+                      Kabupaten/Kota
+                    </span>
+                    <span className="w-full max-w-screen md:w-2/4 md:-">
+                      {data.kabubatenKota}
+                    </span>
+                  </div>
+                  <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
+                    <span className="font-black label-text md:ml-12">
                       RT/RW
                     </span>
                     <span className="w-full max-w-screen md:w-2/4 md:-">
@@ -159,7 +175,7 @@ const RenderList = (props) => {
                   </div>
                   <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
                     <span className="font-black label-text md:ml-12">
-                      Kel/Desa
+                      Kelurahan/Desa
                     </span>
                     <span className="w-full max-w-screen md:w-2/4 md:-">
                       {data.kelurahanDesa}

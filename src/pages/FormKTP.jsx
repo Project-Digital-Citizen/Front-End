@@ -313,6 +313,30 @@ const FormKTP = () => {
                     onBlur={(e) => handleFormValue(e.target.value, "alamat")}
                   />
                 </div>
+                <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
+                  <TextField
+                    id="outlined-basic"
+                    label="Provinsi"
+                    type="Text"
+                    placeholder="Provinsi"
+                    variant="outlined"
+                    className="w-full"
+                    onBlur={(e) => handleFormValue(e.target.value, "provinsi")}
+                  />
+                </div>
+                <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
+                  <TextField
+                    id="outlined-basic"
+                    label="Kabupaten/Kota"
+                    type="Text"
+                    placeholder="Kabupaten/Kota"
+                    variant="outlined"
+                    className="w-full"
+                    onBlur={(e) =>
+                      handleFormValue(e.target.value, "kabupatenKota")
+                    }
+                  />
+                </div>
                 <div className="flex flex-col justify-between w-full gap-2 pt-4 form-control md:flex md:flex-row">
                   <TextField
                     id="outlined-basic"
