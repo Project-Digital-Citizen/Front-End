@@ -1,15 +1,36 @@
 import NavbarADM from "../../components/NavbarADM";
 import Footer from "../../components/Footer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Chart from "../../components/Chart/Chart";
 import { Cookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
+import { API } from "../../data/api-digzen";
+
+const RenderList = (props) => {
+  // eslint-disable-next-line react/prop-types
+  const data = props?.dataPengajuan?.data?.data;
+  if (!data || data.length === 0) {
+    return 0;
+  } else {
+    return data.length;
+  }
+};
 
 const BerandaADM = () => {
   const cookies = new Cookies();
   const navigate = useNavigate();
+  const [dataPengajuan, setDataPengajuan] = useState([]);
 
+  const pending = async () => {
+    try {
+      const response = await API.get("ktp");
+      setDataPengajuan(response);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
   useEffect(() => {
+    pending();
     console.log(cookies.get("userLog"));
     if (cookies.get("userData").user.role !== "admin") {
       navigate("/");
@@ -67,12 +88,12 @@ const BerandaADM = () => {
           <div className="stat place-items-center">
             <div className="stat-title">Users</div>
             <div className="stat-value">4,200</div>
-            <div className="stat-desc text-secondary">↗︎</div>
           </div>
           <div className="border-t-2 border-indigo stat place-items-center md:border-l-2 md:border-t-0">
-            <div className="stat-title">Visitor</div>
-            <div className="stat-value">1,200</div>
-            <div className="stat-desc">↘︎</div>
+            <div className="stat-title">Mailing List</div>
+            <div className="stat-value">
+              <RenderList dataPengajuan={dataPengajuan} />
+            </div>
           </div>
         </div>
       </div>

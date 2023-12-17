@@ -16,10 +16,10 @@ const Dashboard = () => {
   return (
     <>
       <Navbar />
-      <div className="bg-indigo first">
+      <div className="bg-indigo">
         <div className="px-6 max-w-md mx-auto sm:max-w-xl md:max-w-5xl lg:flex lg:max-w-full lg:p-0 lg:h-[27rem]">
           <div
-            className="text-white py-5 md:p-12 flex-1 md:my-auto lg:ml-[4rem] xl:mr-[10rem]"
+            className=" text-white py-5 md:p-12 flex-1 md:my-auto lg:ml-[4rem] xl:mr-[10rem]"
             data-aos="fade-right"
           >
             <img
@@ -27,7 +27,7 @@ const Dashboard = () => {
               alt="Laptop"
               className="object-cover object-center w-full h-full sm:mt-6 lg:hidden"
             />
-            <h1 className="mb-3 text-5xl font-bold">Let's Gooo</h1>
+            <div className="mb-3 text-5xl font-bold first">Let's Gooo</div>
             <p className="text-left">
               Proses pengurusan surat menjadi lebih efisien dan efektif
             </p>

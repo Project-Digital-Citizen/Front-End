@@ -18,7 +18,8 @@ const welcomeTour = () => {
           title: "Selamat Datang di Digzen",
           description:
             "Terima kasih telah menggunakan Digzen. Ini adalah panduan pertama Anda.",
-          position: "top",
+          side: "bottom",
+          align: "start",
         },
       },
       {
