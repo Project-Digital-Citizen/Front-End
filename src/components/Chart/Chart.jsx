@@ -45,7 +45,7 @@ const Chart = () => {
         });
 
         // Proses data gabungan dan perbarui state chartData
-        const newLabels = Object.keys(aggregatedData).reverse();
+        const newLabels = Object.keys(aggregatedData);
         const newUsersData = newLabels.map(
           (key) => aggregatedData[key].userRegisters
         );
