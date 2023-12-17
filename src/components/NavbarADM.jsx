@@ -6,11 +6,14 @@ import { API } from "../data/api-digzen";
 
 const RenderList = (props) => {
   // eslint-disable-next-line react/prop-types
-  const data = props?.dataPengajuan?.data?.data;
-  if (!data || data.length === 0) {
+  const totalKtp = props?.dataPengajuan?.ktp?.data?.data?.length;
+  const totalDom = props?.dataPengajuan?.dom?.data?.data?.length;
+
+  if (!totalKtp || !totalDom || totalKtp == 0 || totalDom == 0) {
     return 0;
   } else {
-    return data.length;
+    const total = parseInt(totalKtp) + parseInt(totalDom);
+    return total;
   }
 };
 
@@ -19,8 +22,12 @@ const NavbarADM = () => {
 
   const pending = async () => {
     try {
-      const response = await API.get("ktp");
-      setDataPengajuan(response);
+      const responsektp = await API.get("ktp");
+      const responsedom = await API.get("domisili");
+      setDataPengajuan({
+        ktp: responsektp,
+        dom: responsedom,
+      });
     } catch (error) {
       console.error("Error fetching data:", error);
     }

@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer";
 import NavbarADM from "../../components/NavbarADM";
 import { API } from "../../data/api-digzen";
-import SearchIcon from "@mui/icons-material/Search";
+// import SearchIcon from "@mui/icons-material/Search";
 import { useEffect, useState } from "react";
 import { Cookies } from "react-cookie";
-import { InputAdornment, TextField } from "@mui/material";
+// import { InputAdornment, TextField } from "@mui/material";
 
 const RenderList = (props) => {
   const navigate = useNavigate();
@@ -81,7 +81,7 @@ const MailinglistDomisili = () => {
           </div>
           <hr className="bg-indigo text-black p-[1px] mx-10 " />
           <div className="flex items-center justify-between p-2 ">
-            <div className="">
+            {/* <div className="">
               <TextField
                 id="outlined-basic"
                 label="Search"
@@ -98,7 +98,7 @@ const MailinglistDomisili = () => {
                 }}
                 // onBlur={(value) => handleFormValue(value, "nama")}
               />
-            </div>
+            </div> */}
             <div className="">
               <div
                 className="text-white btn btn-sm bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo"
