@@ -9,8 +9,8 @@ import { useEffect, useState } from "react";
 import { API } from "../data/api-digzen";
 
 const RenderList = (props) => {
-  // eslint-disable-next-line react/prop-types
   const data = props?.dataPengajuan?.data?.data;
+  const jenis = props?.jenis;
   if (!data || data.length === 0) {
     return (
       <tr>
@@ -18,47 +18,57 @@ const RenderList = (props) => {
       </tr>
     );
   } else {
-    return (
-      <>
-        {data.map((el) => {
-          if (el.idktp) {
-            return (
-              <>
-                <li>
-                  <hr />
-                  <div className="timeline-start">
-                    {el.submissionDate.substr(0, 10).split("T")}
-                  </div>
-                  <div className="timeline-middle">
-                    <TimelineSVG />
-                  </div>
-                  <div className="timeline-end timeline-box">KTP Pending</div>
-                  <hr />
-                </li>
-              </>
-            );
-          } else {
-            return (
-              <>
-                <li>
-                  <hr />
-                  <div className="timeline-start">
-                    {el.submissionDate.substr(0, 10).split("T")}
-                  </div>
-                  <div className="timeline-middle">
-                    <TimelineSVG />
-                  </div>
-                  <div className="timeline-end timeline-box">
-                    Domisili Pending
-                  </div>
-                  <hr />
-                </li>
-              </>
-            );
-          }
-        })}
-      </>
-    );
+    if (jenis == "ktp") {
+      return (
+        <>
+          {data.map((el) => {
+            if (el.idktp) {
+              return (
+                <>
+                  <li>
+                    <hr />
+                    <div className="timeline-start">
+                      {el.submissionDate.substr(0, 10).split("T")}
+                    </div>
+                    <div className="timeline-middle">
+                      <TimelineSVG />
+                    </div>
+                    <div className="timeline-end timeline-box">KTP Pending</div>
+                    <hr />
+                  </li>
+                </>
+              );
+            }
+          })}
+        </>
+      );
+    } else {
+      return (
+        <>
+          {data.map((el) => {
+            if (el.idktp) {
+              return (
+                <>
+                  <li>
+                    <hr />
+                    <div className="timeline-start">
+                      {el.submissionDate.substr(0, 10).split("T")}
+                    </div>
+                    <div className="timeline-middle">
+                      <TimelineSVG />
+                    </div>
+                    <div className="timeline-end timeline-box">
+                      Domisili Pending
+                    </div>
+                    <hr />
+                  </li>
+                </>
+              );
+            }
+          })}
+        </>
+      );
+    }
   }
 };
 
@@ -126,7 +136,7 @@ const StatusPengajuan = () => {
               <div className="max-w-md p-7">
                 {/*  */}
                 <ul className="timeline timeline-vertical">
-                  <RenderList dataPengajuan={dataPengajuan} />
+                  <RenderList dataPengajuan={dataPengajuan} jenis="ktp" />
                 </ul>
                 {/*  */}
               </div>
@@ -149,7 +159,7 @@ const StatusPengajuan = () => {
               <div className="max-w-md p-7">
                 {/*  */}
                 <ul className="timeline timeline-vertical">
-                  <RenderList dataPengajuan={dataPengajuan} />
+                  <RenderList dataPengajuan={dataPengajuan} jenis="domisili" />
                 </ul>
                 {/*  */}
               </div>
