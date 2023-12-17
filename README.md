@@ -155,7 +155,7 @@ How to install local Digital Citizen on your laptop? let's follow the instructio
 - [Fadiyah Dhara Al Arsya](https://www.linkedin.com/in/fadiyaharsya/)
 - [Yoel Steady Valentino](https://www.linkedin.com/in/yoelsteadyvalentino)
 - [Muh. Deni Setiawan](https://id.linkedin.com/in/muh-deni-setiawan-d19082002)
-- [Bambang Pratama Putra Hadi](-)
+- [Bambang Pratama Putra Hadi](https://www.linkedin.com/in/bambang-pratama-putra-hadi-419b36290)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
