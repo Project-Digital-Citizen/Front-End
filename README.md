@@ -112,7 +112,6 @@ How to install local Digital Citizen on your laptop? let's follow the instructio
    ```js
    BASE_URL_API='http://localhost:3000' // FOR DEVELOPMENT
    BASE_URL_API='https://api.digzen.site' // FOR BACK-END
-   PUBLIC_KEY_SERVER='-' 
    ```
 4. Run the server!
    ```sh
