@@ -37,16 +37,28 @@ const Profile = () => {
   const handleFormValue = (value, name) => {
     const formDataCopy = { ...valueEdit };
     formDataCopy[name] = value.target.value;
+
+    if (name == "userImage") {
+      console.log(value.target.files[0]);
+      formDataCopy[name] = value.target.files[0];
+    }
+
     setValue(formDataCopy);
   };
 
   const handleEditSubmit = async (e) => {
+    console.log(valueEdit);
     e.preventDefault();
     setIsDisabled(true);
     try {
       const response = await userAPI.put(
         `/${cookies.get("userLog").userId}`,
-        JSON.stringify(valueEdit)
+        valueEdit,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
 
       if (response.status == 200) {
@@ -195,7 +207,12 @@ const Profile = () => {
                   className="object-cover w-[8rem] h-[8rem] border-4 border-black rounded-full"
                 />
               </label>
-              <input type="file" id="pp" className="hidden" />
+              <input
+                type="file"
+                id="pp"
+                className="hidden"
+                onChange={(value) => handleFormValue(value, "userImage")}
+              />
             </div>
             <div className="flex flex-col pb-2">
               <h1 className="text-2xl font-black text-center text-black">

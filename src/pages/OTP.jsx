@@ -130,9 +130,12 @@ const OTP = () => {
                   type="tel"
                   pattern="[0-9]*"
                   maxLength="1"
-                  inputProps={{ pattern: "[0-9]*", maxLength: "1" }}
+                  inputProps={{
+                    pattern: "[0-9]*",
+                    maxLength: "1",
+                  }}
                   placeholder=""
-                  className="max-w-screen md:max-w-xs"
+                  className="max-w-screen md:max-w-xs text-center"
                 />
                 <TextField
                   onBlur={(e) => handleFormValueBlur(e, "otp2")}

@@ -8,11 +8,23 @@ import { API } from "../../data/api-digzen";
 
 const RenderList = (props) => {
   // eslint-disable-next-line react/prop-types
-  const data = props?.dataPengajuan?.data?.data;
-  if (!data || data.length === 0) {
-    return 0;
-  } else {
-    return data.length;
+  if (props?.type == "mailing") {
+    const totalKtp = props?.dataPengajuan?.ktp?.data?.data?.length;
+    const totalDom = props?.dataPengajuan?.dom?.data?.data?.length;
+
+    if (!totalKtp || !totalDom || totalKtp == 0 || totalDom == 0) {
+      return "Belum ada data :(";
+    } else {
+      const total = parseInt(totalKtp) + parseInt(totalDom);
+      return total;
+    }
+  } else if (props?.type == "users") {
+    const totalUser = props?.dataPengajuan?.user?.data?.users?.length;
+    if (!totalUser || totalUser == 0) {
+      return "Belum ada data :(";
+    } else {
+      return totalUser;
+    }
   }
 };
 
@@ -23,15 +35,20 @@ const BerandaADM = () => {
 
   const pending = async () => {
     try {
-      const response = await API.get("ktp");
-      setDataPengajuan(response);
+      const responsektp = await API.get("ktp");
+      const responsedom = await API.get("domisili");
+      const responseuser = await API.get("users");
+      setDataPengajuan({
+        ktp: responsektp,
+        dom: responsedom,
+        user: responseuser,
+      });
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
   useEffect(() => {
     pending();
-    console.log(cookies.get("userLog"));
     if (cookies.get("userData").user.role !== "admin") {
       navigate("/");
     }
@@ -47,10 +64,14 @@ const BerandaADM = () => {
             <div className="flex justify-center pb-3 md:pb-0 md:-ml-12">
               <div className="w-32 y-2 md:w-40">
                 <img
-                  src={`https://ui-avatars.com/api/?name=${
-                    cookies.get("userData").user.nama
-                  }`}
-                  className="w-[8rem] border-4 border-black rounded-full"
+                  src={
+                    cookies.get("userData").user.userImage
+                      ? cookies.get("userData").user.userImage
+                      : `https://ui-avatars.com/api/?name=${
+                          cookies.get("userData").user.nama
+                        }`
+                  }
+                  className="object-cover w-[8rem] h-[8rem] border-4 border-black rounded-full"
                 />
               </div>
             </div>
@@ -87,12 +108,14 @@ const BerandaADM = () => {
         <div className="flex flex-col bg-white w-5/6 h-auto rounded shadow-md y-10 md:flex-row md:w-[70%] lg:w-[50%] xl:w-[45%] relative">
           <div className="stat place-items-center">
             <div className="stat-title">Users</div>
-            <div className="stat-value">4,200</div>
+            <div className="stat-value">
+              <RenderList dataPengajuan={dataPengajuan} type="users" />
+            </div>
           </div>
           <div className="border-t-2 border-indigo stat place-items-center md:border-l-2 md:border-t-0">
             <div className="stat-title">Mailing List</div>
             <div className="stat-value">
-              <RenderList dataPengajuan={dataPengajuan} />
+              <RenderList dataPengajuan={dataPengajuan} type="mailing" />
             </div>
           </div>
         </div>
