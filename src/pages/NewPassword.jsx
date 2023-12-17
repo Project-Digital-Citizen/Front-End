@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import ele from "../assets/images/ele.png";
-import { API } from "../data/api-digzen";
+import { API, resendOTP } from "../data/api-digzen";
 import { useEffect, useState } from "react";
 import { Cookies } from "react-cookie";
 import { ToastContainer, toast } from "react-toastify";
@@ -15,6 +15,10 @@ const NewPassword = () => {
   const [formData, setFormData] = useState({});
   const [isDisabled, setIsDisabled] = useState(false);
   const [showPassword, setShowPassword] = useState("password");
+  const [timer, setTimer] = useState(localStorage.getItem("lastTimerValue")); // 5 minutes in seconds
+  const [resendDisabled, setResendDisabled] = useState(
+    localStorage.getItem("lastTimerValue") > 0 ? true : false
+  );
   const handleFormValueBlur = (e, name) => {
     const formDataCopy = { ...formData };
     formDataCopy[name] = e.target.value;
@@ -25,6 +29,23 @@ const NewPassword = () => {
     setShowPassword((prevShowPassword) =>
       prevShowPassword === "password" ? "text" : "password"
     );
+  };
+
+  const handleResendClick = async (e) => {
+    e.preventDefault();
+    if (email && !resendDisabled) {
+      const response = await resendOTP.post("", JSON.stringify({ email }));
+
+      if (response.status === 200) {
+        setTimer(300); // Reset timer to 5 minutes
+        setResendDisabled(true); // Disable resend button
+        Swal.fire({
+          title: "Check Email",
+          icon: "success",
+          text: response.data.message,
+        });
+      }
+    }
   };
 
   const handleLogClick = async (e) => {
@@ -75,6 +96,25 @@ const NewPassword = () => {
       navigate("/login");
     }
   });
+
+  useEffect(() => {
+    let timerId;
+
+    if (timer > 0) {
+      timerId = setInterval(() => {
+        setTimer((prevTimer) => Math.max(0, prevTimer - 1));
+      }, 1000);
+    } else {
+      setResendDisabled(false); // Enable resend button when the timer reaches 0
+    }
+
+    return () => clearInterval(timerId);
+  }, [timer]);
+
+  useEffect(() => {
+    // Save the timer value to localStorage
+    localStorage.setItem("lastTimerValue", timer);
+  }, [timer]);
   return (
     <>
       <ToastContainer />
@@ -133,6 +173,30 @@ const NewPassword = () => {
                 </div>
               </div>
               <div className="pt-4 pb-6">
+                <p>
+                  <span className={resendDisabled ? "hidden" : ""}>
+                    Didn't recieve your code?
+                  </span>
+                  <span className={resendDisabled ? "" : "hidden"}>
+                    You can re-send your OTP in:
+                  </span>
+
+                  <span
+                    className={
+                      !resendDisabled
+                        ? "text-blue-600 visited:text-purple-600 cursor-pointer"
+                        : "hidden"
+                    }
+                    onClick={handleResendClick}
+                  >
+                    {" "}
+                    Resend Code!
+                  </span>
+                  <span className={resendDisabled ? "" : "hidden"}>
+                    {" "}
+                    {formatTime(timer)}
+                  </span>
+                </p>
                 <button
                   onClick={handleLogClick}
                   disabled={isDisabled}
@@ -154,4 +218,13 @@ const NewPassword = () => {
   );
 };
 
+// Helper function to format time
+const formatTime = (seconds) => {
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  const formattedTime = `${String(minutes).padStart(2, "0")}:${String(
+    remainingSeconds
+  ).padStart(2, "0")}`;
+  return formattedTime;
+};
 export default NewPassword;
