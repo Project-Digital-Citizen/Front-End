@@ -178,7 +178,7 @@ const NavbarADM = () => {
                                     cookies.get("userData").user.nama
                                   }`
                             }
-                            className="w-[8rem] border-2 border-black rounded-full"
+                            className="bg-white w-[8rem] border-2 border-black rounded-full"
                           />
                         </div>
                       </div>
