@@ -135,7 +135,7 @@ const FormKTP = () => {
       </MenuItem>
     );
   }
-  // ktpTour();
+  ktpTour();
   return (
     <>
       <Navbar />
