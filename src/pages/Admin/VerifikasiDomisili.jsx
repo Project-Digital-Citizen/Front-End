@@ -32,7 +32,7 @@ const VerifikasiDomisili = () => {
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
                   <span className="font-black label-text">No. KK</span>
                   <span className="w-full max-w-screen md:w-3/5">
-                    23897452973845
+                    {data.kk}
                   </span>
                 </div>
 
@@ -40,22 +40,28 @@ const VerifikasiDomisili = () => {
                   <span className="font-black label-text">
                     Nama Kepala Keluarga
                   </span>
-                  <span className="w-full max-w-screen md:w-3/5">Citizen</span>
+                  <span className="w-full max-w-screen md:w-3/5">
+                    {data.kepalaKeluarga}
+                  </span>
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
                   <span className="font-black label-text">Alamat Baru</span>
-                  <span className="w-full max-w-screen md:w-3/5">Citizen</span>
+                  <span className="w-full max-w-screen md:w-3/5">
+                    {data.alamatBaru}
+                  </span>
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
                   <span className="font-black label-text">Provinsi</span>
-                  <span className="w-full max-w-screen md:w-3/5">Citizen</span>
+                  <span className="w-full max-w-screen md:w-3/5">
+                    {data.provinsi}
+                  </span>
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
                   <span className="font-black label-text md:ml-12">
                     Kabupaten/Kota
                   </span>
                   <span className="w-full max-w-screen md:w-2/4 md:-">
-                    Citizen
+                    {data.kabupatenKota}
                   </span>
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
@@ -63,7 +69,7 @@ const VerifikasiDomisili = () => {
                     Kecamatan
                   </span>
                   <span className="w-full max-w-screen md:w-2/4 md:-">
-                    Citizen
+                    {data.kecamatan}
                   </span>
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
@@ -71,26 +77,30 @@ const VerifikasiDomisili = () => {
                     Kelurahan/Desa
                   </span>
                   <span className="w-full max-w-screen md:w-2/4 md:-">
-                    Citizen
+                    {data.kelurahanDesa}
                   </span>
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
                   <span className="font-black label-text">
                     Klasifikasi Pindah
                   </span>
-                  <span className="w-full max-w-screen md:w-3/5">Citizen</span>
+                  <span className="w-full max-w-screen md:w-3/5">
+                    {data.klasifikasiPindah}
+                  </span>
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
                   <span className="font-black label-text">
                     NIK Keluarga Yang Pindah
                   </span>
                   <span className="w-full max-w-screen md:w-3/5">
-                    928743562834
+                    {data.NIKPindah}
                   </span>
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
                   <span className="font-black label-text">Alasan Pindah</span>
-                  <span className="w-full max-w-screen md:w-3/5">Citizen</span>
+                  <span className="w-full max-w-screen md:w-3/5">
+                    {data.alasanPindah}
+                  </span>
                 </div>
 
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
@@ -103,9 +113,9 @@ const VerifikasiDomisili = () => {
                     </button> */}
                     <Modal
                       file="KK Dari Daerah Asal"
-                      source="KK Dari Daerah Asal"
+                      source={data.kkDaerahAsalImage}
                     >
-                      KK Dari Daerah Asal
+                      KK Dari Daerah Asal {data.nama}
                     </Modal>
                   </div>
                 </div>
@@ -116,9 +126,9 @@ const VerifikasiDomisili = () => {
                   <div className="flex w-full max-w-screen md:w-3/5">
                     <Modal
                       file="KTP Keluarga Yang Pindah"
-                      source="KTP Keluarga Yang Pindah"
+                      source={data.ktpKeluargaPindahImage}
                     >
-                      KTP Keluarga Yang Pindah
+                      KTP Keluarga Yang Pindah {data.nama}
                     </Modal>
                   </div>
                 </div>
