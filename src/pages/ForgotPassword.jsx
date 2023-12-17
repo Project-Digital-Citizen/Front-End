@@ -1,9 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import ele from "../assets/images/ele.png";
-import { logAPI, API } from "../data/api-digzen";
+import { API } from "../data/api-digzen";
 import { useEffect, useState } from "react";
-import { useCookies, Cookies } from "react-cookie";
-import { jwtDecode } from "jwt-decode";
+import { Cookies } from "react-cookie";
 import { ToastContainer, toast } from "react-toastify";
 import CustomError from "../util/customError";
 import Swal from "sweetalert2";
@@ -14,7 +13,6 @@ const ForgotPassword = () => {
   const [formData, setFormData] = useState({});
   const [isDisabled, setIsDisabled] = useState(false);
   // eslint-disable-next-line no-unused-vars
-  const [cookies, setCookie] = useCookies(["userLog"]);
   const handleFormValue = (e, name) => {
     const formDataCopy = { ...formData };
     formDataCopy[name] = e.target.value;
@@ -24,32 +22,23 @@ const ForgotPassword = () => {
   const handleLogClick = async (e) => {
     e.preventDefault();
     setIsDisabled(true);
-    const { email, password } = formData;
+    const { email } = formData;
     try {
-      if (email && password) {
-        const response = await logAPI.post("", JSON.stringify(formData));
+      if (email) {
+        const response = await API.post(
+          "email/send-otp-change-password",
+          formData
+        );
 
         if (response.status == 200) {
-          const dec = jwtDecode(response.data.token);
-          const roleResponse = await API.get(`users/${dec.userId}`);
-          const { role } = roleResponse.data.user;
-          setCookie("userLog", dec, {
-            expires: new Date(Date.now() + dec.exp),
-          });
-          setCookie("userData", roleResponse.data, {
-            expires: new Date(Date.now() + dec.exp),
-          });
           Swal.fire({
-            title: "Sukses",
+            title: "Cek Email",
             icon: "success",
+            text: "Cek Email Anda untuk kode OTP",
             showConfirmButton: false,
             timer: 1000,
           }).then(() => {
-            if (role == "admin") {
-              navigate("/admin");
-            } else {
-              navigate("/");
-            }
+            navigate("/newpassword", { state: { email } });
           });
         }
       } else {

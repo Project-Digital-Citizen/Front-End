@@ -154,7 +154,12 @@ const Login = () => {
                 </div>
               </div>
               <div className="flex flex-row-reverse pt-2">
-                <a className="link ">Lupa Password</a>
+                <a
+                  onClick={() => navigate("/forgotpassword")}
+                  className="link "
+                >
+                  Lupa Password
+                </a>
               </div>
               <div className="pt-4 pb-6">
                 <button
