@@ -9,8 +9,8 @@ import { useEffect, useState } from "react";
 import { API } from "../data/api-digzen";
 
 const RenderList = (props) => {
-  // eslint-disable-next-line react/prop-types
   const data = props?.dataPengajuan?.data?.data;
+  const jenis = props?.jenis;
   if (!data || data.length === 0) {
     return (
       <tr>
@@ -18,47 +18,59 @@ const RenderList = (props) => {
       </tr>
     );
   } else {
-    return (
-      <>
-        {data.map((el) => {
-          if (el.idktp) {
-            return (
-              <>
-                <li>
-                  <hr />
-                  <div className="timeline-start">
-                    {el.submissionDate.substr(0, 10).split("T")}
-                  </div>
-                  <div className="timeline-middle">
-                    <TimelineSVG />
-                  </div>
-                  <div className="timeline-end timeline-box">KTP Pending</div>
-                  <hr />
-                </li>
-              </>
-            );
-          } else {
-            return (
-              <>
-                <li>
-                  <hr />
-                  <div className="timeline-start">
-                    {el.submissionDate.substr(0, 10).split("T")}
-                  </div>
-                  <div className="timeline-middle">
-                    <TimelineSVG />
-                  </div>
-                  <div className="timeline-end timeline-box">
-                    Domisili Pending
-                  </div>
-                  <hr />
-                </li>
-              </>
-            );
-          }
-        })}
-      </>
-    );
+    if (jenis == "ktp") {
+      return (
+        <>
+          {data.map((el) => {
+            if (el.idktp) {
+              return (
+                <>
+                  <li>
+                    <hr />
+                    <div className="timeline-start">
+                      {el.submissionDate.substr(0, 10).split("T")}
+                    </div>
+                    <div className="timeline-middle">
+                      <TimelineSVG />
+                    </div>
+                    <div className="timeline-end timeline-box">
+                      Pengajuan KTP
+                    </div>
+                    <hr />
+                  </li>
+                </>
+              );
+            }
+          })}
+        </>
+      );
+    } else {
+      return (
+        <>
+          {data.map((el) => {
+            if (el.idktp) {
+              return (
+                <>
+                  <li>
+                    <hr />
+                    <div className="timeline-start">
+                      {el.submissionDate.substr(0, 10).split("T")}
+                    </div>
+                    <div className="timeline-middle">
+                      <TimelineSVG />
+                    </div>
+                    <div className="timeline-end timeline-box">
+                      Pengajuan Surat Domisili
+                    </div>
+                    <hr />
+                  </li>
+                </>
+              );
+            }
+          })}
+        </>
+      );
+    }
   }
 };
 
@@ -116,17 +128,14 @@ const StatusPengajuan = () => {
                   <img src={icondocs} alt="" className="h-[50px]" />
                 </div>
                 <div className="flex flex-col my-auto font-black text-indigo">
-                  <h1 className="text-2xl ">Status Pengajuan</h1>
-                  <span className="text-xs -mt-[3px] ml-[2px] text-black">
-                    29347856394875
-                  </span>
+                  <h1 className="text-2xl ">Status Pengajuan KTP</h1>
                 </div>
               </div>
               <hr className="bg-indigo text-black p-[1px] mx-10 " />
               <div className="max-w-md p-7">
                 {/*  */}
                 <ul className="timeline timeline-vertical">
-                  <RenderList dataPengajuan={dataPengajuan} />
+                  <RenderList dataPengajuan={dataPengajuan} jenis="ktp" />
                 </ul>
                 {/*  */}
               </div>
@@ -139,17 +148,14 @@ const StatusPengajuan = () => {
                   <img src={icondocs} alt="" className="h-[50px]" />
                 </div>
                 <div className="flex flex-col my-auto font-black text-indigo">
-                  <h1 className="text-2xl ">Status Pengajuan</h1>
-                  <span className="text-xs -mt-[3px] ml-[2px] text-black">
-                    29347856394875
-                  </span>
+                  <h1 className="text-2xl ">Status Pengajuan Domisili</h1>
                 </div>
               </div>
               <hr className="bg-indigo text-black p-[1px] mx-10 " />
               <div className="max-w-md p-7">
                 {/*  */}
                 <ul className="timeline timeline-vertical">
-                  <RenderList dataPengajuan={dataPengajuan} />
+                  <RenderList dataPengajuan={dataPengajuan} jenis="domisili" />
                 </ul>
                 {/*  */}
               </div>
