@@ -103,6 +103,8 @@ const NewPassword = () => {
                   className="w-full"
                   onBlur={(e) => handleFormValueBlur(e, "otp")}
                 />
+              </div>
+              <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
                 <TextField
                   id="outlined-basic"
                   label="New Password"
