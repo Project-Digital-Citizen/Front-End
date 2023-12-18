@@ -19,7 +19,7 @@ const Dashboard = () => {
     if (cookies.get("userData").user.role == "admin") {
       welcomeTour("exit");
     }
-  } else {
+  } else if (!cookies.get("tour")) {
     welcomeTour("drive");
   }
 

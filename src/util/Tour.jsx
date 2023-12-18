@@ -1,11 +1,19 @@
 // Import driver.js dan CSS-nya
 import { driver } from "driver.js";
 import "driver.js/dist/driver.css";
+import { Cookies } from "react-cookie";
 
 const welcomeTour = async (e) => {
+  const cookies = new Cookies();
   if (e == "drive") {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     const driverObj = driver({
+      onDestroyStarted: () => {
+        if (!driverObj.hasNextStep() || confirm("Are you sure?")) {
+          cookies.set("tour", true);
+          driverObj.destroy();
+        }
+      },
       overlayColor: "#83a2ff",
       showProgress: true,
       nextBtnText: "Selanjutnya",
