@@ -189,7 +189,7 @@ const NavbarADM = () => {
                           />
                         </div>
                       </div>
-                      <i>Admin</i>
+                      <i>{cookies.get("userData").user.nama}</i>
                     </summary>
                     <ul>
                       <li>
