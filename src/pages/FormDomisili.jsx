@@ -26,7 +26,7 @@ const FormDomisili = () => {
   });
 
   const navigate = useNavigate();
-  const [data, setForm] = useState({});
+  const [data, setData] = useState({});
 
   const [isDisabled, setIsDisabled] = useState(false);
 
@@ -36,7 +36,7 @@ const FormDomisili = () => {
     if (name == "kkDaerahAsalImage" || name == "ktpKeluargaPindahImage") {
       formDataCopy[name] = e.target.files[0];
     }
-    setForm(formDataCopy);
+    setData(formDataCopy);
   };
 
   const handleRegClick = async (e) => {
@@ -149,7 +149,7 @@ const FormDomisili = () => {
                     placeholder="xxxxxxxxxx"
                     variant="outlined"
                     className="w-full"
-                    onBlur={(e) => handleFormValue(e, "kk")}
+                    onBlur={(e) => handleFormValue(e.target.value, "kk")}
                   />
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
@@ -160,7 +160,9 @@ const FormDomisili = () => {
                     placeholder="Nama Kepala Keluarga"
                     variant="outlined"
                     className="w-full"
-                    onBlur={(e) => handleFormValue(e, "kepalaKeluarga")}
+                    onBlur={(e) =>
+                      handleFormValue(e.target.value, "kepalaKeluarga")
+                    }
                   />
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
@@ -171,7 +173,9 @@ const FormDomisili = () => {
                     placeholder="Alamat Baru"
                     variant="outlined"
                     className="w-full"
-                    onBlur={(e) => handleFormValue(e, "alamatBaru")}
+                    onBlur={(e) =>
+                      handleFormValue(e.target.value, "alamatBaru")
+                    }
                   />
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
@@ -182,7 +186,7 @@ const FormDomisili = () => {
                     placeholder="Provinsi"
                     variant="outlined"
                     className="w-full"
-                    onBlur={(e) => handleFormValue(e, "provinsi")}
+                    onBlur={(e) => handleFormValue(e.target.value, "provinsi")}
                   />
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
@@ -193,7 +197,9 @@ const FormDomisili = () => {
                     placeholder="Kabupaten/Kota"
                     variant="outlined"
                     className="w-full"
-                    onBlur={(e) => handleFormValue(e, "kabupatenKota")}
+                    onBlur={(e) =>
+                      handleFormValue(e.target.value, "kabupatenKota")
+                    }
                   />
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
@@ -204,7 +210,7 @@ const FormDomisili = () => {
                     placeholder="Kecamatan"
                     variant="outlined"
                     className="w-full"
-                    onBlur={(e) => handleFormValue(e, "kecamatan")}
+                    onBlur={(e) => handleFormValue(e.target.value, "kecamatan")}
                   />
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
@@ -215,7 +221,9 @@ const FormDomisili = () => {
                     placeholder="Kelurahan/Desa"
                     variant="outlined"
                     className="w-full"
-                    onBlur={(e) => handleFormValue(e, "kelurahanDesa")}
+                    onBlur={(e) =>
+                      handleFormValue(e.target.value, "kelurahanDesa")
+                    }
                   />
                 </div>
 
@@ -228,7 +236,9 @@ const FormDomisili = () => {
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
                       label="Klasifikasi Pindah"
-                      onChange={(e) => handleFormValue(e, "klasifikasiPindah")}
+                      onChange={(e) =>
+                        handleFormValue(e.target.value, "klasifikasiPindah")
+                      }
                     >
                       <MenuItem value={"Dalam Satu Kelurahan"}>
                         Dalam Satu Kelurahan
@@ -261,7 +271,7 @@ const FormDomisili = () => {
                     placeholder="NIK Keluarga Yang Pindah"
                     variant="outlined"
                     className="w-full"
-                    onBlur={(e) => handleFormValue(e, "NIKPindah")}
+                    onBlur={(e) => handleFormValue(e.target.value, "NIKPindah")}
                   />
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
@@ -272,7 +282,9 @@ const FormDomisili = () => {
                     placeholder="Alasan Pindah"
                     variant="outlined"
                     className="w-full"
-                    onBlur={(e) => handleFormValue(e, "alasanPindah")}
+                    onBlur={(e) =>
+                      handleFormValue(e.target.value, "alasanPindah")
+                    }
                   />
                 </div>
                 <div className="justify-between w-full pt-4 form-control md:flex md:flex-row">
