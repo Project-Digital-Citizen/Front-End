@@ -44,11 +44,14 @@ const RenderList = (props) => {
       return (
         <>
           {data.map((el) => {
+            let classs = "";
             let result = <> </>;
             let status = "";
             if (responKTP.verified == "") {
+              classs = "bg-yellow-200";
               status = "Pending";
-            } else {
+            } else if (responKTP.verified == "accept") {
+              classs = "bg-lime-300";
               status = responKTP.verified;
               result = (
                 <>
@@ -83,18 +86,21 @@ const RenderList = (props) => {
                   </div>
                 </>
               );
+            } else {
+              status = responKTP.verified;
+              classs = "bg-rose-500";
             }
             if (el.idktp) {
               return (
                 <>
                   <div className="mt-3 border-solid border-2">
-                    <div className="">
+                    <div className="p-3">
                       <p className="font-black label-text">Submission Date</p>
                       <p>{el.submissionDate.substr(0, 10).split("T")}</p>
                     </div>
-                    <div className="mt-3">
+                    <div className="p-3">
                       <p className="font-black label-text">Status</p>
-                      <p>{status}</p>
+                      <p className={classs}>{status}</p>
                     </div>
                     {result}
                   </div>
@@ -122,10 +128,13 @@ const RenderList = (props) => {
         <>
           {data.map((el) => {
             let result = <> </>;
+            let classs = "";
             let status = "";
             if (responDom.verified == "") {
+              classs = "bg-yellow-200";
               status = "Pending";
-            } else {
+            } else if (responDom.verified == "accept") {
+              classs = "bg-lime-300";
               status = responDom.verified;
               result = (
                 <>
@@ -155,18 +164,21 @@ const RenderList = (props) => {
                   </div>
                 </>
               );
+            } else {
+              status = responDom.verified;
+              classs = "bg-rose-500";
             }
             if (el.iddomisili) {
               return (
                 <>
                   <div className="mt-3 border-solid border-2">
-                    <div className="">
+                    <div className="p-3">
                       <p className="font-black label-text">Submission Date</p>
                       <p>{el.submissionDate.substr(0, 10).split("T")}</p>
                     </div>
-                    <div className="mt-3">
+                    <div className="p-3">
                       <p className="font-black label-text">Status</p>
-                      <p>{status}</p>
+                      <p className={classs}>{status}</p>
                     </div>
                     {result}
                   </div>
