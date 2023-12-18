@@ -226,7 +226,7 @@ const VerifikasiDomisili = () => {
   const [dataPengajuan, setDataPengajuan] = useState([]);
   const pending = async () => {
     try {
-      const response = await API.get(`domisili/${NIK}`);
+      const response = await API.get(`domisili/nik/${NIK}`);
       setDataPengajuan(response);
     } catch (error) {
       console.error("Error fetching data:", error);

@@ -309,7 +309,7 @@ const VerifikasiKTP = () => {
 
   const pending = async () => {
     try {
-      const response = await API.get(`ktp/${NIK}`);
+      const response = await API.get(`ktp/nik/${NIK}`);
       setDataPengajuan(response);
     } catch (error) {
       console.error("Error fetching data:", error);
