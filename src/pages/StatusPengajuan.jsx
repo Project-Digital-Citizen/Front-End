@@ -28,7 +28,10 @@ const RenderList = (props) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const data = props?.dataPengajuan?.data?.data;
+  const data = props?.dataPengajuan?.response?.data?.data;
+  const responKTP = props?.dataPengajuan?.responseKTP?.data?.data;
+  const responDom = props?.dataPengajuan?.responseDomisili?.data?.data;
+  console.log(data, responKTP, responDom);
   const jenis = props?.jenis;
   if (!data || data.length === 0) {
     return (
@@ -41,46 +44,59 @@ const RenderList = (props) => {
       return (
         <>
           {data.map((el) => {
+            let result = <> </>;
+            let status = "";
+            if (responKTP.verified == "") {
+              status = "Pending";
+            } else {
+              status = responKTP.verified;
+              result = (
+                <>
+                  {" "}
+                  <div className="mt-3">
+                    <p className="font-black label-text">Result</p>
+                    <p className="btn btn-sm" onClick={handleOpen}>
+                      Open Result
+                    </p>
+                    <Modal
+                      open={open}
+                      onClose={handleClose}
+                      aria-labelledby="modal-modal-title"
+                      aria-describedby="modal-modal-description"
+                    >
+                      <Box sx={style}>
+                        <Typography>
+                          <div className="">
+                            <img src={ele} alt="" />
+                          </div>
+                        </Typography>
+                      </Box>
+                    </Modal>
+                  </div>
+                  <div className="mt-3">
+                    <span className="font-black label-text">Reason</span>
+                    <textarea
+                      value={el.rejectionReason}
+                      className="w-full bg-white textarea textarea-bordered textarea-md max-w-screen md:max-w-md: md:mt-2 lg:max-w-2xl xl:max-w-4xl"
+                      disabled
+                    />
+                  </div>
+                </>
+              );
+            }
             if (el.idktp) {
               return (
                 <>
-                  <div className="">
+                  <div className="mt-3 border-solid border-2">
                     <div className="">
                       <p className="font-black label-text">Submission Date</p>
                       <p>{el.submissionDate.substr(0, 10).split("T")}</p>
                     </div>
                     <div className="mt-3">
                       <p className="font-black label-text">Status</p>
-                      <p>Accepted</p>
+                      <p>{status}</p>
                     </div>
-                    <div className="mt-3">
-                      <p className="font-black label-text">Result</p>
-                      <p className="btn btn-sm" onClick={handleOpen}>
-                        Open Result
-                      </p>
-                      <Modal
-                        open={open}
-                        onClose={handleClose}
-                        aria-labelledby="modal-modal-title"
-                        aria-describedby="modal-modal-description"
-                      >
-                        <Box sx={style}>
-                          <Typography>
-                            <div className="">
-                              <img src={ele} alt="" />
-                            </div>
-                          </Typography>
-                        </Box>
-                      </Modal>
-                    </div>
-                    <div className="mt-3">
-                      <span className="font-black label-text">Reason</span>
-                      <textarea
-                        value="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia doloribus ipsa praesentium distinctio et accusantium recusandae repellat assumenda cum dolor, vel quae fugiat."
-                        className="w-full bg-white textarea textarea-bordered textarea-md max-w-screen md:max-w-md: md:mt-2 lg:max-w-2xl xl:max-w-4xl"
-                        disabled
-                      />
-                    </div>
+                    {result}
                   </div>
                   {/* <li>
                     <hr />
@@ -105,46 +121,54 @@ const RenderList = (props) => {
       return (
         <>
           {data.map((el) => {
-            if (el.idktp) {
+            let result = <> </>;
+            let status = "";
+            if (responDom.verified == "") {
+              status = "Pending";
+            } else {
+              status = responDom.verified;
+              result = (
+                <>
+                  <div className="mt-3">
+                    <Modal
+                      open={open}
+                      onClose={handleClose}
+                      aria-labelledby="modal-modal-title"
+                      aria-describedby="modal-modal-description"
+                    >
+                      <Box sx={style}>
+                        <Typography>
+                          <div className="">
+                            <img src={ele} alt="" />
+                          </div>
+                        </Typography>
+                      </Box>
+                    </Modal>
+                  </div>
+                  <div className="mt-3">
+                    <span className="font-black label-text">Reason</span>
+                    <textarea
+                      value={el.rejectionReason}
+                      className="w-full bg-white textarea textarea-bordered textarea-md max-w-screen md:max-w-md: md:mt-2 lg:max-w-2xl xl:max-w-4xl"
+                      disabled
+                    />
+                  </div>
+                </>
+              );
+            }
+            if (el.iddomisili) {
               return (
                 <>
-                  <div className="">
+                  <div className="mt-3 border-solid border-2">
                     <div className="">
                       <p className="font-black label-text">Submission Date</p>
                       <p>{el.submissionDate.substr(0, 10).split("T")}</p>
                     </div>
                     <div className="mt-3">
                       <p className="font-black label-text">Status</p>
-                      <p>Accepted</p>
+                      <p>{status}</p>
                     </div>
-                    <div className="mt-3">
-                      <p className="font-black label-text">Result</p>
-                      <p className="btn btn-sm" onClick={handleOpen}>
-                        Open Result
-                      </p>
-                      <Modal
-                        open={open}
-                        onClose={handleClose}
-                        aria-labelledby="modal-modal-title"
-                        aria-describedby="modal-modal-description"
-                      >
-                        <Box sx={style}>
-                          <Typography>
-                            <div className="">
-                              <img src={ele} alt="" />
-                            </div>
-                          </Typography>
-                        </Box>
-                      </Modal>
-                    </div>
-                    <div className="mt-3">
-                      <span className="font-black label-text">Reason</span>
-                      <textarea
-                        value="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia doloribus ipsa praesentium distinctio et accusantium recusandae repellat assumenda cum dolor, vel quae fugiat."
-                        className="w-full bg-white textarea textarea-bordered textarea-md max-w-screen md:max-w-md: md:mt-2 lg:max-w-2xl xl:max-w-4xl"
-                        disabled
-                      />
-                    </div>
+                    {result}
                   </div>
                 </>
               );
@@ -170,7 +194,11 @@ const StatusPengajuan = () => {
   const pending = async () => {
     try {
       const response = await API.get(`status/${cookies.get("userLog").userId}`);
-      setDataPengajuan(response);
+      const responseKTP = await API.get(`ktp/${cookies.get("userLog").userId}`);
+      const responseDomisili = await API.get(
+        `domisili/${cookies.get("userLog").userId}`
+      );
+      setDataPengajuan({ response, responseKTP, responseDomisili });
     } catch (error) {
       console.error("Error fetching data:", error);
     }
