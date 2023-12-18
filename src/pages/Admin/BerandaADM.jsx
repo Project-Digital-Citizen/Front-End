@@ -13,7 +13,7 @@ const RenderList = (props) => {
     const totalDom = props?.dataPengajuan?.dom?.data?.data?.length;
 
     if (!totalKtp || !totalDom || totalKtp == 0 || totalDom == 0) {
-      return "No Data Available";
+      return <p className="text-sm">No Data Available</p>;
     } else {
       const total = parseInt(totalKtp) + parseInt(totalDom);
       return total;
@@ -21,7 +21,7 @@ const RenderList = (props) => {
   } else if (props?.type == "users") {
     const totalUser = props?.dataPengajuan?.user?.data?.users?.length;
     if (!totalUser || totalUser == 0) {
-      return "No Data Available";
+      return <p className="text-sm">No Data Available</p>;
     } else {
       return totalUser;
     }
