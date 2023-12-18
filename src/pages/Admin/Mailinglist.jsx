@@ -31,7 +31,7 @@ const RenderList = (props) => {
                   className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo btn-xs"
                   onClick={() => navigate("/verifikasiktp", { state: el.NIK })}
                 >
-                  Verify
+                  Check
                 </span>
               </td>
             </tr>

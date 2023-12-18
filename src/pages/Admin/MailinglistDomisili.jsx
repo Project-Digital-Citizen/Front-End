@@ -35,7 +35,7 @@ const RenderList = (props) => {
                     })
                   }
                 >
-                  Verify
+                  Check
                 </span>
               </td>
             </tr>

@@ -235,8 +235,8 @@ const FormKTP = () => {
                 <div className="flex-row justify-between w-full gap-2 pt-4 md:flex form-control">
                   <TextField
                     id="outlined-basic"
-                    label="Tempat"
-                    placeholder="Tempat"
+                    label="Tempat Lahir"
+                    placeholder="Tempat Lahir"
                     variant="outlined"
                     className="w-full"
                     onChange={(e) => handleFormValue(e.target.value, "tempat")}
