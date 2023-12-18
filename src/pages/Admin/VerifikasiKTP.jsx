@@ -7,28 +7,9 @@ import { API } from "../../data/api-digzen";
 import { Cookies } from "react-cookie";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
-import Typography from "@mui/material/Typography";
-import Modal2 from "@mui/material/Modal";
-import Box from "@mui/material/Box";
-
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: window.innerWidth <= 390 ? 300 : 500,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  borderRadius: "5px",
-  boxShadow: 24,
-  p: 3,
-};
 
 const RenderList = (props) => {
   const navigate = useNavigate();
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
   useEffect(() => {
     console.log(new Cookies().get("userLog"));
@@ -49,12 +30,18 @@ const RenderList = (props) => {
   } else {
     const handleVerifSubmit = async (val) => {
       let verified = val;
+      let reason;
+      if (verified == "reject") {
+        reason = "Maaf pengajuan Anda ditolak.";
+      } else if (verified == "accept") {
+        reason = "Selamat pengajuan Anda telah diterima.";
+      }
 
       setIsDisabled(true);
       try {
         const response = await API.put(
           `/ktp/${data._id}`,
-          { verified, reason: "KTP Terverifikasi" },
+          { verified, reason },
           {
             headers: {
               "Content-Type": "application/json",
@@ -296,45 +283,13 @@ const RenderList = (props) => {
                     </button>
                     <button
                       disabled={buttonDisable}
-                      onClick={handleOpen}
-                      // onClick={() => handleVerifSubmit("reject")}
+                      onClick={() => {
+                        handleVerifSubmit("reject");
+                      }}
                       className="text-white bg-red-600 btn btn-block btn-error hover:bg-white hover:text-red-600 hover:border-2 hover:border-red-600 md:w-1/6"
                     >
-                      Reject Reason
+                      Reject
                     </button>
-                    <Modal2 /* Modal 1 */
-                      open={open}
-                      aria-labelledby="modal-modal-title"
-                      aria-describedby="modal-modal-description"
-                    >
-                      <Box sx={style}>
-                        <Typography
-                          id="modal-modal-title"
-                          variant="h6"
-                          component="h2"
-                        >
-                          Reason
-                        </Typography>
-                        <Typography id="modal-modal-description" sx={{ mt: 1 }}>
-                          <div className="px-3">
-                            <form action="">
-                              <div className="justify-between w-full pt-4 form-control md:flex md:flex-row md:items-center">
-                                <textarea className="w-full bg-white textarea textarea-bordered textarea-md max-w-screen md:max-w-md: md:mt-2 lg:max-w-2xl xl:max-w-4xl" />
-                              </div>
-                            </form>
-                          </div>
-                          <div className="flex flex-row-reverse gap-2 mt-4">
-                            <button
-                              // disabled={isDisabled}
-                              className="w-20 text-white bg-indigo btn btn-sm hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo"
-                              onClick={handleClose}
-                            >
-                              Reject
-                            </button>
-                          </div>
-                        </Typography>
-                      </Box>
-                    </Modal2>
                   </div>
                 </form>
                 {/*  */}

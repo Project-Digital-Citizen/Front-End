@@ -20,23 +20,29 @@ const RenderList = (props) => {
   } else {
     return (
       <>
-        {data.map((el, idx) => (
-          <>
-            <tr key={idx}>
-              <th>{idx + 1}</th>
-              <td>{el.nama}</td>
-              <td>KTP</td>
-              <td>
-                <span
-                  className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo btn-xs"
-                  onClick={() => navigate("/verifikasiktp", { state: el.NIK })}
-                >
-                  Check
-                </span>
-              </td>
-            </tr>
-          </>
-        ))}
+        {data.map((el, idx) => {
+          if (el.verified == "") {
+            return (
+              <>
+                <tr key={idx}>
+                  <th>{idx + 1}</th>
+                  <td>{el.nama}</td>
+                  <td>KTP</td>
+                  <td>
+                    <span
+                      className="text-white btn bg-indigo hover:bg-white hover:text-indigo hover:border-2 hover:border-indigo btn-xs"
+                      onClick={() =>
+                        navigate("/verifikasiktp", { state: el.NIK })
+                      }
+                    >
+                      Check
+                    </span>
+                  </td>
+                </tr>
+              </>
+            );
+          }
+        })}
       </>
     );
   }
